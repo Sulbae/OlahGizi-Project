@@ -1,6 +1,6 @@
 # Project Report
-## Basic Model for Predicting Nutrient Density of Food Consumption
-### __Background__ 
+# Basic Model for Predicting Nutrient Density of Food Consumption
+## __Background__ 
 Adequate nutritional status is crucial for human growth and survival. Nutritional status can be assessed by evaluating individual-specific nutritional requirements and intake. An imbalance between nutritional needs and intake may lead to either deficiency or excess, both of which negatively impact health. This condition is commonly referred to as malnutrition (Bouma, 2017; Rinninella et al., 2017). According to the World Health Organization (WHO), malnutrition can occur due to an imbalance in nutrient intake, which may affect health status, disrupt food digestion, or impair nutrient absorption (Khan et al., 2022). Malnutrition is not limited to undernutrition; it also encompasses a broader scope including macronutrient and micronutrient imbalances, obesity, cachexia, sarcopenia, and malnourishment (Cederholm et al., 2019).
 
 In Indonesia, malnutrition—including both undernutrition and obesity—remains a serious issue. The 2018 Global Nutrition Report revealed that one in five child deaths globally is associated with poor dietary intake. Based on data from Indonesia's 2018 Basic Health Research, malnutrition cases include 30.8% of stunting, 3.5% of severe malnutrition, and other related conditions such as obesity (Zianka et al., 2024). Nutritional issues in children, if left unaddressed, may continue into adolescence and adulthood (Simbolon, 2013). Such conditions have far-reaching negative implications, as children with inadequate nutritional intake may experience delayed brain development and lower intelligence. Ultimately, this may hinder national economic growth and even increase poverty. The potential economic losses due to malnutrition are significant and may create a financial burden for the healthcare system in the future (Kemenkes RI, 2018).
@@ -13,28 +13,28 @@ The machine learning model will be developed using Google’s TensorFlow framewo
 
 _Keywords: Malnutrition, Nutrition Density, Neural Network, TensorFlow_
 
-### __Business Understanding__
-#### Problem Statements
+## __Business Understanding__
+### Problem Statements
   1. How would the model work in predicting nutrient density?
   2. How to carry out good data processing that fits the model architecture?
   3. What factors need to be considered to develop the best model?
-#### Goals
+### Goals
   1. Understanding how neural network model works in predicting nutrition density.
   2. Processing raw data into clean data that is ready to be used to train neural network models.
   3. Designing the best architecture for the model.
-#### Solution Statements
+### Solution Statements
   1. Determine the dataset to be used and the expected output so we can find out the right type of prediction architecture.
   2. Carrying out an iterative process that includes Exploratory Data Analysis to understand data characteristics and data transformation to adjust the data format to the neural network model architecture.
   3. Carrying out feature engineering stages to select features that most influence nutrition density values and hyperparameter tuning to optimize model performance.
 
-### __Data Understanding__
-#### Dataset
+## __Data Understanding__
+### Dataset
 Resouce: [Food Nutrition Dataset](https://www.kaggle.com/datasets/utsavdey1410/food-nutrition-dataset/data)
 
-#### Overview
+### Overview
 The Comprehensive Nutritional Food Database provides detailed nutritional information for a wide range of food items commonly consumed around the world. This dataset aims to support dietary planning, nutritional analysis, and educational purposes by providing extensive data on the macro and micronutrient content of foods.
 
-#### Column Description
+### Column Description
 No | Column | Description
 ---|--------|------------
 1 | Food | The name or type of the food item
@@ -73,21 +73,21 @@ No | Column | Description
 34 | Zinc (in mg) | Necessary for the immune system to properly function and plays a role in cell division, cell growth, wound healing, and the breakdown of carbohydrates.
 35 | Nutrition Density | A metric indicating the nutrient richness of the food per calorie.
 
-#### Explore
+### Explore
 
-### __Data Preparation__
+## __Data Preparation__
 
-### __Modeling__
+## __Modeling__
 
-### __Training__
+## __Training__
 
-### __Evaluation__
+## __Evaluation__
 
-### __Prediction__
+## __Prediction__
 
-### __Conclusion__
+## __Conclusion__
 
-### __References__
+## __References__
 1. Alfarisi, B. I., et al. (2023). *Mengungkap Kesehatan Melalui Angka: Prediksi Malnutrisi Melalui Penilaian Status Gizi dan Asupan Makronutrien.* Prosiding SNPPM-5, 299-311.
 2. Bouma, S. (2017). *Diagnosing Pediatric Malnutrition: Paradigm Shifts of Etiology-Related Definitions and Appraisal of the Indicators.* Nutrition in Clinical Practice, 32(1), 52–67.
 3. Cakrawala. (2024). *Apa itu Neural Network? Ini Pengertian, Konsep, dan Contohnya.* Retrieved October 31, 2024, from [https://www.cakrawala.ac.id/berita/neural-network-adalah](https://www.cakrawala.ac.id/berita/neural-network-adalah).
