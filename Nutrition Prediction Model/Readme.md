@@ -79,8 +79,20 @@ According to data exploration, there are some basic information such as:
 * It consist an object data (columns "food") and numerical data (int64 for column "Caloric Value" and float64 for other columns).
 * There is no missing value and duplicated data.
 * All values of column "food" are unique.
+* We need to equate the units for the some columns (Caloric Value, Fat, Saturated Fats, Monounsaturated Fats, Polyunsaturated Fats, Carbohydrates, Sugars, Protein, Dietary Fiber, and Water) to milligrams.
 
+Based on univariate analysis, most data don't have normal distribution and have some outliers. For example this is visualization of Caloric Value and Nutrition Density data:
 
+<div style="display: flex; justify-content: space-between;">
+  <div style="flex: 1; margin-right: 10px;">
+    ![Distribution of Caloric Value](image1_url_or_path)
+  </div>
+  <div style="flex: 1; margin-left: 10px;">
+    ![Distribution of Nutrition Density](image2_url_or_path)
+  </div>
+</div>
+
+These outliers are possible and normal because each food have unique value. Those are valid data points. Sometimes outliers represent real variations in the nutritional content of foods.
 
 ## __Data Preparation__
 
