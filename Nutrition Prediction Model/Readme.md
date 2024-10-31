@@ -74,7 +74,13 @@ No | Column | Description
 35 | Nutrition Density | A metric indicating the nutrient richness of the food per calorie.
 
 ### Explore
-According to data exploration, the dataset has 2395 rows and 35 columns. It consist an object data (columns "food") and numerical data (int64 for column "Caloric Value" and float64 for other columns). There is no missing value and duplicated data. All value of column "food" are unique.
+According to data exploration, there are some basic information such as: 
+* The dataset has 2395 rows and 35 columns.
+* It consist an object data (columns "food") and numerical data (int64 for column "Caloric Value" and float64 for other columns).
+* There is no missing value and duplicated data.
+* All values of column "food" are unique.
+
+
 
 ## __Data Preparation__
 
