@@ -29,7 +29,7 @@ _Keywords: Malnutrition, Nutrition Density, Neural Network, TensorFlow_
 
 ### __Data Understanding__
 #### Dataset
-     Resouce: [Food Nutrition Dataset](https://www.kaggle.com/datasets/utsavdey1410/food-nutrition-dataset/data)
+Resouce: [Food Nutrition Dataset](https://www.kaggle.com/datasets/utsavdey1410/food-nutrition-dataset/data)
 #### Explore
 
 ### __Data Preparation__
