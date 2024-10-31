@@ -85,10 +85,10 @@ Based on univariate analysis, most data don't have normal distribution and have 
 
 <div style="display: flex; justify-content: space-between;">
   <div style="flex: 1; margin-right: 10px;">
-    <img src="raw.githubusercontent.com/Sulbae/OlahGizi-Project/blob/main/Nutrition%20Prediction%20Model/Chart/Caloric%20Value.png">
+    <img src="https://raw.githubusercontent.com/Sulbae/OlahGizi-Project/blob/main/Nutrition%20Prediction%20Model/Chart/Caloric%20Value.png">
   </div>
   <div style="flex: 1; margin-left: 10px;">
-    ![Distribution of Nutrition Density](https://github.com/Sulbae/OlahGizi-Project/blob/main/Nutrition%20Prediction%20Model/Chart/Caloric%20Value.png?raw=true)
+    <img src="https://raw.githubusercontent.com/Sulbae/OlahGizi-Project/blob/main/Nutrition%20Prediction%20Model/Chart/Caloric%20Value.png">
   </div>
 </div>
 
