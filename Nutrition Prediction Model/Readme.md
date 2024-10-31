@@ -2,7 +2,7 @@
 ## Food-Nutrition-Prediction---Machine Learning
 ### __Background__ 
   * Stunting
-  * Diabetes
+  * Obesity
   * Malnutrition
 
 ### __Business Understanding__
