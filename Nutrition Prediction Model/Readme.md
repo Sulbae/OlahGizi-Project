@@ -30,6 +30,49 @@ _Keywords: Malnutrition, Nutrition Density, Neural Network, TensorFlow_
 ### __Data Understanding__
 #### Dataset
 Resouce: [Food Nutrition Dataset](https://www.kaggle.com/datasets/utsavdey1410/food-nutrition-dataset/data)
+
+#### Overview
+The Comprehensive Nutritional Food Database provides detailed nutritional information for a wide range of food items commonly consumed around the world. This dataset aims to support dietary planning, nutritional analysis, and educational purposes by providing extensive data on the macro and micronutrient content of foods.
+
+#### Column Description
+No | Column | Description
+---|--------|------------
+1 | Food | The name or type of the food item
+2 | Caloric Value | Total energy provided by the food, typically measured in kilocalories(kcal) per 100 grams.
+3 | Fat (in g) | Total amount of fats in grams per 100 grams, including the breakdowns that follow
+4 | Saturated Fats (in g) | Amount of saturated fats (fats that typically raise the level of cholesterol in the blood) in grams per 100 grams.
+5 | Monounsaturated Fats (in g) | Amount of monounsaturated fats (considered heart-healthy fats) in grams per 100 grams.
+6 | Polyunsaturated Fats (in g) | Amount of polyunsaturated fats (include essential fats your body needs but can't produce itself) in grams per 100 grams.
+7 | Carbohydrates (in g) | Total carbohydrates in grams per 100 grams, including sugars.
+8 | Sugars (in g) | Total sugars in grams per 100 grams, a subset of carbohydrates.
+9 | Protein (in g) | Total proteins in grams per 100 grams, essential for body repair and growth.
+10 | Dietary Fiber (in g) | Fiber content in grams per 100 grams, important for digestive health.
+11 | Cholesterol (in mg) | Cholesterol content in milligrams per 100 grams, pertinent for cardiovascular health.
+12 | Sodium (in mg) | Sodium content in milligrams per 100 grams, crucial for fluid balance and nerve function.
+13 | Water (in g) | Water content in grams per 100 grams, which affects the food's energy density.
+14 | Vitamin A (in mg) | Amount of Vitamin A in micrograms per 100 grams, impoertant for vision and immune functioning.
+15 | Vitamin B1 (Thiamine)(in mg) | Essential for glucose metabolism.
+16 | Vitamin B11 (Folic Acid)(in mg) | Crucial for cell function and tissue growth, particularly important in pregnancy.
+17 | Vitamin B12(in mg) | Important for brain function and blood formation.
+18 | Vitamin B2 (Riboflavin)(in mg) | Necessary for energy production, cell function, and fat metabolism.
+19 | Vitamin B3 (Niacin)(in mg) | Support digestive system, skin, and nerves health.
+20 | Vitamin B5 (Pantothenic Acid)(in mg) | Necessary for making blood cells and helps convert food into energy.
+21 | Viatmin B6 (in mg): Important for normal brain development and keeping the nervous and immune system healthy.
+22 | Vitamin C (in mg) | Important for the repair of all body tissues.
+23 | Vitamin D (in mg) | Crucial for absorption of calcium, promoting bone growth and health.
+24 | Vitamin E (in mg) | Acts as an antioxidant, helping to protect cells from the damage caused by free radicals.
+25 | Vitamin K (in mg) | Necessary for blood clotting and bone health.
+26 | Calcium (in mg) | Vital for building and maintaining strong bones and teeth.
+27 | Copper (in mg) | Helps with the formation of collagen, increases the absorption of iron and plays a role in energy production.
+28 | Iron (in mg) | Essential for the creation of red blood cells.
+29 | Magnesium (in mg) | Important for many processes in the body including regulation of muscle and nerve function, blood sugar levels, and blood pressure and making protein, bone, and DNA.
+30 | Manganese (in mg) | Involved in the formation of bones, blood clotting factors, and enzymes that play a role in fat and carbohydrate metabolism, calcium absorption, and blood sugar regulation.
+31 | Phosporus (in mg) | Helps with the formation of bones and teeth and is necessary for the body to make protein for the growth, maintenance, and repair of cells and tissues.
+32 | Potassium (in mg) | Helps regulate fluid balance, muscle contractions, and nerve signals.
+33 | Selenium (in mg) | Important for reproduction, thyroid gland function, DNA production, and protecting the body from damage caused by free radicals and from infection.
+34 | Zinc (in mg) | Necessary for the immune system to properly function and plays a role in cell division, cell growth, wound healing, and the breakdown of carbohydrates.
+35 | Nutrition Density | A metric indicating the nutrient richness of the food per calorie.
+
 #### Explore
 
 ### __Data Preparation__
@@ -45,4 +88,15 @@ Resouce: [Food Nutrition Dataset](https://www.kaggle.com/datasets/utsavdey1410/f
 ### __Conclusion__
 
 ### __References__
-
+1. Alfarisi, B. I., et al. (2023). *Mengungkap Kesehatan Melalui Angka: Prediksi Malnutrisi Melalui Penilaian Status Gizi dan Asupan Makronutrien.* Prosiding SNPPM-5, 299-311.
+2. Bouma, S. (2017). *Diagnosing Pediatric Malnutrition: Paradigm Shifts of Etiology-Related Definitions and Appraisal of the Indicators.* Nutrition in Clinical Practice, 32(1), 52–67.
+3. Cakrawala. (2024). *Apa itu Neural Network? Ini Pengertian, Konsep, dan Contohnya.* Retrieved October 31, 2024, from [https://www.cakrawala.ac.id/berita/neural-network-adalah](https://www.cakrawala.ac.id/berita/neural-network-adalah).
+4. Cederholm, T., et al. (2019). *GLIM criteria for the diagnosis of malnutrition – A consensus report from the global clinical nutrition community.* Journal of Cachexia, Sarcopenia and Muscle, 10(1), 207–217.
+5. European Food Information Council (EUFIC). (2021). *What is nutrient density?* Retrieved October 31, 2024, from [https://www.eufic.org/en/understanding-science/article/what-is-nutrient-density](https://www.eufic.org/en/understanding-science/article/what-is-nutrient-density).
+6. Khan, D. S. A., et al. (2022). *Nutritional Status and Dietary Intake of School-Age Children and Early Adolescents: Systematic Review in a Developing Country and Lessons for the Global Perspective.* Frontiers in Nutrition, 8(February).
+7. Ministry of Health of the Republic of Indonesia. (2018). Situasi Balita Pendek (Stunting) di Indonesia.
+8. RevoU. (2024). *Apa itu Neural Network.* Retrieved October 31, 2024, from [https://revou.co/kosakata/neural-network](https://revou.co/kosakata/neural-network).
+9. Rinninella, E., et al. (2017). *Clinical tools to assess nutritional risk and malnutrition in hospitalized children and adolescents.* European Review for Medical and Pharmacological Sciences, 21(11), 2690–2701.
+10. Simbolon, D. (2013). *Model Prediksi Indeks Massa Tubuh Remaja Berdasarkan Riwayat Lahir dan Status Gizi Anak.* Kesmas, 8(1), 19–27.
+11. Yamantri, A. B., & Rifa’i, A. A. (2024). *Penerapan Algoritma C4.5 Untuk Prediksi Faktor Risiko Obesitas Pada Penduduk Dewasa.* Jurnal Komputer Antartika, 2(3), 118–125.
+12. Zianka, I. D., et al. (2024). *The Design Android Application Nutrition Calculation to Prevent Stunting with CNN Method in Jakarta.* MALCOM: Indonesian Journal of Machine Learning and Computer Science, 4, 99–107.
