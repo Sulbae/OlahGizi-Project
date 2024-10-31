@@ -1,9 +1,8 @@
 # Project Report
 ## Food-Nutrition-Prediction---Machine Learning
 ### __Background__ 
-  * Stunting
-  * Diabetes
   * Malnutrition
+  * Obesity
 
 ### __Business Understanding__
 #### Problem Statements
