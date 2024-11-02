@@ -92,7 +92,7 @@ The Comprehensive Nutritional Food Database provides detailed nutritional inform
 | 9 | Protein (in g) | Total proteins in grams per 100 grams, essential for body repair and growth. |
 | 10 | Dietary Fiber (in g) | Fiber content in grams per 100 grams, important for digestive health. |
 | 11 | Cholesterol (in mg) | Cholesterol content in milligrams per 100 grams, pertinent for cardiovascular health. |
-| 12 | Sodium (in mg) | Sodium content in milligrams per 100 grams, crucial for fluid balance and nerve function. |
+| 12 | Sodium (in mg) | Sodium content in milligrams per 100 grams, is crucial for fluid balance and nerve function. |
 | 13 | Water (in g) | Water content in grams per 100 grams, which affects the food's energy density. |
 | 14 | Vitamin A (in mg) | Amount of Vitamin A in micrograms per 100 grams, important for vision and immune functioning. |
 | 15 | Vitamin B1 (Thiamine)(in mg) | Essential for glucose metabolism. |
@@ -101,13 +101,13 @@ The Comprehensive Nutritional Food Database provides detailed nutritional inform
 | 18 | Vitamin B2 (Riboflavin)(in mg) | Necessary for energy production, cell function, and fat metabolism. |
 | 19 | Vitamin B3 (Niacin)(in mg) | Support digestive system, skin, and nerves health. |
 | 20 | Vitamin B5 (Pantothenic Acid)(in mg) | Necessary for making blood cells and helps convert food into energy. |
-| 21 | Viatmin B6 (in mg): Important for normal brain development and keeping the nervous and immune systems healthy. |
+| 21 | Viatmin B6 (in mg) | Important for normal brain development and keeping the nervous and immune systems healthy. |
 | 22 | Vitamin C (in mg) | Important for the repair of all body tissues. |
-| 23 | Vitamin D (in mg) | Crucial for absorption of calcium, promoting bone growth and health. |
+| 23 | Vitamin D (in mg) | Crucial for calcium absorption, promoting bone growth and health. |
 | 24 | Vitamin E (in mg) | Acts as an antioxidant, helping to protect cells from the damage caused by free radicals. |
 | 25 | Vitamin K (in mg) | Necessary for blood clotting and bone health. |
 | 26 | Calcium (in mg) | Vital for building and maintaining strong bones and teeth. |
-| 27 | Copper (in mg) | Helps with the formation of collagen, increases the absorption of iron and plays a role in energy production. |
+| 27 | Copper (in mg) | Helps with collagen formation, increases iron absorption, and plays a role in energy production. |
 | 28 | Iron (in mg) | Essential for the creation of red blood cells. |
 | 29 | Magnesium (in mg) | Important for many processes in the body including regulation of muscle and nerve function, blood sugar levels, and blood pressure and making protein, bone, and DNA. |
 | 30 | Manganese (in mg) | Involved in the formation of bones, blood clotting factors, and enzymes that play a role in fat and carbohydrate metabolism, calcium absorption, and blood sugar regulation. |
