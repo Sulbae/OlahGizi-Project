@@ -201,8 +201,12 @@ The parameters for each model are set as follows:
 | Epochs | 100 | 300 |
 | Batch | 128 | 128 |
 
-The model structure can be seen in the following diagram:
-
+The model design can be seen in the following diagram:
+<div style="display: flex; justify-content: center;">
+  <div style="flex: 1; margin: 10px;">
+    <img src="https://raw.githubusercontent.com/Sulbae/OlahGizi-Project/refs/heads/main/Nutrition%20Prediction%20Model/Image/MODEL%20STRUCTURE.png">
+  </div>
+</div>
 
 ---
 ## __Training__
