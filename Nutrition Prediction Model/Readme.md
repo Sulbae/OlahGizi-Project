@@ -174,7 +174,7 @@ $$
 \text{Loss} = \frac{1}{n} \sum_{i=1}^{n} (y_i - \hat{y}_i)^2
 $$
 
-where:
+  where:
 - $$\( y_i \)$$ is the actual value,
 - $$\( \hat{y}_i \)$$ is the model prediction,
 - $$\( n \)$$ is the number of examples.
@@ -188,7 +188,7 @@ $$
 w \gets w - \eta \frac{\partial \text{Loss}}{\partial w}
 $$
 
-where:
+  where:
 - $$\( w \)$$ is the weight,
 - $$\( \eta \)$$ is the learning rate,
 - $$\( \frac{\partial \text{Loss}}{\partial w} \)$$ is the gradient of the loss function to the weight.
