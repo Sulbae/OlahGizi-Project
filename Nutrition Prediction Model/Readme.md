@@ -1,5 +1,5 @@
 # Project Report
-# Basic Model for Predicting Nutrient Density of Food Consumption
+# Basic Neural Network Model for Predicting Nutrient Density of Food Consumption
 ## __Background__ 
 Adequate nutritional status is crucial for human growth and survival. Nutritional status can be assessed by evaluating individual-specific nutritional requirements and intake. An imbalance between nutritional needs and intake may lead to either deficiency or excess, both of which negatively impact health. This condition is commonly referred to as malnutrition (Bouma, 2017; Rinninella et al., 2017). According to the World Health Organization (WHO), malnutrition can occur due to an imbalance in nutrient intake, which may affect health status, disrupt food digestion, or impair nutrient absorption (Khan et al., 2022). Malnutrition is not limited to undernutrition; it also encompasses a broader scope including macronutrient and micronutrient imbalances, obesity, cachexia, sarcopenia, and malnourishment (Cederholm et al., 2019).
 
@@ -50,7 +50,7 @@ No | Column | Description
 11 | Cholesterol (in mg) | Cholesterol content in milligrams per 100 grams, pertinent for cardiovascular health.
 12 | Sodium (in mg) | Sodium content in milligrams per 100 grams, crucial for fluid balance and nerve function.
 13 | Water (in g) | Water content in grams per 100 grams, which affects the food's energy density.
-14 | Vitamin A (in mg) | Amount of Vitamin A in micrograms per 100 grams, impoertant for vision and immune functioning.
+14 | Vitamin A (in mg) | Amount of Vitamin A in micrograms per 100 grams, important for vision and immune functioning.
 15 | Vitamin B1 (Thiamine)(in mg) | Essential for glucose metabolism.
 16 | Vitamin B11 (Folic Acid)(in mg) | Crucial for cell function and tissue growth, particularly important in pregnancy.
 17 | Vitamin B12(in mg) | Important for brain function and blood formation.
@@ -67,7 +67,7 @@ No | Column | Description
 28 | Iron (in mg) | Essential for the creation of red blood cells.
 29 | Magnesium (in mg) | Important for many processes in the body including regulation of muscle and nerve function, blood sugar levels, and blood pressure and making protein, bone, and DNA.
 30 | Manganese (in mg) | Involved in the formation of bones, blood clotting factors, and enzymes that play a role in fat and carbohydrate metabolism, calcium absorption, and blood sugar regulation.
-31 | Phosporus (in mg) | Helps with the formation of bones and teeth and is necessary for the body to make protein for the growth, maintenance, and repair of cells and tissues.
+31 | Phosphorus (in mg) | Helps with the formation of bones and teeth and is necessary for the body to make protein for the growth, maintenance, and repair of cells and tissues.
 32 | Potassium (in mg) | Helps regulate fluid balance, muscle contractions, and nerve signals.
 33 | Selenium (in mg) | Important for reproduction, thyroid gland function, DNA production, and protecting the body from damage caused by free radicals and from infection.
 34 | Zinc (in mg) | Necessary for the immune system to properly function and plays a role in cell division, cell growth, wound healing, and the breakdown of carbohydrates.
@@ -117,7 +117,7 @@ As mentioned, some nutrients almost do not correlate with nutrition density calc
 ### Data Normalization
 As we know almost all of the data have a skewed distribution, different value ranges, and outliers. 
 #### Log Transform
-First, transform the data into logarithmic value using `np.log()`. It will handle the outliers and reduce the skewness. For example, the distribution of Nutrient Density values ​​changes to the following:
+First, transform the data into logarithmic value using `np.log()`. It will handle the outliers and reduce the skewness. The logarithmic transformation helps stabilize variance and reduce the effect of outliers by compressing the range of the data. For example, the Nutrient Density values ​​change to the following:
 <div style="display: flex; justify-content: space-between;">
   <div style="flex: 1; margin-right: 10px;">
     <img src="https://raw.githubusercontent.com/Sulbae/OlahGizi-Project/refs/heads/main/Nutrition%20Prediction%20Model/Chart/Log%20Transform%20Caloric%20Value.png">
@@ -127,7 +127,7 @@ First, transform the data into logarithmic value using `np.log()`. It will handl
   </div>
 </div>
 
-Second, normalize the data using `RobustScaler()` to transform the distribution to be as close to normal as possible.
+Second, normalize the data using `RobustScaler()` to transform the distribution to be as close to normal as possible. Data normalization helps in adjusting the feature scales, which is crucial for neural networks as they are sensitive to the scale of input features. It will change the data to be normally distributed or close to it.
 <div style="display: flex; justify-content: space-between;">
   <div style="flex: 1; margin-right: 10px;">
     <img src="https://raw.githubusercontent.com/Sulbae/OlahGizi-Project/refs/heads/main/Nutrition%20Prediction%20Model/Chart/Normalized%20Caloric%20Value.png">
@@ -158,22 +158,54 @@ The model structure can be seen in the following diagram:
 
 
 ## __Training__
+The model training stage consists of the following steps:
+1. __Forward Pass__
+   * _Input Data_: Nutritional Data (features) will be fed into the `input layer`.
+   * _Prediction_: The model calculates the `weight` and then produces Nutrition Density as a prediction by calculating the `activation function` in every neuron.
+2. __Loss__
+  *  _Loss Caculating_: The model will calculate the `loss function` value to assess how well the model's predictions compare to the actual values.
+  *  The loss function for regression can be expressed by the following formula:
+
+$$
+\text{Loss} = \frac{1}{n} \sum_{i=1}^{n} (y_i - \hat{y}_i)^2
+$$
+
+  where:
+- $$\( y_i \)$$ is the actual value,
+- $$\( \hat{y}_i \)$$ is the model prediction,
+- $$\( n \)$$ is the number of examples.
+
+3. __Backward Pass__
+  *  _Gradient Descent_: The `gradient` will be calculated from the loss function against the model weights. This process is carried out using the chain rule to calculate how much each weight contributes to the output error.
+  *  _Weights Updating_: The `weights` are refined using `optimization` algorithms, such as `RMSProp()` and `Adam()`, to minimize the loss.
+  *  The weight update at each iteration can be expressed by the following formula:
+
+$$
+w \gets w - \eta \frac{\partial \text{Loss}}{\partial w}
+$$
+
+  where:
+- $$\( w \)$$ is the weight,
+- $$\( \eta \)$$ is the learning rate,
+- $$\( \frac{\partial \text{Loss}}{\partial w} \)$$ is the gradient of the loss function to the weight.
+
+4. __Training Evaluation__
+   *  _Validation_: At each `epoch` or every few epochs, the model is evaluated on the validation set. The loss function on the validation set is calculated to see how the model generalizes beyond the training data.
 
 ## __Evaluation__
-This is the result of training on Model 1
+This is the result of training on Model 1:
 <div style="display: flex; justify-content: center;">
   <div style="flex: 1; margin: 10px;">
     <img src="https://raw.githubusercontent.com/Sulbae/OlahGizi-Project/refs/heads/main/Nutrition%20Prediction%20Model/Chart/evaluation%20model%201.png">
   </div>
 </div>
 
-This is the result of training on Model 2
+This is the result of training on Model 2:
 <div style="display: flex; justify-content: center;">
   <div style="flex: 1; margin: 10px;">
     <img src="https://raw.githubusercontent.com/Sulbae/OlahGizi-Project/refs/heads/main/Nutrition%20Prediction%20Model/Chart/evaluation%20model%202.png">
   </div>
 </div>
-
 
 ### Model Comparison
 Metrics | Model 1 | Model 2
@@ -182,14 +214,19 @@ MAE | 0.0505 | 0.0741
 MSE | 0.0042 | 0.0114
 R-squared | 0.9917 | 0.9768
 
+Model 1 has shown lower error rates in predicting nutrition density. These are comparisons of the model prediction to the actual data.
+
 <div style="display: flex; justify-content: center;">
   <div style="flex: 1; margin: 10px;">
     <img src="https://raw.githubusercontent.com/Sulbae/OlahGizi-Project/refs/heads/main/Nutrition%20Prediction%20Model/Chart/Prediction%20Model.png">
   </div>
 </div>
 
-## __Prediction__
+## __Inference__
 Nutrition density prediction is done using dummy data containing the values ​​of various nutrients contained in food like the original data.
+
+The predictions were saved into a `.csv` file as follows:
+[Prediction_of_dummy_data](https://raw.githubusercontent.com/Sulbae/OlahGizi-Project/refs/heads/main/Nutrition%20Prediction%20Model/predictions_of_dummy_data.csv)
 
 <div style="display: flex; justify-content: center;">
   <div style="flex: 1; margin: 10px;">
@@ -200,9 +237,9 @@ Nutrition density prediction is done using dummy data containing the values ​�
 ## __Conclusion__
 1. The model is a regression model because it aims to predict a continuous outcome (Nutrition Density Values) based on various input features (nutrient values). The prediction is estimating nutrient density values, which inherently involves predicting numerical quantities.
 
-2. All data have skewed distribution and outliers, whereas the neural network model is more suitable for normally distributed data. Hence, the data needs to be transformed to logarithmic values and then normalized. The logarithmic transformation helps stabilize variance and reduce the effect of outliers by compressing the range of the data. Data normalization helps in adjusting the feature scales, which is crucial for neural networks as they are sensitive to the scale of input features. It will change the data to be normally distributed or close to it. By pre-processing the data this way, we can enhance the model's ability to learn meaningful patterns, leading to better performance and generalization on unseen data.
+2. All data have skewed distribution and outliers, whereas the neural network model is more suitable for normally distributed data. Hence, the data needs to be transformed to logarithmic values and then normalized. By pre-processing the data this way, we can enhance the model's ability to learn meaningful patterns, leading to better performance and generalization on unseen data.
 
-3. Based on the model evaluation, the architecture design of Model 1 is better than Model 2. This is drawn from comparing metrics such as Mean Squared Error (MSE), Mean Absolute Error (MAE), and R-squared values between the two models. Model 1 has shown lower error rates in predicting nutrition density. The choice of architecture such as the number of layers and nodes, loss functions, and optimization techniques used in Model 1, likely contributed to its performance. In addition, there are recommendations to develop a model with superior performance as follows:
+3. Based on the model evaluation, the architecture design of Model 1 is better than Model 2. This is drawn from comparing metrics such as Mean Squared Error (MSE), Mean Absolute Error (MAE), and R-squared values between the two models. The choice of architecture such as the number of layers and nodes, loss functions, and optimization techniques used in Model 1, likely contributed to its performance. In addition, there are recommendations to develop a model with superior performance as follows:
 
     * Further refinement of feature selection may enhance model performance. Identifying key features that significantly impact nutrition density could lead to improved predictive accuracy.
     * Explore different architectures and hyperparameter settings then identify the optimal configuration for the model.
