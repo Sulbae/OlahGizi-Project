@@ -12,7 +12,7 @@ _Image source_: [_optimisingnutrition.com_](https://www.google.com/url?sa=i&url=
 ---
 ## List of Contents
 - [Title](#Basic-Neural-Network-Model-for-Predicting-Nutrient-Density-of-Food-Consumption)
-  - [Background](#Background)
+  - [Project Domain](#Project-Domain)
   - [Business Understanding](#Business-Understanding)
     - [Problem Statments](#Problem-Statments)
     - [Goals](#Goals)
