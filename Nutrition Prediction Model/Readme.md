@@ -127,6 +127,8 @@ First, transform the data into logarithmic value using `np.log()`. It will handl
   </div>
 </div>
 
+The logarithmic transformation helps stabilize variance and reduce the effect of outliers by compressing the range of the data.
+
 Second, normalize the data using `RobustScaler()` to transform the distribution to be as close to normal as possible.
 <div style="display: flex; justify-content: space-between;">
   <div style="flex: 1; margin-right: 10px;">
@@ -136,6 +138,8 @@ Second, normalize the data using `RobustScaler()` to transform the distribution 
     <img src="https://raw.githubusercontent.com/Sulbae/OlahGizi-Project/refs/heads/main/Nutrition%20Prediction%20Model/Chart/Normalized%20Nutrition%20Density.png">
   </div>
 </div>
+
+Data normalization helps in adjusting the feature scales, which is crucial for neural networks as they are sensitive to the scale of input features. It will change the data to be normally distributed or close to it.
 
 ### Data Split
 There are two data-splitting schemes as follows:
@@ -174,7 +178,6 @@ This is the result of training on Model 2
   </div>
 </div>
 
-
 ### Model Comparison
 Metrics | Model 1 | Model 2
 --------|---------|--------
@@ -182,14 +185,19 @@ MAE | 0.0505 | 0.0741
 MSE | 0.0042 | 0.0114
 R-squared | 0.9917 | 0.9768
 
+Model 1 has shown lower error rates in predicting nutrition density. These are comparisons of the model prediction to the actual data.
+
 <div style="display: flex; justify-content: center;">
   <div style="flex: 1; margin: 10px;">
     <img src="https://raw.githubusercontent.com/Sulbae/OlahGizi-Project/refs/heads/main/Nutrition%20Prediction%20Model/Chart/Prediction%20Model.png">
   </div>
 </div>
 
-## __Prediction__
+## __Inference__
 Nutrition density prediction is done using dummy data containing the values ​​of various nutrients contained in food like the original data.
+
+The predictions were saved into a `.csv` file as follows:
+[Prediction_of_dummy_data](https://raw.githubusercontent.com/Sulbae/OlahGizi-Project/refs/heads/main/Nutrition%20Prediction%20Model/predictions_of_dummy_data.csv)
 
 <div style="display: flex; justify-content: center;">
   <div style="flex: 1; margin: 10px;">
@@ -200,9 +208,9 @@ Nutrition density prediction is done using dummy data containing the values ​�
 ## __Conclusion__
 1. The model is a regression model because it aims to predict a continuous outcome (Nutrition Density Values) based on various input features (nutrient values). The prediction is estimating nutrient density values, which inherently involves predicting numerical quantities.
 
-2. All data have skewed distribution and outliers, whereas the neural network model is more suitable for normally distributed data. Hence, the data needs to be transformed to logarithmic values and then normalized. The logarithmic transformation helps stabilize variance and reduce the effect of outliers by compressing the range of the data. Data normalization helps in adjusting the feature scales, which is crucial for neural networks as they are sensitive to the scale of input features. It will change the data to be normally distributed or close to it. By pre-processing the data this way, we can enhance the model's ability to learn meaningful patterns, leading to better performance and generalization on unseen data.
+2. All data have skewed distribution and outliers, whereas the neural network model is more suitable for normally distributed data. Hence, the data needs to be transformed to logarithmic values and then normalized. By pre-processing the data this way, we can enhance the model's ability to learn meaningful patterns, leading to better performance and generalization on unseen data.
 
-3. Based on the model evaluation, the architecture design of Model 1 is better than Model 2. This is drawn from comparing metrics such as Mean Squared Error (MSE), Mean Absolute Error (MAE), and R-squared values between the two models. Model 1 has shown lower error rates in predicting nutrition density. The choice of architecture such as the number of layers and nodes, loss functions, and optimization techniques used in Model 1, likely contributed to its performance. In addition, there are recommendations to develop a model with superior performance as follows:
+3. Based on the model evaluation, the architecture design of Model 1 is better than Model 2. This is drawn from comparing metrics such as Mean Squared Error (MSE), Mean Absolute Error (MAE), and R-squared values between the two models. The choice of architecture such as the number of layers and nodes, loss functions, and optimization techniques used in Model 1, likely contributed to its performance. In addition, there are recommendations to develop a model with superior performance as follows:
 
     * Further refinement of feature selection may enhance model performance. Identifying key features that significantly impact nutrition density could lead to improved predictive accuracy.
     * Explore different architectures and hyperparameter settings then identify the optimal configuration for the model.
