@@ -74,12 +74,18 @@ No | Column | Description
 35 | Nutrition Density | A metric indicating the nutrient richness of the food per calorie.
 
 ### Explore
-According to data exploration, there are some basic information such as: 
+According to data exploration, there is some basic information such as: 
 * The dataset has 2395 rows and 35 columns.
 * It consists of object data (columns "food") and numerical data (int64 for column "Caloric Value" and float64 for other columns).
 * There is no missing value or duplicated data.
 * All values of column "food" are unique.
-* We need to equate the units for some columns (Caloric Value, Fat, Saturated Fats, Monounsaturated Fats, Polyunsaturated Fats, Carbohydrates, Sugars, Protein, Dietary Fiber, and Water) to milligrams.
+* We need to equate the units for some columns (Fat, Saturated Fats, Monounsaturated Fats, Polyunsaturated Fats, Carbohydrates, Sugars, Protein, Dietary Fiber, and Water) to milligrams.
+
+#### Data Conversion
+We need to convert data unit that is in grams to milligrams by using the following formula:
+x \, \{grams} = x \ times 1000\, \{milligrams}
+
+Based on descriptive analysis, some data has different value ranges.
 
 #### Data Distribution
 Based on univariate analysis, most data don't have a normal distribution and have some outliers. For example, this is a visualization of Caloric Value and Nutrition Density data:
@@ -102,9 +108,14 @@ These outliers are possible and normal because each food has a unique value. Tho
   </div>
 </div>
 
-According to the heatmap above, some nutrients have a small contribution to the calculation of nutrition density such as Vitamin A, Vitamin B11, Vitamin B12, Vitamin D, Vitamin K, Copper, Manganese, and Selenium.
+According to the heatmap above, some nutrients have little contribution to the calculation of nutrition density such as Vitamin A, Vitamin B11, Vitamin B12, Vitamin D, Vitamin K, Copper, Manganese, and Selenium.
 
 ## __Data Preparation__
+### Feature Engineering
+As mentioned, some nutrients almost do not correlate with nutrition density calculation. Hence we need to eliminate it to reduce the features to be trained. If a feature has a correlation value close to zero to the target, this indicates that the feature does not have a significant linear relationship with the target and is unlikely to make a significant contribution to the prediction model.
+
+### Data Normalization
+As we know almost all of the data don't have a normal distribution and have differents value ranges.
 
 ## __Modeling__
 
