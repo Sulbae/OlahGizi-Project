@@ -1,8 +1,15 @@
 # Project Report
 # List of Contents
 - [Title](#Basic-Neural-Network-Model-for-Predicting-Nutrient-Density-of-Food-Consumption)
-  - [Background](##__Background__)
+  - [Background](##Background)
   - [Business Understanding](##Business-Understanding)
+  - [Data Understanding](##Data-Understanding)
+  - [Data Preparation](#Data-Preparation#)
+  - [Modeling](##Modeling)
+  - [Training](##Training)
+  - [Evaluation](##Evaluation)
+  - [Development Opportunity](##Development-Opportunity)
+  - [References](##References)
 
 # Basic Neural Network Model for Predicting Nutrient Density of Food Consumption
 
@@ -13,7 +20,7 @@
 </div>
 
 _Image source_: [_optimisingnutrition.com_](https://www.google.com/url?sa=i&url=https%3A%2F%2Foptimisingnutrition.com%2Fnutrient-dense-foods-2%2F&psig=AOvVaw1j98i2HNvxR1PK_PekZK6L&ust=1730629346653000&source=images&cd=vfe&opi=89978449&ved=0CAMQjB1qFwoTCOCNovi2vYkDFQAAAAAdAAAAABAK)
-## __Background__ 
+## Background 
 Adequate nutritional status is crucial for human growth and survival. Nutritional status can be assessed by evaluating individual-specific nutritional requirements and intake. An imbalance between nutritional needs and intake may lead to either deficiency or excess, both of which negatively impact health. This condition is commonly referred to as malnutrition (Bouma, 2017; Rinninella et al., 2017). According to the World Health Organization (WHO), malnutrition can occur due to an imbalance in nutrient intake, which may affect health status, disrupt food digestion, or impair nutrient absorption (Khan et al., 2022). Malnutrition is not limited to undernutrition; it also encompasses a broader scope including macronutrient and micronutrient imbalances, obesity, cachexia, sarcopenia, and malnourishment (Cederholm et al., 2019).
 
 In Indonesia, malnutrition—including both undernutrition and obesity—remains a serious issue. The 2018 Global Nutrition Report revealed that one in five child deaths globally is associated with poor dietary intake. Based on data from Indonesia's 2018 Basic Health Research, malnutrition cases include 30.8% stunting, 3.5% severe malnutrition, and other related conditions such as obesity (Zianka et al., 2024). Nutritional issues in children, if left unaddressed, may continue into adolescence and adulthood (Simbolon, 2013). Such conditions have far-reaching negative implications, as children with inadequate nutritional intake may experience delayed brain development and lower intelligence. Ultimately, this may hinder national economic growth and even increase poverty. The potential economic losses due to malnutrition are significant and may create a financial burden for the healthcare system in the future (Kemenkes RI, 2018).
@@ -34,7 +41,7 @@ The machine learning model will be developed using Google’s TensorFlow framewo
 
 _Keywords: Malnutrition, Nutrition Density, Neural Network, TensorFlow_
 
-## __Business Understanding__
+## Business Understanding
 ### Problem Statements
   1. How would the model work in predicting nutrient density?
   2. How to carry out good data processing that fits the model architecture?
@@ -48,7 +55,7 @@ _Keywords: Malnutrition, Nutrition Density, Neural Network, TensorFlow_
   2. Carrying out an iterative process that includes Exploratory Data Analysis to understand data characteristics and data transformation to adjust the data format to the neural network model architecture.
   3. Carrying out feature engineering stages to select features that most influence nutrition density values and hyperparameter tuning to optimize model performance.
 
-## __Data Understanding__
+## Data Understanding
 ### Dataset
 Resource: [Food Nutrition Dataset](https://www.kaggle.com/datasets/utsavdey1410/food-nutrition-dataset/data)
 
@@ -131,7 +138,7 @@ These outliers are possible and normal because each food has a unique value. Tho
 
 According to the heatmap above, some nutrients have little contribution to the calculation of nutrition density such as Vitamin A, Vitamin B11, Vitamin B12, Vitamin D, Vitamin K, Copper, Manganese, and Selenium.
 
-## __Data Preparation__
+## Data Preparation
 ### Feature Engineering
 As mentioned, some nutrients almost do not correlate with nutrition density calculation. Hence we need to eliminate it to reduce the features to be trained. If a feature has a correlation value close to zero to the target, this indicates that the feature does not have a significant linear relationship with the target and is unlikely to make a significant contribution to the prediction model.
 
@@ -164,7 +171,7 @@ There are two data-splitting schemes as follows:
 1. `TEST_SIZE_1 = 0.1`
 2. `TEST_SIZE_2 = 0.2`
 
-## __Modeling__
+## Modeling
 Parameter | Model 1 | Model 2 
 -------|------------|--------
 Optimizer | RMSprop | Adam
@@ -244,7 +251,7 @@ Model 1 has shown lower error rates in predicting nutrition density. These are c
   </div>
 </div>
 
-## __Inference__
+## Inference
 Nutrition density prediction is done using dummy data containing the values ​​of various nutrients contained in food like the original data.
 
 The predictions were saved into a `.csv` file as follows:
@@ -256,7 +263,7 @@ The predictions were saved into a `.csv` file as follows:
   </div>
 </div>
 
-## __Conclusion__
+## Conclusion
 1. The model is a regression model because it aims to predict a continuous outcome (Nutrition Density Values) based on various input features (nutrient values). The prediction is estimating nutrient density values, which inherently involves predicting numerical quantities.
 
 2. All data have skewed distribution and outliers, whereas the neural network model is more suitable for normally distributed data. Hence, the data needs to be transformed to logarithmic values and then normalized. By pre-processing the data this way, we can enhance the model's ability to learn meaningful patterns, leading to better performance and generalization on unseen data.
@@ -267,14 +274,14 @@ The predictions were saved into a `.csv` file as follows:
     * Explore different architectures and hyperparameter settings then identify the optimal configuration for the model.
     * Implementing regularization techniques such as dropout, L1/L2 regularization, or batch normalization can help prevent overfitting in complex models.
 
-## __Development Opportunity__
+## Development Opportunity
 __1. Meal Recommendation System__.
 By integrating this dataset with broader dietary data, machine learning models can recommend dietary adjustments to individuals. For instance, a recommendation system could suggest lower-calorie or lower-sugar food alternatives to users looking to reduce their calorie intake but who still want to get high nutrition. Machine learning models can integrate food consumption data into broader dietary tracking tools used in fitness and health apps, providing users with insights into their dietary meal plans.
 
 __2. Predictive Modeling for Health Impacts__.
 With sufficient data linking meal consumption to health outcomes, predictive models could forecast health impacts based on meal consumption patterns. This could be particularly useful for public health.
 
-## __References__
+## References
 1. Alfarisi, B. I., et al. (2023). *Mengungkap Kesehatan Melalui Angka: Prediksi Malnutrisi Melalui Penilaian Status Gizi dan Asupan Makronutrien.* Prosiding SNPPM-5, 299-311.
 2. Bouma, S. (2017). *Diagnosing Pediatric Malnutrition: Paradigm Shifts of Etiology-Related Definitions and Appraisal of the Indicators.* Nutrition in Clinical Practice, 32(1), 52–67.
 3. Cakrawala. (2024). *Apa itu Neural Network? Ini Pengertian, Konsep, dan Contohnya.* Retrieved October 31, 2024, from [https://www.cakrawala.ac.id/berita/neural-network-adalah](https://www.cakrawala.ac.id/berita/neural-network-adalah).
