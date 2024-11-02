@@ -104,7 +104,7 @@ These outliers are possible and normal because each food has a unique value. Tho
 #### Correlation
 <div style="display: flex; justify-content: center;">
   <div style="flex: 1; margin: 10px;">
-    <img src="https://github.com/Sulbae/OlahGizi-Project/blob/main/Nutrition%20Prediction%20Model/Chart/Nutrient%20Correlation.png">
+    <img src="https://raw.githubusercontent.com/Sulbae/OlahGizi-Project/refs/heads/main/Nutrition%20Prediction%20Model/Chart/Nutrient%20Correlation.png">
   </div>
 </div>
 
@@ -115,7 +115,32 @@ According to the heatmap above, some nutrients have little contribution to the c
 As mentioned, some nutrients almost do not correlate with nutrition density calculation. Hence we need to eliminate it to reduce the features to be trained. If a feature has a correlation value close to zero to the target, this indicates that the feature does not have a significant linear relationship with the target and is unlikely to make a significant contribution to the prediction model.
 
 ### Data Normalization
-As we know almost all of the data don't have a normal distribution and have differents value ranges.
+As we know almost all of the data have a skewed distribution, different value ranges, and outliers. 
+#### Log Transform
+First, transform the data into logarithmic value using `np.log()`. It will handle the outliers and reduce the skewness. For example, the distribution of Nutrient Density values ​​changes to the following:
+<div style="display: flex; justify-content: space-between;">
+  <div style="flex: 1; margin-right: 10px;">
+    <img src="https://raw.githubusercontent.com/Sulbae/OlahGizi-Project/refs/heads/main/Nutrition%20Prediction%20Model/Chart/Log%20Transform%20Caloric%20Value.png">
+  </div>
+  <div style="flex: 1; margin-left: 10px;">
+    <img src="https://raw.githubusercontent.com/Sulbae/OlahGizi-Project/refs/heads/main/Nutrition%20Prediction%20Model/Chart/Log%20Transform%20Nutrition%20Density.png">
+  </div>
+</div>
+
+Second, normalize the data using `RobustScaler()` to transform the distribution to be as close to normal as possible.
+<div style="display: flex; justify-content: space-between;">
+  <div style="flex: 1; margin-right: 10px;">
+    <img src="https://raw.githubusercontent.com/Sulbae/OlahGizi-Project/refs/heads/main/Nutrition%20Prediction%20Model/Chart/Normalized%20Caloric%20Value.png">
+  </div>
+  <div style="flex: 1; margin-left: 10px;">
+    <img src="https://raw.githubusercontent.com/Sulbae/OlahGizi-Project/refs/heads/main/Nutrition%20Prediction%20Model/Chart/Normalized%20Nutrition%20Density.png">
+  </div>
+</div>
+
+### Data Split
+There are two data-splitting schemes as follows:
+1. `TEST_SIZE_1 = 0.1`
+2. `TEST_SIZE_2 = 0.2`
 
 ## __Modeling__
 
