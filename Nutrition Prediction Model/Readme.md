@@ -24,7 +24,7 @@
   - [References](#References)
 ---
 # Basic Neural Network Model for Predicting Nutrient Density of Food Consumption
----
+
 <div style="display: flex; justify-content: center;">
   <div style="flex: 1; margin: 10px;">
     <img src="https://raw.githubusercontent.com/Sulbae/OlahGizi-Project/refs/heads/main/Nutrition%20Prediction%20Model/Image/nutrient-dense-foods-popular.png">
@@ -53,6 +53,7 @@ The machine learning model will be developed using Google’s TensorFlow framewo
 
 _Keywords: Malnutrition, Nutrition Density, Neural Network, TensorFlow_
 
+---
 ## Business Understanding
 ### Problem Statements
   1. How would the model work in predicting nutrient density?
@@ -67,6 +68,7 @@ _Keywords: Malnutrition, Nutrition Density, Neural Network, TensorFlow_
   2. Carrying out an iterative process that includes Exploratory Data Analysis to understand data characteristics and data transformation to adjust the data format to the neural network model architecture.
   3. Carrying out feature engineering stages to select features that most influence nutrition density values and hyperparameter tuning (For example, training 2 architectures with different parameter configurations) to optimize model performance.
 
+---
 ## Data Understanding
 ### Dataset
 Resource: [Food Nutrition Dataset](https://www.kaggle.com/datasets/utsavdey1410/food-nutrition-dataset/data)
@@ -150,6 +152,7 @@ These outliers are possible and normal because each food has a unique value. Tho
 
 According to the heatmap above, some nutrients have little contribution to the calculation of nutrition density such as Vitamin A, Vitamin B11, Vitamin B12, Vitamin D, Vitamin K, Copper, Manganese, and Selenium.
 
+---
 ## Data Preparation
 ### Feature Engineering
 As mentioned, some nutrients almost do not correlate with nutrition density calculation. Hence we need to eliminate it to reduce the features to be trained. If a feature has a correlation value close to zero to the target, this indicates that the feature does not have a significant linear relationship with the target and is unlikely to make a significant contribution to the prediction model.
@@ -179,10 +182,11 @@ Second, normalize the data using `RobustScaler()` to transform the distribution 
 </div>
 
 ### Data Split
-There are two data-splitting schemes that will be used for two different models as follows:
+Two data-splitting schemes will be used for two different models as follows:
 1. `TEST_SIZE_1 = 0.1`. The data will be split into 90% `data_train`, 5% `data_validation`, and 5% `data_test`. 
 2. `TEST_SIZE_2 = 0.2`. The data will be split into 80% `data_train`, 10% `data_validation`, and 10% `data_test`.
 
+---
 ## Modeling
 The parameters for each model are set as follows:
 | Parameter | Model 1 | Model 2 |
@@ -199,6 +203,7 @@ The parameters for each model are set as follows:
 The model structure can be seen in the following diagram:
 
 
+---
 ## __Training__
 The model training stage consists of the following steps:
 1. __Forward Pass__
@@ -234,6 +239,7 @@ $$
 4. __Training Evaluation__
    *  _Validation_: At each `epoch` or every few epochs, the model is evaluated on the validation set. The loss function on the validation set is calculated to see how the model generalizes beyond the training data.
 
+---
 ## __Evaluation__
 ### Metrics Description
 | Metrics | Description | Formula |
@@ -256,14 +262,13 @@ This is the result of training on Model 2:
   </div>
 </div>
 
+---
 ### Model Comparison
-| Metrics | Model 1 | Model 2 |
-|---------|---------|---------|
-| MAE | 0.0505 | 0.0741 |
-| MSE | 0.0042 | 0.0114 |
-| R-squared | 0.9917 | 0.9768 |
-
-
+| Metrics | Model 1 | Model 2 | Note |
+|---------|---------|---------|------|
+| MAE | 0.0505 | 0.0741 | Model 1 has a lower MAE compared to Model 2, meaning that Model 1's predictions, on average, are closer to the actual values than those of Model 2. |
+| MSE | 0.0042 | 0.0114 | Model 1 has a smaller MSE than Model 2. This suggests that Model 1 is not only more accurate but also has more consistent small errors. Model 1 either handles outliers better or large errors occur less frequently compared to Model 2. |
+| R-squared | 0.9917 | 0.9768 | Model 1 explains the relationship between input features and target values better than Model 2. |
 
 So, Model 1 has shown lower error rates in predicting nutrition density. These are comparisons of the model prediction to the actual data.
 
@@ -273,6 +278,7 @@ So, Model 1 has shown lower error rates in predicting nutrition density. These a
   </div>
 </div>
 
+---
 ## Inference
 Nutrition density prediction is done using dummy data containing the values ​​of various nutrients contained in food like the original data.
 
@@ -285,6 +291,7 @@ The predictions were saved into a `.csv` file as follows:
   </div>
 </div>
 
+---
 ## Conclusion
 1. The model is a regression model because it aims to predict a continuous outcome (Nutrition Density Values) based on various input features (nutrient values). The prediction is estimating nutrient density values, which inherently involves predicting numerical quantities.
 
@@ -296,6 +303,7 @@ The predictions were saved into a `.csv` file as follows:
     * Explore different architectures and hyperparameter settings then identify the optimal configuration for the model.
     * Implementing regularization techniques such as dropout, L1/L2 regularization, or batch normalization can help prevent overfitting in complex models.
 
+---
 ## Development Opportunity
 __1. Meal Recommendation System__.
 By integrating this dataset with broader dietary data, machine learning models can recommend dietary adjustments to individuals. For instance, a recommendation system could suggest lower-calorie or lower-sugar food alternatives to users looking to reduce their calorie intake but who still want to get high nutrition. Machine learning models can integrate food consumption data into broader dietary tracking tools used in fitness and health apps, providing users with insights into their dietary meal plans.
@@ -303,6 +311,7 @@ By integrating this dataset with broader dietary data, machine learning models c
 __2. Predictive Modeling for Health Impacts__.
 With sufficient data linking meal consumption to health outcomes, predictive models could forecast health impacts based on meal consumption patterns. This could be particularly useful for public health.
 
+---
 ## References
 1. Alfarisi, B. I., et al. (2023). *Mengungkap Kesehatan Melalui Angka: Prediksi Malnutrisi Melalui Penilaian Status Gizi dan Asupan Makronutrien.* Prosiding SNPPM-5, 299-311.
 2. Bouma, S. (2017). *Diagnosing Pediatric Malnutrition: Paradigm Shifts of Etiology-Related Definitions and Appraisal of the Indicators.* Nutrition in Clinical Practice, 32(1), 52–67.
