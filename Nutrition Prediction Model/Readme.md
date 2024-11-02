@@ -162,6 +162,39 @@ The model structure can be seen in the following diagram:
 
 
 ## __Training__
+The training stage model consists of several steps as follows:
+1. __Forward Pass__
+   * _Input Data_: Nutritional Data (features) will be fed into the `input layer`.
+   * _Prediction_: The model calculates the `weight` and then produces Nutrition Density as a prediction by calculating the activation function in every neuron.
+2. __Loss__
+  *  _Loss Caculating_: The model will calculate the loss function value to assess how well the model's predictions compare to the actual values.
+  *  The loss function for regression can be expressed by the following formula:
+```
+$$
+\text{Loss} = \frac{1}{n} \sum_{i=1}^{n} (y_i - \hat{y}_i)^2
+$$
+
+where:
+- \( y_i \) is the actual value,
+- \( \hat{y}_i \) is the model prediction,
+- \( n \) is the number of examples.
+```
+3. __Backward Pass__
+  *  _Gradient Descent_: The gradient will be calculated from the loss function against the model weights. This process is carried out using the chain rule to calculate how much each weight contributes to the output error.
+  *  _Weights Updating_: The weights are refined using optimization algorithms, such as RMSProp and Adam, to minimize the loss.
+  *  The weight update at each iteration can be expressed by the following formula:
+```
+$$
+w \gets w - \eta \frac{\partial \text{Loss}}{\partial w}
+$$
+
+where:
+- \( w \) is the weight,
+- \( \eta \) is the learning rate,
+- \( \frac{\partial \text{Loss}}{\partial w} \) is the gradient of the loss function to the weight.
+```
+2. __Evaluation__
+   *  _Validation_: At each epoch or every few epochs, the model is evaluated on the validation set. The loss function on the validation set is calculated to see how the model generalizes beyond the training data.
 
 ## __Evaluation__
 This is the result of training on Model 1
