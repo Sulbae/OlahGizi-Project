@@ -84,12 +84,13 @@ According to data exploration, there is some basic information such as:
 #### Data Conversion
 We need to convert data unit that is in grams to milligrams by using the following formula:
 
-x \, \text{g} = x \times 1000\, \text{mg}
-
-Based on descriptive analysis, some data has different value ranges.
+\[ 
+x \, \text{g} = x \times 1000 \, \text{mg} 
+\]
 
 #### Data Distribution
-Based on univariate analysis, most data don't have a normal distribution and have some outliers. For example, this is a visualization of Caloric Value and Nutrition Density data:
+Most data don't have a normal distribution and have some outliers. Besides that, some data also have different value ranges.
+For example, this is a visualization of Caloric Value and Nutrition Density data:
 
 <div style="display: flex; justify-content: space-between;">
   <div style="flex: 1; margin-right: 10px;">
