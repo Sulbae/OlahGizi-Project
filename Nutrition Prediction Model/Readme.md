@@ -18,6 +18,7 @@
   - [Modeling](#Modeling)
   - [Training](#Training)
   - [Evaluation](#Evaluation)
+    - [Metrics Description](#Metrics-Description)
     - [Model Comparison](#Model-Comparison)
   - [Inference](#Inference)
   - [Development Opportunity](#Development-Opportunity)
