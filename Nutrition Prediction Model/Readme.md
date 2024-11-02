@@ -154,13 +154,48 @@ Dense Layers | 4 | 3
 Epochs | 100 | 300
 Batch | 128 | 128
 
+The model structure can be seen in the following diagram:
 
 
 ## __Training__
 
 ## __Evaluation__
+This is the result of training on Model 1
+<div style="display: flex; justify-content: center;">
+  <div style="flex: 1; margin: 10px;">
+    <img src="https://raw.githubusercontent.com/Sulbae/OlahGizi-Project/blob/main/Nutrition%20Prediction%20Model/Chart/evaluation%20model%201.png">
+  </div>
+</div>
+
+This is the result of training on Model 2
+<div style="display: flex; justify-content: center;">
+  <div style="flex: 1; margin: 10px;">
+    <img src="https://raw.githubusercontent.com/Sulbae/OlahGizi-Project/blob/main/Nutrition%20Prediction%20Model/Chart/evaluation%20model%202.png">
+  </div>
+</div>
+
+
+### Model Comparison
+Metrics | Model 1 | Model 2
+--------|---------|--------
+MAE | 0.0505 | 0.0741
+MSE | 0.0042 | 0.0114
+R-squared | 0.9917 | 0.9768
+
+<div style="display: flex; justify-content: center;">
+  <div style="flex: 1; margin: 10px;">
+    <img src="https://raw.githubusercontent.com/Sulbae/OlahGizi-Project/blob/main/Nutrition%20Prediction%20Model/Chart/Prediction%20Model.png">
+  </div>
+</div>
 
 ## __Prediction__
+Nutrition density prediction is done using dummy data containing the values ​​of various nutrients contained in food like the original data.
+
+<div style="display: flex; justify-content: center;">
+  <div style="flex: 1; margin: 10px;">
+    <img src="https://raw.githubusercontent.com/Sulbae/OlahGizi-Project/blob/main/Nutrition%20Prediction%20Model/Chart/Predicted%20Nutrition%20Density.png">
+  </div>
+</div>
 
 ## __Conclusion__
 1. The model is a regression model because it aims to predict a continuous outcome (Nutrition Density Values) based on various input features (nutrient values). The prediction is estimating nutrient density values, which inherently involves predicting numerical quantities.
