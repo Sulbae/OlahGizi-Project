@@ -158,7 +158,7 @@ The model structure can be seen in the following diagram:
 
 
 ## __Training__
-The training stage model consists of several steps as follows:
+The model training stage consists of several steps as follows:
 1. __Forward Pass__
    * _Input Data_: Nutritional Data (features) will be fed into the `input layer`.
    * _Prediction_: The model calculates the `weight` and then produces Nutrition Density as a prediction by calculating the `activation function` in every neuron.
