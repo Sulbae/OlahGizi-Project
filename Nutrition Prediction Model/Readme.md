@@ -193,14 +193,14 @@ $$
    *  _Validation_: At each `epoch` or every few epochs, the model is evaluated on the validation set. The loss function on the validation set is calculated to see how the model generalizes beyond the training data.
 
 ## __Evaluation__
-This is the result of training on Model 1
+`This is the result of training on Model 1`
 <div style="display: flex; justify-content: center;">
   <div style="flex: 1; margin: 10px;">
     <img src="https://raw.githubusercontent.com/Sulbae/OlahGizi-Project/refs/heads/main/Nutrition%20Prediction%20Model/Chart/evaluation%20model%201.png">
   </div>
 </div>
 
-This is the result of training on Model 2
+`This is the result of training on Model 2`
 <div style="display: flex; justify-content: center;">
   <div style="flex: 1; margin: 10px;">
     <img src="https://raw.githubusercontent.com/Sulbae/OlahGizi-Project/refs/heads/main/Nutrition%20Prediction%20Model/Chart/evaluation%20model%202.png">
