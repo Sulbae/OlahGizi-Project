@@ -84,9 +84,7 @@ According to data exploration, there is some basic information such as:
 #### Data Conversion
 We need to convert data unit that is in grams to milligrams by using the following formula:
 
-\[ 
-x \, \text{g} = x \times 1000 \, \text{mg} 
-\]
+`x (g) = x × 1000 (mg)`
 
 #### Data Distribution
 Most data don't have a normal distribution and have some outliers. Besides that, some data also have different value ranges.
