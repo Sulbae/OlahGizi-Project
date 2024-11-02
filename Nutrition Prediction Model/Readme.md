@@ -65,7 +65,7 @@ Based on the background above, it can be determined that:
   2. How to carry out good data processing that fits the model architecture?
   3. What factors need to be considered to develop the best model?
 ### Goals
-  1. Understanding how the neural network model works in predicting nutrition density.
+  1. Understanding the way neural network model works in predicting nutrition density.
   2. Processing raw data into clean data that is ready to be used to train neural network models.
   3. Designing the best model with the smallest prediction error.
 ### Solution Statements
