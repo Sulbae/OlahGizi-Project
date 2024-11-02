@@ -143,9 +143,18 @@ There are two data-splitting schemes as follows:
 2. `TEST_SIZE_2 = 0.2`
 
 ## __Modeling__
-Scheme || Model Design || Training Design
--------|--------------|----------------
-Parameters | Optimizer | Loss | Activation | Regularization | 
+Parameter | Model 1 | Model 2 
+-------|------------|--------
+Optimizer | RMSprop | Adam
+Loss | MSE | Huber
+Output Activation | Linear | Linear
+Batch Normalization | 1 | 1
+Dropout | 0.3 | 0.3
+Dense Layers | 4 | 3
+Epochs | 100 | 300
+Batch | 128 | 128
+
+
 
 ## __Training__
 
