@@ -1,4 +1,15 @@
-# Project Report
+# Project Report :sparkles:
+# Basic Neural Network Model for Predicting Nutrient Density of Food Consumption
+
+<div style="display: flex; justify-content: center;">
+  <div style="flex: 1; margin: 10px;">
+    <img src="https://raw.githubusercontent.com/Sulbae/OlahGizi-Project/refs/heads/main/Nutrition%20Prediction%20Model/Image/nutrient-dense-foods-popular.png">
+  </div>
+</div>
+
+_Image source_: [_optimisingnutrition.com_](https://www.google.com/url?sa=i&url=https%3A%2F%2Foptimisingnutrition.com%2Fnutrient-dense-foods-2%2F&psig=AOvVaw1j98i2HNvxR1PK_PekZK6L&ust=1730629346653000&source=images&cd=vfe&opi=89978449&ved=0CAMQjB1qFwoTCOCNovi2vYkDFQAAAAAdAAAAABAK)
+
+---
 ## List of Contents
 - [Title](#Basic-Neural-Network-Model-for-Predicting-Nutrient-Density-of-Food-Consumption)
   - [Background](#Background)
@@ -23,16 +34,8 @@
   - [Inference](#Inference)
   - [Development Opportunity](#Development-Opportunity)
   - [References](#References)
+
 ---
-# Basic Neural Network Model for Predicting Nutrient Density of Food Consumption
-
-<div style="display: flex; justify-content: center;">
-  <div style="flex: 1; margin: 10px;">
-    <img src="https://raw.githubusercontent.com/Sulbae/OlahGizi-Project/refs/heads/main/Nutrition%20Prediction%20Model/Image/nutrient-dense-foods-popular.png">
-  </div>
-</div>
-
-_Image source_: [_optimisingnutrition.com_](https://www.google.com/url?sa=i&url=https%3A%2F%2Foptimisingnutrition.com%2Fnutrient-dense-foods-2%2F&psig=AOvVaw1j98i2HNvxR1PK_PekZK6L&ust=1730629346653000&source=images&cd=vfe&opi=89978449&ved=0CAMQjB1qFwoTCOCNovi2vYkDFQAAAAAdAAAAABAK)
 ## Background 
 Adequate nutritional status is crucial for human growth and survival. Nutritional status can be assessed by evaluating individual-specific nutritional requirements and intake. An imbalance between nutritional needs and intake may lead to either deficiency or excess, both of which negatively impact health. This condition is commonly referred to as malnutrition (Bouma, 2017; Rinninella et al., 2017). According to the World Health Organization (WHO), malnutrition can occur due to an imbalance in nutrient intake, which may affect health status, disrupt food digestion, or impair nutrient absorption (Khan et al., 2022). Malnutrition is not limited to undernutrition; it also encompasses a broader scope including macronutrient and micronutrient imbalances, obesity, cachexia, sarcopenia, and malnourishment (Cederholm et al., 2019).
 
@@ -67,7 +70,7 @@ _Keywords: Malnutrition, Nutrition Density, Neural Network, TensorFlow_
 ### Solution Statements
   1. Determine the dataset to be used and the expected output so we can find out the right type of prediction architecture.
   2. Carrying out an iterative process that includes Exploratory Data Analysis to understand data characteristics and data transformation to adjust the data format to the neural network model architecture.
-  3. Carrying out feature engineering stages to select features that most influence nutrition density values and hyperparameter tuning (For example, training 2 architectures with different parameter configurations) to optimize model performance.
+  3. Carrying out feature engineering stages to select features that most influence nutrition density values and hyperparameter tuning (For example, training 2 models with different architecture configurations) to optimize model performance.
 
 ---
 ## Data Understanding
@@ -91,7 +94,7 @@ The Comprehensive Nutritional Food Database provides detailed nutritional inform
 | 9 | Protein (in g) | Total proteins in grams per 100 grams, essential for body repair and growth. |
 | 10 | Dietary Fiber (in g) | Fiber content in grams per 100 grams, important for digestive health. |
 | 11 | Cholesterol (in mg) | Cholesterol content in milligrams per 100 grams, pertinent for cardiovascular health. |
-| 12 | Sodium (in mg) | Sodium content in milligrams per 100 grams, crucial for fluid balance and nerve function. |
+| 12 | Sodium (in mg) | Sodium content in milligrams per 100 grams, is crucial for fluid balance and nerve function. |
 | 13 | Water (in g) | Water content in grams per 100 grams, which affects the food's energy density. |
 | 14 | Vitamin A (in mg) | Amount of Vitamin A in micrograms per 100 grams, important for vision and immune functioning. |
 | 15 | Vitamin B1 (Thiamine)(in mg) | Essential for glucose metabolism. |
@@ -100,13 +103,13 @@ The Comprehensive Nutritional Food Database provides detailed nutritional inform
 | 18 | Vitamin B2 (Riboflavin)(in mg) | Necessary for energy production, cell function, and fat metabolism. |
 | 19 | Vitamin B3 (Niacin)(in mg) | Support digestive system, skin, and nerves health. |
 | 20 | Vitamin B5 (Pantothenic Acid)(in mg) | Necessary for making blood cells and helps convert food into energy. |
-| 21 | Viatmin B6 (in mg): Important for normal brain development and keeping the nervous and immune systems healthy. |
+| 21 | Viatmin B6 (in mg) | Important for normal brain development and keeping the nervous and immune systems healthy. |
 | 22 | Vitamin C (in mg) | Important for the repair of all body tissues. |
-| 23 | Vitamin D (in mg) | Crucial for absorption of calcium, promoting bone growth and health. |
+| 23 | Vitamin D (in mg) | Crucial for calcium absorption, promoting bone growth and health. |
 | 24 | Vitamin E (in mg) | Acts as an antioxidant, helping to protect cells from the damage caused by free radicals. |
 | 25 | Vitamin K (in mg) | Necessary for blood clotting and bone health. |
 | 26 | Calcium (in mg) | Vital for building and maintaining strong bones and teeth. |
-| 27 | Copper (in mg) | Helps with the formation of collagen, increases the absorption of iron and plays a role in energy production. |
+| 27 | Copper (in mg) | Helps with collagen formation, increases iron absorption, and plays a role in energy production. |
 | 28 | Iron (in mg) | Essential for the creation of red blood cells. |
 | 29 | Magnesium (in mg) | Important for many processes in the body including regulation of muscle and nerve function, blood sugar levels, and blood pressure and making protein, bone, and DNA. |
 | 30 | Manganese (in mg) | Involved in the formation of bones, blood clotting factors, and enzymes that play a role in fat and carbohydrate metabolism, calcium absorption, and blood sugar regulation. |
@@ -201,8 +204,12 @@ The parameters for each model are set as follows:
 | Epochs | 100 | 300 |
 | Batch | 128 | 128 |
 
-The model structure can be seen in the following diagram:
-
+The model design can be seen in the following diagram:
+<div style="display: flex; justify-content: center;">
+  <div style="flex: 1; margin: 10px;">
+    <img src="https://raw.githubusercontent.com/Sulbae/OlahGizi-Project/refs/heads/main/Nutrition%20Prediction%20Model/Image/MODEL%20STRUCTURE.png">
+  </div>
+</div>
 
 ---
 ## __Training__
@@ -245,7 +252,7 @@ $$
 ### Metrics Description
 | Metrics | Description | Formula |
 |--------|-------------|---------|
-| Mean Absolute Error (MAE) | MAE measures the average absolute error between the model's predictions and the actual values. A smaller MAE value indicates better model performance. |  $$\( \text{MAE} = \frac{1}{n} \sum_{i=1}^{n} (y_i - \hat{y}_i) \)$$ , where the errors are considered in absolute terms |
+| Mean Absolute Error (MAE) | MAE measures the average absolute error between the model's predictions and the actual values. A smaller MAE value indicates better model performance. |  $$\( \text{MAE} = \frac{1}{n} \sum_{i=1}^{n} (y_i - \hat{y}_i) \)$$ , where the errors are considered in absolute terms. |
 | Mean Squared Error (MSE) | MSE calculates the average of the squared errors between predictions and actual values, making it more sensitive to larger errors (outliers) than MAE | $$\( \text{MSE} = \frac{1}{n} \sum_{i=1}^{n} (y_i - \hat{y}_i)^2 \)$$ |
 | R-squared | R-squared represents the proportion of the data variability that the model can explain. R-squared values range from 0 to 1, with values closer to 1 indicating that the model explains the data well. | $$R^2 = 1 - { Σ (yᵢ - ŷᵢ)² / Σ (yᵢ - ȳ)² }$$ |
 
