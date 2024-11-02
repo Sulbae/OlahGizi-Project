@@ -27,7 +27,8 @@ _Image source_: [_optimisingnutrition.com_](https://www.google.com/url?sa=i&url=
     - [Data Normalization](#Data-Normalization)
     - [Data Split](#Data-Split)
   - [Modeling](#Modeling)
-  - [Training](#Training)
+    - [Model Design](#Model-Design)
+    - [Training](#Training)
   - [Evaluation](#Evaluation)
     - [Metrics Description](#Metrics-Description)
     - [Model Comparison](#Model-Comparison)
@@ -193,6 +194,7 @@ Two data-splitting schemes will be used for two different models as follows:
 
 ---
 ## Modeling
+### Model Design
 The parameters for each model are set as follows:
 | Parameter | Model 1 | Model 2 |
 |-----------|---------|---------|
@@ -212,8 +214,7 @@ The model design can be seen in the following diagram:
   </div>
 </div>
 
----
-## __Training__
+### Training
 The model training stage consists of the following steps:
 1. __Forward Pass__
    * _Input Data_: Nutritional Data (features) will be fed into the `input layer`.
@@ -249,7 +250,7 @@ $$
    *  _Validation_: At each `epoch` or every few epochs, the model is evaluated on the validation set. The loss function on the validation set is calculated to see how the model generalizes beyond the training data.
 
 ---
-## __Evaluation__
+## Evaluation
 ### Metrics Description
 | Metrics | Description | Formula |
 |--------|-------------|---------|
