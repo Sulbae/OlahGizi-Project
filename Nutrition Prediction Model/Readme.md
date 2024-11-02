@@ -240,9 +240,7 @@ $$
 |--------|-------------|---------|
 | Mean Absolute Error (MAE) | MAE measures the average absolute error between the model's predictions and the actual values. A smaller MAE value indicates better model performance. |  $$\( \text{MAE} = \frac{1}{n} \sum_{i=1}^{n} (y_i - \hat{y}_i) \)$$ , where the errors are considered in absolute terms |
 | Mean Squared Error (MSE) | MSE calculates the average of the squared errors between predictions and actual values, making it more sensitive to larger errors (outliers) than MAE | $$\( \text{MSE} = \frac{1}{n} \sum_{i=1}^{n} (y_i - \hat{y}_i)^2 \)$$ |
-| R-squared | R-squared represents the proportion of the data variability that the model can explain. R-squared values range from 0 to 1, with values closer to 1 indicating that the model explains the data well. | $$R^2 = 1 - \frac{\sum_{i=1}^{n}(y_i - \hat{y}_i)^2}{\sum_{i=1}^{n} (y_i - \bar{y})^2}$$ |
-
-![R-squared formula](https://latex.codecogs.com/png.image?\dpi{110}R^2%20=%201%20-%20\frac{\sum_{i=1}^{n}(y_i%20-%20\hat{y}_i)^2}{\sum_{i=1}^{n}(y_i%20-%20\bar{y})^2})
+| R-squared | R-squared represents the proportion of the data variability that the model can explain. R-squared values range from 0 to 1, with values closer to 1 indicating that the model explains the data well. | R^2 = 1 - { Σ (yᵢ - ŷᵢ)² / Σ (yᵢ - ȳ)² } |
 
 This is the result of training on Model 1:
 <div style="display: flex; justify-content: center;">
