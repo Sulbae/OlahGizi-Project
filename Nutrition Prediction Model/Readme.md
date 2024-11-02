@@ -1,7 +1,7 @@
 # Project Report
 # List of Contents
-- [Title](# Basic Neural Network Model for Predicting Nutrient Density of Food Consumption)
-- [Background](## __Background__)
+- [Title](#Basic-Neural-Network-Model-for-Predicting-Nutrient-Density-of-Food-Consumption)
+- [Background](##__Background__)
 - 
 
 # Basic Neural Network Model for Predicting Nutrient Density of Food Consumption
