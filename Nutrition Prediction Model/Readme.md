@@ -1,4 +1,4 @@
-# Project Report :sparkles:
+# Project Report - Anggun Sulis Setyawan :sparkles:
 # Basic Neural Network Model for Predicting Nutrient Density of Food Consumption
 
 <div style="display: flex; justify-content: center;">
@@ -12,7 +12,7 @@ _Image source_: [_optimisingnutrition.com_](https://www.google.com/url?sa=i&url=
 ---
 ## List of Contents
 - [Title](#Basic-Neural-Network-Model-for-Predicting-Nutrient-Density-of-Food-Consumption)
-  - [Background](#Background)
+  - [Project Domain](#Project-Domain)
   - [Business Understanding](#Business-Understanding)
     - [Problem Statments](#Problem-Statments)
     - [Goals](#Goals)
@@ -27,7 +27,8 @@ _Image source_: [_optimisingnutrition.com_](https://www.google.com/url?sa=i&url=
     - [Data Normalization](#Data-Normalization)
     - [Data Split](#Data-Split)
   - [Modeling](#Modeling)
-  - [Training](#Training)
+    - [Model Design](#Model-Design)
+    - [Training](#Training)
   - [Evaluation](#Evaluation)
     - [Metrics Description](#Metrics-Description)
     - [Model Comparison](#Model-Comparison)
@@ -36,7 +37,7 @@ _Image source_: [_optimisingnutrition.com_](https://www.google.com/url?sa=i&url=
   - [References](#References)
 
 ---
-## Background 
+## Project Domain
 Adequate nutritional status is crucial for human growth and survival. Nutritional status can be assessed by evaluating individual-specific nutritional requirements and intake. An imbalance between nutritional needs and intake may lead to either deficiency or excess, both of which negatively impact health. This condition is commonly referred to as malnutrition (Bouma, 2017; Rinninella et al., 2017). According to the World Health Organization (WHO), malnutrition can occur due to an imbalance in nutrient intake, which may affect health status, disrupt food digestion, or impair nutrient absorption (Khan et al., 2022). Malnutrition is not limited to undernutrition; it also encompasses a broader scope including macronutrient and micronutrient imbalances, obesity, cachexia, sarcopenia, and malnourishment (Cederholm et al., 2019).
 
 In Indonesia, malnutrition—including both undernutrition and obesity—remains a serious issue. The 2018 Global Nutrition Report revealed that one in five child deaths globally is associated with poor dietary intake. Based on data from Indonesia's 2018 Basic Health Research, malnutrition cases include 30.8% stunting, 3.5% severe malnutrition, and other related conditions such as obesity (Zianka et al., 2024). Nutritional issues in children, if left unaddressed, may continue into adolescence and adulthood (Simbolon, 2013). Such conditions have far-reaching negative implications, as children with inadequate nutritional intake may experience delayed brain development and lower intelligence. Ultimately, this may hinder national economic growth and even increase poverty. The potential economic losses due to malnutrition are significant and may create a financial burden for the healthcare system in the future (Kemenkes RI, 2018).
@@ -59,12 +60,13 @@ _Keywords: Malnutrition, Nutrition Density, Neural Network, TensorFlow_
 
 ---
 ## Business Understanding
+Based on the background above, it can be determined that:
 ### Problem Statements
-  1. How would the model work in predicting nutrient density?
+  1. How would the model work in predicting nutrition density?
   2. How to carry out good data processing that fits the model architecture?
   3. What factors need to be considered to develop the best model?
 ### Goals
-  1. Understanding how the neural network model works in predicting nutrition density.
+  1. Understanding the way neural network model works in predicting nutrition density.
   2. Processing raw data into clean data that is ready to be used to train neural network models.
   3. Designing the best model with the smallest prediction error.
 ### Solution Statements
@@ -192,6 +194,7 @@ Two data-splitting schemes will be used for two different models as follows:
 
 ---
 ## Modeling
+### Model Design
 The parameters for each model are set as follows:
 | Parameter | Model 1 | Model 2 |
 |-----------|---------|---------|
@@ -211,8 +214,7 @@ The model design can be seen in the following diagram:
   </div>
 </div>
 
----
-## __Training__
+### Training
 The model training stage consists of the following steps:
 1. __Forward Pass__
    * _Input Data_: Nutritional Data (features) will be fed into the `input layer`.
@@ -228,7 +230,7 @@ $$
   where:
 - $$\( y_i \)$$ is the actual value,
 - $$\( \hat{y}_i \)$$ is the model prediction,
-- $$\( n \)$$ is the number of examples.
+- $$\( n \)$$ is the number of data.
 
 3. __Backward Pass__
   *  _Gradient Descent_: The `gradient` will be calculated from the loss function against the model weights. This process is carried out using the chain rule to calculate how much each weight contributes to the output error.
@@ -248,7 +250,7 @@ $$
    *  _Validation_: At each `epoch` or every few epochs, the model is evaluated on the validation set. The loss function on the validation set is calculated to see how the model generalizes beyond the training data.
 
 ---
-## __Evaluation__
+## Evaluation
 ### Metrics Description
 | Metrics | Description | Formula |
 |--------|-------------|---------|
