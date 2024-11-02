@@ -98,7 +98,7 @@ These outliers are possible and normal because each food has a unique value. Tho
 #### Correlation
 <div style="display: flex; justify-content: center;">
   <div style="flex: 1; margin: 10px;">
-    <img src="https://raw.githubusercontent.com/Sulbae/OlahGizi-Project/main/Nutrition%20Prediction%20Model/Chart/Correlation%20Matrix.png" alt="Correlation Matrix">
+    <img src="https://github.com/Sulbae/OlahGizi-Project/blob/main/Nutrition%20Prediction%20Model/Chart/Nutrient%20Correlation.png">
   </div>
 </div>
 
