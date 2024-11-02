@@ -97,12 +97,12 @@ According to data exploration, there is some basic information such as:
 * All values of column "food" are unique.
 * We need to equate the units for some columns (Fat, Saturated Fats, Monounsaturated Fats, Polyunsaturated Fats, Carbohydrates, Sugars, Protein, Dietary Fiber, and Water) to milligrams.
 
-#### Data Conversion
+#### _Data Conversion_
 We need to convert data unit that is in grams to milligrams by using the following formula:
 
 `x (g) = x × 1000 (mg)`
 
-#### Data Distribution
+#### _Data Distribution_
 Most data have a skewed distribution and have some outliers. Besides that, some data also have different value ranges.
 For example, this is a visualization of Caloric Value and Nutrition Density data:
 
@@ -117,7 +117,7 @@ For example, this is a visualization of Caloric Value and Nutrition Density data
 
 These outliers are possible and normal because each food has a unique value. Those are valid data points. Outliers can represent real variations in the nutritional content of foods.
 
-#### Correlation
+#### _Correlation_
 <div style="display: flex; justify-content: center;">
   <div style="flex: 1; margin: 10px;">
     <img src="https://raw.githubusercontent.com/Sulbae/OlahGizi-Project/refs/heads/main/Nutrition%20Prediction%20Model/Chart/Nutrient%20Correlation.png">
@@ -132,7 +132,7 @@ As mentioned, some nutrients almost do not correlate with nutrition density calc
 
 ### Data Normalization
 As we know almost all of the data have a skewed distribution, different value ranges, and outliers. 
-#### Log Transform
+#### _Log Transform_
 First, transform the data into logarithmic value using `np.log()`. It will handle the outliers and reduce the skewness. The logarithmic transformation helps stabilize variance and reduce the effect of outliers by compressing the range of the data. For example, the Nutrient Density values ​​change to the following:
 <div style="display: flex; justify-content: space-between;">
   <div style="flex: 1; margin-right: 10px;">
@@ -143,6 +143,7 @@ First, transform the data into logarithmic value using `np.log()`. It will handl
   </div>
 </div>
 
+#### _Normalization_
 Second, normalize the data using `RobustScaler()` to transform the distribution to be as close to normal as possible. Data normalization helps in adjusting the feature scales, which is crucial for neural networks as they are sensitive to the scale of input features. It will change the data to be normally distributed or close to it.
 <div style="display: flex; justify-content: space-between;">
   <div style="flex: 1; margin-right: 10px;">
