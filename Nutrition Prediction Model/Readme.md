@@ -1,9 +1,17 @@
 # Project Report
 # Basic Neural Network Model for Predicting Nutrient Density of Food Consumption
+
+<div style="display: flex; justify-content: center;">
+  <div style="flex: 1; margin: 10px;">
+    <img src="https://raw.githubusercontent.com/Sulbae/OlahGizi-Project/refs/heads/main/Nutrition%20Prediction%20Model/Image/nutrient-dense-foods-popular.png">
+  </div>
+</div>
+
+[_Image source_](https://www.google.com/url?sa=i&url=https%3A%2F%2Foptimisingnutrition.com%2Fnutrient-dense-foods-2%2F&psig=AOvVaw1j98i2HNvxR1PK_PekZK6L&ust=1730629346653000&source=images&cd=vfe&opi=89978449&ved=0CAMQjB1qFwoTCOCNovi2vYkDFQAAAAAdAAAAABAK)
 ## __Background__ 
 Adequate nutritional status is crucial for human growth and survival. Nutritional status can be assessed by evaluating individual-specific nutritional requirements and intake. An imbalance between nutritional needs and intake may lead to either deficiency or excess, both of which negatively impact health. This condition is commonly referred to as malnutrition (Bouma, 2017; Rinninella et al., 2017). According to the World Health Organization (WHO), malnutrition can occur due to an imbalance in nutrient intake, which may affect health status, disrupt food digestion, or impair nutrient absorption (Khan et al., 2022). Malnutrition is not limited to undernutrition; it also encompasses a broader scope including macronutrient and micronutrient imbalances, obesity, cachexia, sarcopenia, and malnourishment (Cederholm et al., 2019).
 
-In Indonesia, malnutrition—including both undernutrition and obesity—remains a serious issue. The 2018 Global Nutrition Report revealed that one in five child deaths globally is associated with poor dietary intake. Based on data from Indonesia's 2018 Basic Health Research, malnutrition cases include 30.8% of stunting, 3.5% of severe malnutrition, and other related conditions such as obesity (Zianka et al., 2024). Nutritional issues in children, if left unaddressed, may continue into adolescence and adulthood (Simbolon, 2013). Such conditions have far-reaching negative implications, as children with inadequate nutritional intake may experience delayed brain development and lower intelligence. Ultimately, this may hinder national economic growth and even increase poverty. The potential economic losses due to malnutrition are significant and may create a financial burden for the healthcare system in the future (Kemenkes RI, 2018).
+In Indonesia, malnutrition—including both undernutrition and obesity—remains a serious issue. The 2018 Global Nutrition Report revealed that one in five child deaths globally is associated with poor dietary intake. Based on data from Indonesia's 2018 Basic Health Research, malnutrition cases include 30.8% stunting, 3.5% severe malnutrition, and other related conditions such as obesity (Zianka et al., 2024). Nutritional issues in children, if left unaddressed, may continue into adolescence and adulthood (Simbolon, 2013). Such conditions have far-reaching negative implications, as children with inadequate nutritional intake may experience delayed brain development and lower intelligence. Ultimately, this may hinder national economic growth and even increase poverty. The potential economic losses due to malnutrition are significant and may create a financial burden for the healthcare system in the future (Kemenkes RI, 2018).
 
 Obesity, on the other hand, affects over a quarter of the adult population in Indonesia. The high prevalence of obesity among adults indicates poor dietary patterns. Consuming high-calorie, high-fat, and high-sugar foods without sufficient physical activity is a major factor contributing to obesity (Yamantri et al., 2024).
 
@@ -29,7 +37,7 @@ _Keywords: Malnutrition, Nutrition Density, Neural Network, TensorFlow_
 
 ## __Data Understanding__
 ### Dataset
-Resouce: [Food Nutrition Dataset](https://www.kaggle.com/datasets/utsavdey1410/food-nutrition-dataset/data)
+Resource: [Food Nutrition Dataset](https://www.kaggle.com/datasets/utsavdey1410/food-nutrition-dataset/data)
 
 ### Overview
 The Comprehensive Nutritional Food Database provides detailed nutritional information for a wide range of food items commonly consumed around the world. This dataset aims to support dietary planning, nutritional analysis, and educational purposes by providing extensive data on the macro and micronutrient content of foods.
@@ -87,7 +95,7 @@ We need to convert data unit that is in grams to milligrams by using the followi
 `x (g) = x × 1000 (mg)`
 
 #### Data Distribution
-Most data don't have a normal distribution and have some outliers. Besides that, some data also have different value ranges.
+Most data have a skewed distribution and have some outliers. Besides that, some data also have different value ranges.
 For example, this is a visualization of Caloric Value and Nutrition Density data:
 
 <div style="display: flex; justify-content: space-between;">
