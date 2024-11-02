@@ -163,14 +163,14 @@ The model structure can be seen in the following diagram:
 This is the result of training on Model 1
 <div style="display: flex; justify-content: center;">
   <div style="flex: 1; margin: 10px;">
-    <img src="https://raw.githubusercontent.com/Sulbae/OlahGizi-Project/blob/main/Nutrition%20Prediction%20Model/Chart/evaluation%20model%201.png">
+    <img src="https://raw.githubusercontent.com/Sulbae/OlahGizi-Project/refs/heads/main/Nutrition%20Prediction%20Model/Chart/evaluation%20model%201.png">
   </div>
 </div>
 
 This is the result of training on Model 2
 <div style="display: flex; justify-content: center;">
   <div style="flex: 1; margin: 10px;">
-    <img src="https://raw.githubusercontent.com/Sulbae/OlahGizi-Project/blob/main/Nutrition%20Prediction%20Model/Chart/evaluation%20model%202.png">
+    <img src="https://raw.githubusercontent.com/Sulbae/OlahGizi-Project/refs/heads/main/Nutrition%20Prediction%20Model/Chart/evaluation%20model%202.png">
   </div>
 </div>
 
@@ -184,7 +184,7 @@ R-squared | 0.9917 | 0.9768
 
 <div style="display: flex; justify-content: center;">
   <div style="flex: 1; margin: 10px;">
-    <img src="https://raw.githubusercontent.com/Sulbae/OlahGizi-Project/blob/main/Nutrition%20Prediction%20Model/Chart/Prediction%20Model.png">
+    <img src="https://raw.githubusercontent.com/Sulbae/OlahGizi-Project/refs/heads/main/Nutrition%20Prediction%20Model/Chart/Prediction%20Model.png">
   </div>
 </div>
 
@@ -193,7 +193,7 @@ Nutrition density prediction is done using dummy data containing the values â€‹â
 
 <div style="display: flex; justify-content: center;">
   <div style="flex: 1; margin: 10px;">
-    <img src="https://raw.githubusercontent.com/Sulbae/OlahGizi-Project/blob/main/Nutrition%20Prediction%20Model/Chart/Predicted%20Nutrition%20Density.png">
+    <img src="https://raw.githubusercontent.com/Sulbae/OlahGizi-Project/refs/heads/main/Nutrition%20Prediction%20Model/Chart/Predicted%20Nutrition%20Density.png">
   </div>
 </div>
 
