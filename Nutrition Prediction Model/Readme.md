@@ -137,6 +137,11 @@ Second, normalize the data using 'RobustScaler' to transform the distribution to
   </div>
 </div>
 
+### Data Split
+There are two data-splitting schemes as follows:
+`1. TEST_SIZE_1 = 0.1`
+`2. TEST_SIZE_2 = 0.2`
+
 ## __Modeling__
 
 ## __Training__
