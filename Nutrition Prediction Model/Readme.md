@@ -70,7 +70,7 @@ _Keywords: Malnutrition, Nutrition Density, Neural Network, TensorFlow_
 ### Solution Statements
   1. Determine the dataset to be used and the expected output so we can find out the right type of prediction architecture.
   2. Carrying out an iterative process that includes Exploratory Data Analysis to understand data characteristics and data transformation to adjust the data format to the neural network model architecture.
-  3. Carrying out feature engineering stages to select features that most influence nutrition density values and hyperparameter tuning (For example, training 2 architectures with different parameter configurations) to optimize model performance.
+  3. Carrying out feature engineering stages to select features that most influence nutrition density values and hyperparameter tuning (For example, training 2 models with different architecture configurations) to optimize model performance.
 
 ---
 ## Data Understanding
