@@ -83,7 +83,8 @@ According to data exploration, there is some basic information such as:
 
 #### Data Conversion
 We need to convert data unit that is in grams to milligrams by using the following formula:
-x \, \{grams} = x \ times 1000\, \{milligrams}
+
+x \, \text{g} = x \times 1000\, \text{mg}
 
 Based on descriptive analysis, some data has different value ranges.
 
