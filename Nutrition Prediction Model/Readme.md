@@ -61,11 +61,11 @@ _Keywords: Malnutrition, Nutrition Density, Neural Network, TensorFlow_
 ### Goals
   1. Understanding how the neural network model works in predicting nutrition density.
   2. Processing raw data into clean data that is ready to be used to train neural network models.
-  3. Designing the best architecture for the model.
+  3. Designing the best model with the smallest prediction error.
 ### Solution Statements
   1. Determine the dataset to be used and the expected output so we can find out the right type of prediction architecture.
   2. Carrying out an iterative process that includes Exploratory Data Analysis to understand data characteristics and data transformation to adjust the data format to the neural network model architecture.
-  3. Carrying out feature engineering stages to select features that most influence nutrition density values and hyperparameter tuning to optimize model performance.
+  3. Carrying out feature engineering stages to select features that most influence nutrition density values and hyperparameter tuning (For example, training 2 architectures with different parameter configurations) to optimize model performance.
 
 ## Data Understanding
 ### Dataset
@@ -75,43 +75,43 @@ Resource: [Food Nutrition Dataset](https://www.kaggle.com/datasets/utsavdey1410/
 The Comprehensive Nutritional Food Database provides detailed nutritional information for a wide range of food items commonly consumed around the world. This dataset aims to support dietary planning, nutritional analysis, and educational purposes by providing extensive data on the macro and micronutrient content of foods.
 
 ### Column Description
-No | Column | Description
----|--------|------------
-1 | Food | The name or type of the food item
-2 | Caloric Value | Total energy provided by the food, typically measured in kilocalories(kcal) per 100 grams.
-3 | Fat (in g) | Total amount of fats in grams per 100 grams, including the breakdowns that follow
-4 | Saturated Fats (in g) | Amount of saturated fats (fats that typically raise the level of cholesterol in the blood) in grams per 100 grams.
-5 | Monounsaturated Fats (in g) | Amount of monounsaturated fats (considered heart-healthy fats) in grams per 100 grams.
-6 | Polyunsaturated Fats (in g) | Amount of polyunsaturated fats (include essential fats your body needs but can't produce itself) in grams per 100 grams.
-7 | Carbohydrates (in g) | Total carbohydrates in grams per 100 grams, including sugars.
-8 | Sugars (in g) | Total sugars in grams per 100 grams, a subset of carbohydrates.
-9 | Protein (in g) | Total proteins in grams per 100 grams, essential for body repair and growth.
-10 | Dietary Fiber (in g) | Fiber content in grams per 100 grams, important for digestive health.
-11 | Cholesterol (in mg) | Cholesterol content in milligrams per 100 grams, pertinent for cardiovascular health.
-12 | Sodium (in mg) | Sodium content in milligrams per 100 grams, crucial for fluid balance and nerve function.
-13 | Water (in g) | Water content in grams per 100 grams, which affects the food's energy density.
-14 | Vitamin A (in mg) | Amount of Vitamin A in micrograms per 100 grams, important for vision and immune functioning.
-15 | Vitamin B1 (Thiamine)(in mg) | Essential for glucose metabolism.
-16 | Vitamin B11 (Folic Acid)(in mg) | Crucial for cell function and tissue growth, particularly important in pregnancy.
-17 | Vitamin B12(in mg) | Important for brain function and blood formation.
-18 | Vitamin B2 (Riboflavin)(in mg) | Necessary for energy production, cell function, and fat metabolism.
-19 | Vitamin B3 (Niacin)(in mg) | Support digestive system, skin, and nerves health.
-20 | Vitamin B5 (Pantothenic Acid)(in mg) | Necessary for making blood cells and helps convert food into energy.
-21 | Viatmin B6 (in mg): Important for normal brain development and keeping the nervous and immune system healthy.
-22 | Vitamin C (in mg) | Important for the repair of all body tissues.
-23 | Vitamin D (in mg) | Crucial for absorption of calcium, promoting bone growth and health.
-24 | Vitamin E (in mg) | Acts as an antioxidant, helping to protect cells from the damage caused by free radicals.
-25 | Vitamin K (in mg) | Necessary for blood clotting and bone health.
-26 | Calcium (in mg) | Vital for building and maintaining strong bones and teeth.
-27 | Copper (in mg) | Helps with the formation of collagen, increases the absorption of iron and plays a role in energy production.
-28 | Iron (in mg) | Essential for the creation of red blood cells.
-29 | Magnesium (in mg) | Important for many processes in the body including regulation of muscle and nerve function, blood sugar levels, and blood pressure and making protein, bone, and DNA.
-30 | Manganese (in mg) | Involved in the formation of bones, blood clotting factors, and enzymes that play a role in fat and carbohydrate metabolism, calcium absorption, and blood sugar regulation.
-31 | Phosphorus (in mg) | Helps with the formation of bones and teeth and is necessary for the body to make protein for the growth, maintenance, and repair of cells and tissues.
-32 | Potassium (in mg) | Helps regulate fluid balance, muscle contractions, and nerve signals.
-33 | Selenium (in mg) | Important for reproduction, thyroid gland function, DNA production, and protecting the body from damage caused by free radicals and from infection.
-34 | Zinc (in mg) | Necessary for the immune system to properly function and plays a role in cell division, cell growth, wound healing, and the breakdown of carbohydrates.
-35 | Nutrition Density | A metric indicating the nutrient richness of the food per calorie.
+| No | Column | Description |
+|----|--------|-------------|
+| 1 | Food | The name or type of the food item
+| 2 | Caloric Value | Total energy provided by the food, typically measured in kilocalories(kcal) per 100 grams. |
+| 3 | Fat (in g) | Total amount of fats in grams per 100 grams, including the breakdowns that follow. |
+| 4 | Saturated Fats (in g) | Amount of saturated fats (fats that typically raise the level of cholesterol in the blood) in grams per 100 grams. |
+| 5 | Monounsaturated Fats (in g) | Amount of monounsaturated fats (considered heart-healthy fats) in grams per 100 grams. |
+| 6 | Polyunsaturated Fats (in g) | Amount of polyunsaturated fats (include essential fats your body needs but can't produce itself) in grams per 100 grams. |
+| 7 | Carbohydrates (in g) | Total carbohydrates in grams per 100 grams, including sugars. |
+| 8 | Sugars (in g) | Total sugars in grams per 100 grams, a subset of carbohydrates. |
+| 9 | Protein (in g) | Total proteins in grams per 100 grams, essential for body repair and growth. |
+| 10 | Dietary Fiber (in g) | Fiber content in grams per 100 grams, important for digestive health. |
+| 11 | Cholesterol (in mg) | Cholesterol content in milligrams per 100 grams, pertinent for cardiovascular health. |
+| 12 | Sodium (in mg) | Sodium content in milligrams per 100 grams, crucial for fluid balance and nerve function. |
+| 13 | Water (in g) | Water content in grams per 100 grams, which affects the food's energy density. |
+| 14 | Vitamin A (in mg) | Amount of Vitamin A in micrograms per 100 grams, important for vision and immune functioning. |
+| 15 | Vitamin B1 (Thiamine)(in mg) | Essential for glucose metabolism. |
+| 16 | Vitamin B11 (Folic Acid)(in mg) | Crucial for cell function and tissue growth, particularly important in pregnancy. |
+| 17 | Vitamin B12(in mg) | Important for brain function and blood formation. |
+| 18 | Vitamin B2 (Riboflavin)(in mg) | Necessary for energy production, cell function, and fat metabolism. |
+| 19 | Vitamin B3 (Niacin)(in mg) | Support digestive system, skin, and nerves health. |
+| 20 | Vitamin B5 (Pantothenic Acid)(in mg) | Necessary for making blood cells and helps convert food into energy. |
+| 21 | Viatmin B6 (in mg): Important for normal brain development and keeping the nervous and immune systems healthy. |
+| 22 | Vitamin C (in mg) | Important for the repair of all body tissues. |
+| 23 | Vitamin D (in mg) | Crucial for absorption of calcium, promoting bone growth and health. |
+| 24 | Vitamin E (in mg) | Acts as an antioxidant, helping to protect cells from the damage caused by free radicals. |
+| 25 | Vitamin K (in mg) | Necessary for blood clotting and bone health. |
+| 26 | Calcium (in mg) | Vital for building and maintaining strong bones and teeth. |
+| 27 | Copper (in mg) | Helps with the formation of collagen, increases the absorption of iron and plays a role in energy production. |
+| 28 | Iron (in mg) | Essential for the creation of red blood cells. |
+| 29 | Magnesium (in mg) | Important for many processes in the body including regulation of muscle and nerve function, blood sugar levels, and blood pressure and making protein, bone, and DNA. |
+| 30 | Manganese (in mg) | Involved in the formation of bones, blood clotting factors, and enzymes that play a role in fat and carbohydrate metabolism, calcium absorption, and blood sugar regulation. |
+| 31 | Phosphorus (in mg) | Helps with the formation of bones and teeth and is necessary for the body to make protein for the growth, maintenance, and repair of cells and tissues. |
+| 32 | Potassium (in mg) | Helps regulate fluid balance, muscle contractions, and nerve signals. |
+| 33 | Selenium (in mg) | Important for reproduction, thyroid gland function, DNA production, and protecting the body from damage caused by free radicals and from infection. |
+| 34 | Zinc (in mg) | Necessary for the immune system to properly function and plays a role in cell division, cell growth, wound healing, and the breakdown of carbohydrates. |
+| 35 | Nutrition Density | A metric indicating the nutrient richness of the food per calorie. |
 
 ### Explore
 According to data exploration, there is some basic information such as: 
@@ -179,21 +179,22 @@ Second, normalize the data using `RobustScaler()` to transform the distribution 
 </div>
 
 ### Data Split
-There are two data-splitting schemes as follows:
-1. `TEST_SIZE_1 = 0.1`
-2. `TEST_SIZE_2 = 0.2`
+There are two data-splitting schemes that will be used for two different models as follows:
+1. `TEST_SIZE_1 = 0.1`. The data will be split into 90% `data_train`, 5% `data_validation`, and 5% `data_test`. 
+2. `TEST_SIZE_2 = 0.2`. The data will be split into 80% `data_train`, 10% `data_validation`, and 10% `data_test`.
 
 ## Modeling
-Parameter | Model 1 | Model 2 
--------|------------|--------
-Optimizer | RMSprop | Adam
-Loss | MSE | Huber
-Output Activation | Linear | Linear
-Batch Normalization | 1 | 1
-Dropout | 0.3 | 0.3
-Dense Layers | 4 | 3
-Epochs | 100 | 300
-Batch | 128 | 128
+The parameters for each model are set as follows:
+| Parameter | Model 1 | Model 2 |
+|-----------|---------|---------|
+| Optimizer | RMSprop | Adam |
+| Loss | MSE | Huber |
+| Output Activation | Linear | Linear |
+| Batch Normalization | 1 | 1 |
+| Dropout | 0.3 | 0.3 |
+| Dense Layers | 4 | 3 |
+| Epochs | 100 | 300 |
+| Batch | 128 | 128 |
 
 The model structure can be seen in the following diagram:
 
@@ -234,6 +235,14 @@ $$
    *  _Validation_: At each `epoch` or every few epochs, the model is evaluated on the validation set. The loss function on the validation set is calculated to see how the model generalizes beyond the training data.
 
 ## __Evaluation__
+### Metrics Description
+| Metrics | Description | Formula |
+|--------|-------------|---------|
+| Mean Absolute Error (MAE) | MAE measures the average absolute error between the model's predictions and the actual values. A smaller MAE value indicates better model performance. |  \( \text{MAE} = \frac{1}{n} \sum_{i=1}^{n} |y_i - \hat{y}_i| \) |
+| Mean Squared Error (MSE) | MSE calculates the average of the squared errors between predictions and actual values, making it more sensitive to larger errors (outliers) than MAE | \( \text{MSE} = \frac{1}{n} \sum_{i=1}^{n} (y_i - \hat{y}_i)^2 \) |
+| R-squared | R-squared represents the proportion of the data variability that the model can explain. R-squared values range from 0 to 1, with values closer to 1 indicating that the model explains the data well. | \( R^2 = 1 - \frac{\sum_{i=1}^{n} (y_i - \hat{y}_i)^2}{\sum_{i=1}^{n} (y_i - \bar{y})^2} \) |
+
+
 This is the result of training on Model 1:
 <div style="display: flex; justify-content: center;">
   <div style="flex: 1; margin: 10px;">
@@ -249,13 +258,15 @@ This is the result of training on Model 2:
 </div>
 
 ### Model Comparison
-Metrics | Model 1 | Model 2
---------|---------|--------
-MAE | 0.0505 | 0.0741
-MSE | 0.0042 | 0.0114
-R-squared | 0.9917 | 0.9768
+| Metrics | Model 1 | Model 2 |
+|---------|---------|---------|
+| MAE | 0.0505 | 0.0741 |
+| MSE | 0.0042 | 0.0114 |
+| R-squared | 0.9917 | 0.9768 |
 
-Model 1 has shown lower error rates in predicting nutrition density. These are comparisons of the model prediction to the actual data.
+
+
+So, Model 1 has shown lower error rates in predicting nutrition density. These are comparisons of the model prediction to the actual data.
 
 <div style="display: flex; justify-content: center;">
   <div style="flex: 1; margin: 10px;">
