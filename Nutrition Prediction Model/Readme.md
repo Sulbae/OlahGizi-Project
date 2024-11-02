@@ -1,5 +1,5 @@
 # Project Report
-# List of Contents
+## List of Contents
 - [Title](#Basic-Neural-Network-Model-for-Predicting-Nutrient-Density-of-Food-Consumption)
   - [Background](#Background)
   - [Business Understanding](#Business-Understanding)
