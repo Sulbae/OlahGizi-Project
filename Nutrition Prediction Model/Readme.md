@@ -95,7 +95,7 @@ We need to convert data unit that is in grams to milligrams by using the followi
 `x (g) = x × 1000 (mg)`
 
 #### Data Distribution
-Most data don't have a normal distribution and have some outliers. Besides that, some data also have different value ranges.
+Most data have a skewed distribution and have some outliers. Besides that, some data also have different value ranges.
 For example, this is a visualization of Caloric Value and Nutrition Density data:
 
 <div style="display: flex; justify-content: space-between;">
