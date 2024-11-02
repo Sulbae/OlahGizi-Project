@@ -59,6 +59,7 @@ _Keywords: Malnutrition, Nutrition Density, Neural Network, TensorFlow_
 
 ---
 ## Business Understanding
+Based on the background above, it can be determined that:
 ### Problem Statements
   1. How would the model work in predicting nutrient density?
   2. How to carry out good data processing that fits the model architecture?
