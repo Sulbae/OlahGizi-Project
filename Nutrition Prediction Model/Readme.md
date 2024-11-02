@@ -1,4 +1,4 @@
-# Project Report
+# Project Report <sparkles>
 ## List of Contents
 - [Title](#Basic-Neural-Network-Model-for-Predicting-Nutrient-Density-of-Food-Consumption)
   - [Background](#Background)
