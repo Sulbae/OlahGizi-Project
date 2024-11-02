@@ -230,7 +230,7 @@ $$
   where:
 - $$\( y_i \)$$ is the actual value,
 - $$\( \hat{y}_i \)$$ is the model prediction,
-- $$\( n \)$$ is the number of examples.
+- $$\( n \)$$ is the number of data.
 
 3. __Backward Pass__
   *  _Gradient Descent_: The `gradient` will be calculated from the loss function against the model weights. This process is carried out using the chain rule to calculate how much each weight contributes to the output error.
