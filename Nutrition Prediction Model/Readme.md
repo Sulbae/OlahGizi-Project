@@ -19,7 +19,7 @@ _Keywords: Malnutrition, Nutrition Density, Neural Network, TensorFlow_
   2. How to carry out good data processing that fits the model architecture?
   3. What factors need to be considered to develop the best model?
 ### Goals
-  1. Understanding how neural network model works in predicting nutrition density.
+  1. Understanding how the neural network model works in predicting nutrition density.
   2. Processing raw data into clean data that is ready to be used to train neural network models.
   3. Designing the best architecture for the model.
 ### Solution Statements
@@ -143,6 +143,9 @@ There are two data-splitting schemes as follows:
 2. `TEST_SIZE_2 = 0.2`
 
 ## __Modeling__
+Scheme || Model Design || Training Design
+-------|--------------|----------------
+Parameters | Optimizer | Loss | Activation | Regularization | 
 
 ## __Training__
 
@@ -151,6 +154,22 @@ There are two data-splitting schemes as follows:
 ## __Prediction__
 
 ## __Conclusion__
+1. The model is a regression model because it aims to predict a continuous outcome (Nutrition Density Values) based on various input features (nutrient values). The prediction is estimating nutrient density values, which inherently involves predicting numerical quantities.
+
+2. All data have skewed distribution and outliers, whereas the neural network model is more suitable for normally distributed data. Hence, the data needs to be transformed to logarithmic values and then normalized. The logarithmic transformation helps stabilize variance and reduce the effect of outliers by compressing the range of the data. Data normalization helps in adjusting the feature scales, which is crucial for neural networks as they are sensitive to the scale of input features. It will change the data to be normally distributed or close to it. By pre-processing the data this way, we can enhance the model's ability to learn meaningful patterns, leading to better performance and generalization on unseen data.
+
+3. Based on the model evaluation, the architecture design of Model 1 is better than Model 2. This is drawn from comparing metrics such as Mean Squared Error (MSE), Mean Absolute Error (MAE), and R-squared values between the two models. Model 1 has shown lower error rates in predicting nutrition density. The choice of architecture such as the number of layers and nodes, loss functions, and optimization techniques used in Model 1, likely contributed to its performance. In addition, there are recommendations to develop a model with superior performance as follows:
+
+    * Further refinement of feature selection may enhance model performance. Identifying key features that significantly impact nutrition density could lead to improved predictive accuracy.
+    * Explore different architectures and hyperparameter settings then identify the optimal configuration for the model.
+    * Implementing regularization techniques such as dropout, L1/L2 regularization, or batch normalization can help prevent overfitting in complex models.
+
+## __Development Opportunity__
+__1. Meal Recommendation System__.
+By integrating this dataset with broader dietary data, machine learning models can recommend dietary adjustments to individuals. For instance, a recommendation system could suggest lower-calorie or lower-sugar food alternatives to users looking to reduce their calorie intake but who still want to get high nutrition. Machine learning models can integrate food consumption data into broader dietary tracking tools used in fitness and health apps, providing users with insights into their dietary meal plans.
+
+__2. Predictive Modeling for Health Impacts__.
+With sufficient data linking meal consumption to health outcomes, predictive models could forecast health impacts based on meal consumption patterns. This could be particularly useful for public health.
 
 ## __References__
 1. Alfarisi, B. I., et al. (2023). *Mengungkap Kesehatan Melalui Angka: Prediksi Malnutrisi Melalui Penilaian Status Gizi dan Asupan Makronutrien.* Prosiding SNPPM-5, 299-311.
