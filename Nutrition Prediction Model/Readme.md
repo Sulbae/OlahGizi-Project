@@ -158,7 +158,7 @@ The model structure can be seen in the following diagram:
 
 
 ## __Training__
-The model training stage consists of several steps as follows:
+The model training stage consists of this following steps:
 1. __Forward Pass__
    * _Input Data_: Nutritional Data (features) will be fed into the `input layer`.
    * _Prediction_: The model calculates the `weight` and then produces Nutrition Density as a prediction by calculating the `activation function` in every neuron.
@@ -189,7 +189,7 @@ $$
 - $$\( \eta \)$$ is the learning rate,
 - $$\( \frac{\partial \text{Loss}}{\partial w} \)$$ is the gradient of the loss function to the weight.
 
-2. __Training Evaluation__
+4. __Training Evaluation__
    *  _Validation_: At each `epoch` or every few epochs, the model is evaluated on the validation set. The loss function on the validation set is calculated to see how the model generalizes beyond the training data.
 
 ## __Evaluation__
