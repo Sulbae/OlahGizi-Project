@@ -96,9 +96,9 @@ Based on univariate analysis, most data don't have a normal distribution and hav
 These outliers are possible and normal because each food has a unique value. Those are valid data points. Outliers can represent real variations in the nutritional content of foods.
 
 #### Correlation
-</div>
-  <div style="display: flex; justify-content: 10px;">
-    <img src="https://rawgithubusercontent.com/Sulbae/OlahGizi-Project/blob/main/Nutrition%20Prediction%20Model/Chart/Correlation%20Matrix.png">
+<div style="display: flex; justify-content: center;">
+  <div style="flex: 1; margin: 10px;">
+    <img src="https://raw.githubusercontent.com/Sulbae/OlahGizi-Project/main/Nutrition%20Prediction%20Model/Chart/Correlation%20Matrix.png" alt="Correlation Matrix">
   </div>
 </div>
 
