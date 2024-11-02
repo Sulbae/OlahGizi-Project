@@ -1,4 +1,9 @@
 # Project Report
+# List of Contents
+- [Title](# Basic Neural Network Model for Predicting Nutrient Density of Food Consumption)
+- [Background](## __Background__)
+- 
+
 # Basic Neural Network Model for Predicting Nutrient Density of Food Consumption
 
 <div style="display: flex; justify-content: center;">
@@ -180,7 +185,7 @@ The model training stage consists of the following steps:
    * _Input Data_: Nutritional Data (features) will be fed into the `input layer`.
    * _Prediction_: The model calculates the `weight` and then produces Nutrition Density as a prediction by calculating the `activation function` in every neuron.
 2. __Loss__
-  *  _Loss Caculating_: The model will calculate the `loss function` value to assess how well the model's predictions compare to the actual values.
+  *  _Loss Caculation_: The model will calculate the `loss function` value to assess how well the model's predictions compare to the actual values.
   *  The loss function for regression can be expressed by the following formula:
 
 $$
