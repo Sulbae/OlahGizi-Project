@@ -22,9 +22,9 @@
   - [Inference](#Inference)
   - [Development Opportunity](#Development-Opportunity)
   - [References](#References)
-
+---
 # Basic Neural Network Model for Predicting Nutrient Density of Food Consumption
-
+---
 <div style="display: flex; justify-content: center;">
   <div style="flex: 1; margin: 10px;">
     <img src="https://raw.githubusercontent.com/Sulbae/OlahGizi-Project/refs/heads/main/Nutrition%20Prediction%20Model/Image/nutrient-dense-foods-popular.png">
