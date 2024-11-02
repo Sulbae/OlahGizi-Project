@@ -317,4 +317,9 @@ With sufficient data linking meal consumption to health outcomes, predictive mod
 11. Yamantri, A. B., & Rifa’i, A. A. (2024). *Penerapan Algoritma C4.5 Untuk Prediksi Faktor Risiko Obesitas Pada Penduduk Dewasa.* Jurnal Komputer Antartika, 2(3), 118–125.
 12. Zianka, I. D., et al. (2024). *The Design Android Application Nutrition Calculation to Prevent Stunting with CNN Method in Jakarta.* MALCOM: Indonesian Journal of Machine Learning and Computer Science, 4, 99–107.
 
----Ini adalah bagian akhir laporan---
+---
+
+**Ini adalah bagian akhir laporan**
+
+---
+
