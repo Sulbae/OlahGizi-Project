@@ -117,7 +117,7 @@ As mentioned, some nutrients almost do not correlate with nutrition density calc
 ### Data Normalization
 As we know almost all of the data have a skewed distribution, different value ranges, and outliers. 
 #### Log Transform
-First, transform the data into logarithmic value. It will handle the outliers and reduce the skewness. For example, the distribution of Nutrient Density values ​​changes to the following:
+First, transform the data into logarithmic value using `np.log()`. It will handle the outliers and reduce the skewness. For example, the distribution of Nutrient Density values ​​changes to the following:
 <div style="display: flex; justify-content: space-between;">
   <div style="flex: 1; margin-right: 10px;">
     <img src="https://raw.githubusercontent.com/Sulbae/OlahGizi-Project/refs/heads/main/Nutrition%20Prediction%20Model/Chart/Log%20Transform%20Caloric%20Value.png">
@@ -127,7 +127,7 @@ First, transform the data into logarithmic value. It will handle the outliers an
   </div>
 </div>
 
-Second, normalize the data using 'RobustScaler' to transform the distribution to be as close to normal as possible.
+Second, normalize the data using `RobustScaler()` to transform the distribution to be as close to normal as possible.
 <div style="display: flex; justify-content: space-between;">
   <div style="flex: 1; margin-right: 10px;">
     <img src="https://raw.githubusercontent.com/Sulbae/OlahGizi-Project/refs/heads/main/Nutrition%20Prediction%20Model/Chart/Normalized%20Caloric%20Value.png">
@@ -139,8 +139,9 @@ Second, normalize the data using 'RobustScaler' to transform the distribution to
 
 ### Data Split
 There are two data-splitting schemes as follows:
-`1. TEST_SIZE_1 = 0.1`
-`2. TEST_SIZE_2 = 0.2`
+`1. TEST_SIZE_1 = 0.1
+\n
+2. TEST_SIZE_2 = 0.2`
 
 ## __Modeling__
 
