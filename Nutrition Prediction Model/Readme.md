@@ -264,7 +264,7 @@ This is the result of training on Model 2:
 
 ---
 ### Model Comparison
-| Metrics | Model 1 | Model 2 | Note |
+| Metrics | Model 1 | Model 2 | Notes |
 |---------|---------|---------|------|
 | MAE | 0.0505 | 0.0741 | Model 1 has a lower MAE compared to Model 2, meaning that Model 1's predictions, on average, are closer to the actual values than those of Model 2. |
 | MSE | 0.0042 | 0.0114 | Model 1 has a smaller MSE than Model 2. This suggests that Model 1 is not only more accurate but also has more consistent small errors. Model 1 either handles outliers better or large errors occur less frequently compared to Model 2. |
