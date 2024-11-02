@@ -1,5 +1,5 @@
 # Project Report
-# Basic Model for Predicting Nutrient Density of Food Consumption
+# Basic Neural Network Model for Predicting Nutrient Density of Food Consumption
 ## __Background__ 
 Adequate nutritional status is crucial for human growth and survival. Nutritional status can be assessed by evaluating individual-specific nutritional requirements and intake. An imbalance between nutritional needs and intake may lead to either deficiency or excess, both of which negatively impact health. This condition is commonly referred to as malnutrition (Bouma, 2017; Rinninella et al., 2017). According to the World Health Organization (WHO), malnutrition can occur due to an imbalance in nutrient intake, which may affect health status, disrupt food digestion, or impair nutrient absorption (Khan et al., 2022). Malnutrition is not limited to undernutrition; it also encompasses a broader scope including macronutrient and micronutrient imbalances, obesity, cachexia, sarcopenia, and malnourishment (Cederholm et al., 2019).
 
@@ -50,7 +50,7 @@ No | Column | Description
 11 | Cholesterol (in mg) | Cholesterol content in milligrams per 100 grams, pertinent for cardiovascular health.
 12 | Sodium (in mg) | Sodium content in milligrams per 100 grams, crucial for fluid balance and nerve function.
 13 | Water (in g) | Water content in grams per 100 grams, which affects the food's energy density.
-14 | Vitamin A (in mg) | Amount of Vitamin A in micrograms per 100 grams, impoertant for vision and immune functioning.
+14 | Vitamin A (in mg) | Amount of Vitamin A in micrograms per 100 grams, important for vision and immune functioning.
 15 | Vitamin B1 (Thiamine)(in mg) | Essential for glucose metabolism.
 16 | Vitamin B11 (Folic Acid)(in mg) | Crucial for cell function and tissue growth, particularly important in pregnancy.
 17 | Vitamin B12(in mg) | Important for brain function and blood formation.
@@ -67,7 +67,7 @@ No | Column | Description
 28 | Iron (in mg) | Essential for the creation of red blood cells.
 29 | Magnesium (in mg) | Important for many processes in the body including regulation of muscle and nerve function, blood sugar levels, and blood pressure and making protein, bone, and DNA.
 30 | Manganese (in mg) | Involved in the formation of bones, blood clotting factors, and enzymes that play a role in fat and carbohydrate metabolism, calcium absorption, and blood sugar regulation.
-31 | Phosporus (in mg) | Helps with the formation of bones and teeth and is necessary for the body to make protein for the growth, maintenance, and repair of cells and tissues.
+31 | Phosphorus (in mg) | Helps with the formation of bones and teeth and is necessary for the body to make protein for the growth, maintenance, and repair of cells and tissues.
 32 | Potassium (in mg) | Helps regulate fluid balance, muscle contractions, and nerve signals.
 33 | Selenium (in mg) | Important for reproduction, thyroid gland function, DNA production, and protecting the body from damage caused by free radicals and from infection.
 34 | Zinc (in mg) | Necessary for the immune system to properly function and plays a role in cell division, cell growth, wound healing, and the breakdown of carbohydrates.
