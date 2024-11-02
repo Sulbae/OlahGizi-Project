@@ -117,7 +117,7 @@ As mentioned, some nutrients almost do not correlate with nutrition density calc
 ### Data Normalization
 As we know almost all of the data have a skewed distribution, different value ranges, and outliers. 
 #### Log Transform
-First, transform the data into logarithmic value using `np.log()`. It will handle the outliers and reduce the skewness. For example, the distribution of Nutrient Density values ​​changes to the following:
+First, transform the data into logarithmic value using `np.log()`. It will handle the outliers and reduce the skewness. The logarithmic transformation helps stabilize variance and reduce the effect of outliers by compressing the range of the data. For example, the Nutrient Density values ​​change to the following:
 <div style="display: flex; justify-content: space-between;">
   <div style="flex: 1; margin-right: 10px;">
     <img src="https://raw.githubusercontent.com/Sulbae/OlahGizi-Project/refs/heads/main/Nutrition%20Prediction%20Model/Chart/Log%20Transform%20Caloric%20Value.png">
@@ -127,9 +127,7 @@ First, transform the data into logarithmic value using `np.log()`. It will handl
   </div>
 </div>
 
-The logarithmic transformation helps stabilize variance and reduce the effect of outliers by compressing the range of the data.
-
-Second, normalize the data using `RobustScaler()` to transform the distribution to be as close to normal as possible.
+Second, normalize the data using `RobustScaler()` to transform the distribution to be as close to normal as possible. Data normalization helps in adjusting the feature scales, which is crucial for neural networks as they are sensitive to the scale of input features. It will change the data to be normally distributed or close to it.
 <div style="display: flex; justify-content: space-between;">
   <div style="flex: 1; margin-right: 10px;">
     <img src="https://raw.githubusercontent.com/Sulbae/OlahGizi-Project/refs/heads/main/Nutrition%20Prediction%20Model/Chart/Normalized%20Caloric%20Value.png">
@@ -138,8 +136,6 @@ Second, normalize the data using `RobustScaler()` to transform the distribution 
     <img src="https://raw.githubusercontent.com/Sulbae/OlahGizi-Project/refs/heads/main/Nutrition%20Prediction%20Model/Chart/Normalized%20Nutrition%20Density.png">
   </div>
 </div>
-
-Data normalization helps in adjusting the feature scales, which is crucial for neural networks as they are sensitive to the scale of input features. It will change the data to be normally distributed or close to it.
 
 ### Data Split
 There are two data-splitting schemes as follows:
