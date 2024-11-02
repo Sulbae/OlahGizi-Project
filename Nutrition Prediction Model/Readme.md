@@ -104,7 +104,7 @@ These outliers are possible and normal because each food has a unique value. Tho
 #### Correlation
 <div style="display: flex; justify-content: center;">
   <div style="flex: 1; margin: 10px;">
-    <img src="https://raw.githubusercontent.com/Sulbae/OlahGizi-Project/blob/main/Nutrition%20Prediction%20Model/Chart/Nutrient%20Correlation.png">
+    <img src="https://raw.githubusercontent.com/Sulbae/OlahGizi-Project/refs/heads/main/Nutrition%20Prediction%20Model/Chart/Nutrient%20Correlation.png">
   </div>
 </div>
 
@@ -120,20 +120,20 @@ As we know almost all of the data have a skewed distribution, different value ra
 First, transform the data into logarithmic value. It will handle the outliers and reduce the skewness. For example, the distribution of Nutrient Density values ​​changes to the following:
 <div style="display: flex; justify-content: space-between;">
   <div style="flex: 1; margin-right: 10px;">
-    <img src="https://raw.githubusercontent.com/Sulbae/OlahGizi-Project/blob/main/Nutrition%20Prediction%20Model/Chart/Log%20Transform%20Caloric%20Value.png">
+    <img src="https://raw.githubusercontent.com/Sulbae/OlahGizi-Project/refs/heads/main/Nutrition%20Prediction%20Model/Chart/Log%20Transform%20Caloric%20Value.png">
   </div>
   <div style="flex: 1; margin-left: 10px;">
-    <img src="https://raw.githubusercontent.com/Sulbae/OlahGizi-Project/blob/main/Nutrition%20Prediction%20Model/Chart/Log%20Transform%20Nutrition%20Density.png">
+    <img src="https://raw.githubusercontent.com/Sulbae/OlahGizi-Project/refs/heads/main/Nutrition%20Prediction%20Model/Chart/Log%20Transform%20Nutrition%20Density.png">
   </div>
 </div>
 
 Second, normalize the data using 'RobustScaler' to transform the distribution to be as close to normal as possible.
 <div style="display: flex; justify-content: space-between;">
   <div style="flex: 1; margin-right: 10px;">
-    <img src="https://raw.githubusercontent.com/Sulbae/OlahGizi-Project/blob/main/Nutrition%20Prediction%20Model/Chart/Normalized%20Caloric%20Value.png">
+    <img src="https://raw.githubusercontent.com/Sulbae/OlahGizi-Project/refs/heads/main/Nutrition%20Prediction%20Model/Chart/Normalized%20Caloric%20Value.png">
   </div>
   <div style="flex: 1; margin-left: 10px;">
-    <img src="https://raw.githubusercontent.com/Sulbae/OlahGizi-Project/blob/main/Nutrition%20Prediction%20Model/Chart/Normalized%20Nutrition%20Density.png">
+    <img src="https://raw.githubusercontent.com/Sulbae/OlahGizi-Project/refs/heads/main/Nutrition%20Prediction%20Model/Chart/Normalized%20Nutrition%20Density.png">
   </div>
 </div>
 
