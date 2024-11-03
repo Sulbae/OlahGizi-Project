@@ -121,15 +121,18 @@ The Comprehensive Nutritional Food Database provides detailed nutritional inform
 ### Explore
 According to data exploration, there is some basic information such as: 
 * There are 5 datasets with different amounts of rows but have typical columns.
-* The dataset 1 has 2395 rows and 35 columns.
-* The dataset 2 has 2395 rows and 35 columns.
-* The dataset 3 has 2395 rows and 35 columns.
-* The dataset 4 has 2395 rows and 35 columns.
-* The dataset 5 has 2395 rows and 35 columns.
+* The dataset 1 has 551 rows and 37 columns.
+* The dataset 2 has 319 rows and 37 columns.
+* The dataset 3 has 571 rows and 37 columns.
+* The dataset 4 has 232 rows and 37 columns.
+* The dataset 5 has 722 rows and 37 columns.
 * It consists of 1 object data (columns "food") and 34 numerical data (int64 for column "Caloric Value" and float64 for other columns).
 * There is no missing value or duplicated data.
 * All values of column "food" are unique.
 * We need to equate the units for some columns (Fat, Saturated Fats, Monounsaturated Fats, Polyunsaturated Fats, Carbohydrates, Sugars, Protein, Dietary Fiber, and Water) to milligrams.
+
+#### _Data Merging_
+As all the datasets have typical columns, to make the data analysis process easier, the data needs to be combined into one dataframe using `pd.concat()` function. 
 
 #### _Data Distribution_
 Most data have a skewed distribution and have some outliers. Besides that, some data also have different value ranges.
@@ -157,8 +160,6 @@ According to the heatmap above, some nutrients have little contribution to the c
 
 ---
 ## Data Preparation
-### Data Merging
-
 ### Data Conversion
 We need to convert data unit that is in grams to milligrams by using the following formula:
 
@@ -192,7 +193,7 @@ Second, normalize the data using `RobustScaler()` to scale the data by using the
 </div>
 
 ### Data Split
-Data was separated into features (X) and label/target (y). All nutrient columns are the features. Then, The nutrition Density column would be the target.
+Data was separated into features (X) and target (y). All nutrient columns are the features. Then, The nutrition Density column would be the target.
 
 Two data-splitting schemes were used for two different models as follows:
 1. `TEST_SIZE_1 = 0.1`. The data will be split into 90% `data_train`, 5% `data_validation`, and 5% `data_test`. 
@@ -317,7 +318,7 @@ The predictions were saved into a `.csv` file as follows:
 
 2. All data have skewed distribution and outliers, whereas the neural network model is more suitable for normally distributed data. Hence, the data needs to be transformed to logarithmic values and then normalized. By pre-processing the data this way, we can enhance the model's ability to learn meaningful patterns, leading to better performance and generalization on unseen data.
 
-3. Based on the model evaluation, the architecture design of Model 1 is better than Model 2. This is drawn from comparing metrics such as Mean Squared Error (MSE), Mean Absolute Error (MAE), and R-squared values between the two models. The choice of architecture such as the number of layers and nodes, loss functions, and optimization techniques used in Model 1, likely contributed to its performance. In addition, there are recommendations to develop a model with superior performance as follows:
+3. Based on the model evaluation, the architecture design and training scheme (as splitting data into 90% `data_train`, 5% `data_validation`, and 5% `data_test`) of Model 1 is better than Model 2. This is drawn from comparing metrics such as Mean Squared Error (MSE), Mean Absolute Error (MAE), and R-squared values between the two models. The choice of architecture such as the number of layers and nodes, loss functions, and optimization techniques used in Model 1, likely contributed to its performance. In addition, there are recommendations to develop a model with superior performance as follows:
 
     * Further refinement of feature selection may enhance model performance. Identifying key features that significantly impact nutrition density could lead to improved predictive accuracy.
     * Explore different architectures and hyperparameter settings then identify the optimal configuration for the model.
