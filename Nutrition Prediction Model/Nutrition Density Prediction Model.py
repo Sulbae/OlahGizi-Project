@@ -109,10 +109,7 @@
 # 35 | Nutrition Density | A metric indicating the nutrient richness of the food per calorie.
 
 # %% [markdown]
-# ### Explore
-
-# %% [markdown]
-# #### Import Libraries
+# ### Import Libraries
 
 # %%
 import numpy as np
@@ -132,7 +129,7 @@ from sklearn.model_selection import train_test_split
 from sklearn.metrics import mean_squared_error, mean_absolute_error, r2_score
 
 # %% [markdown]
-# #### Load Data
+# ### Load Data
 
 # %% [markdown]
 # There are 5 dataset need to be loaded
@@ -159,7 +156,10 @@ data_5_url = "https://raw.githubusercontent.com/Sulbae/OlahGizi-Project/refs/hea
 data_5_df = pd.read_csv(data_5_url)
 
 # %% [markdown]
-# #### Check Data
+# ### Check Data
+
+# %% [markdown]
+# #### Data Shape
 
 # %% [markdown]
 # Check the dataset shape
@@ -195,7 +195,7 @@ for data in all_data:
     print(data.columns.tolist())
 
 # %% [markdown]
-# ##### Check Data 1
+# #### Explore Data 1
 
 # %%
 data_1_df.info()
@@ -226,7 +226,42 @@ data_1_df.describe(include="all").T
 # * The food column has no duplicated data because all of them are unique
 
 # %% [markdown]
-# ##### Check Data 2
+# Check the data distribution of numerical columns using histogram and boxplot visualization
+
+# %%
+# Check the data distribution of numerical columns
+for col in data_1_df.select_dtypes(include="number").columns:
+    fig, axes = plt.subplots(nrows=1, ncols=2, figsize=(12, 5))
+    fig.suptitle(f"Distribution of {col}")
+
+    # Histogram
+    sns.histplot(data_1_df[col], kde=True, ax=axes[0])
+    axes[0].set_ylabel("Frequency")
+    # Box PLot
+    sns.boxplot(x=data_1_df[col], ax=axes[1])
+
+    plt.tight_layout()
+    plt.show()
+
+# %% [markdown]
+# * Almost all of data have skewed distribution and many outliers.
+
+# %% [markdown]
+# Check data correlation using heatmap correlation matrix visualization
+
+# %%
+# Check data correlation
+plt.figure(figsize=(30, 30))
+sns.heatmap(data_1_df.select_dtypes(include="number").corr(),
+            annot=True,
+            cmap="coolwarm",
+            vmin=-1,
+            vmax=1)
+plt.title("Correlation Matrix of Nutrient")
+plt.show()
+
+# %% [markdown]
+# #### Explore Data 2
 
 # %%
 data_2_df.info()
@@ -257,7 +292,42 @@ data_2_df.describe(include="all").T
 # * The food column has no duplicated data because all of them are unique
 
 # %% [markdown]
-# ##### Check Data 3
+# Check the data distribution of numerical columns using histogram and boxplot visualization
+
+# %%
+# Check the data distribution of numerical columns
+for col in data_2_df.select_dtypes(include="number").columns:
+    fig, axes = plt.subplots(nrows=1, ncols=2, figsize=(12, 5))
+    fig.suptitle(f"Distribution of {col}")
+
+    # Histogram
+    sns.histplot(data_2_df[col], kde=True, ax=axes[0])
+    axes[0].set_ylabel("Frequency")
+    # Box PLot
+    sns.boxplot(x=data_2_df[col], ax=axes[1])
+
+    plt.tight_layout()
+    plt.show()
+
+# %% [markdown]
+# * Almost all of data have skewed distribution and many outliers.
+
+# %% [markdown]
+# Check data correlation using heatmap correlation matrix visualization
+
+# %%
+# Check data correlation
+plt.figure(figsize=(30, 30))
+sns.heatmap(data_2_df.select_dtypes(include="number").corr(),
+            annot=True,
+            cmap="coolwarm",
+            vmin=-1,
+            vmax=1)
+plt.title("Correlation Matrix of Nutrient")
+plt.show()
+
+# %% [markdown]
+# #### Explore Data 3
 
 # %%
 data_3_df.info()
@@ -288,7 +358,42 @@ data_3_df.describe(include="all").T
 # * The food column has no duplicated data because all of them are unique
 
 # %% [markdown]
-# ##### Check Data 4
+# Check the data distribution of numerical columns using histogram and boxplot visualization
+
+# %%
+# Check the data distribution of numerical columns
+for col in data_3_df.select_dtypes(include="number").columns:
+    fig, axes = plt.subplots(nrows=1, ncols=2, figsize=(12, 5))
+    fig.suptitle(f"Distribution of {col}")
+
+    # Histogram
+    sns.histplot(data_3_df[col], kde=True, ax=axes[0])
+    axes[0].set_ylabel("Frequency")
+    # Box PLot
+    sns.boxplot(x=data_3_df[col], ax=axes[1])
+
+    plt.tight_layout()
+    plt.show()
+
+# %% [markdown]
+# * Almost all of data have skewed distribution and many outliers.
+
+# %% [markdown]
+# Check data correlation using heatmap correlation matrix visualization
+
+# %%
+# Check data correlation
+plt.figure(figsize=(30, 30))
+sns.heatmap(data_3_df.select_dtypes(include="number").corr(),
+            annot=True,
+            cmap="coolwarm",
+            vmin=-1,
+            vmax=1)
+plt.title("Correlation Matrix of Nutrient")
+plt.show()
+
+# %% [markdown]
+# #### Explore Data 4
 
 # %%
 data_4_df.info()
@@ -319,7 +424,42 @@ data_4_df.describe(include="all").T
 # * The food column has no duplicated data because all of them are unique
 
 # %% [markdown]
-# ##### Check Data 5
+# Check the data distribution of numerical columns using histogram and boxplot visualization
+
+# %%
+# Check the data distribution of numerical columns
+for col in data_4_df.select_dtypes(include="number").columns:
+    fig, axes = plt.subplots(nrows=1, ncols=2, figsize=(12, 5))
+    fig.suptitle(f"Distribution of {col}")
+
+    # Histogram
+    sns.histplot(data_4_df[col], kde=True, ax=axes[0])
+    axes[0].set_ylabel("Frequency")
+    # Box PLot
+    sns.boxplot(x=data_4_df[col], ax=axes[1])
+
+    plt.tight_layout()
+    plt.show()
+
+# %% [markdown]
+# * Almost all of data have skewed distribution and many outliers.
+
+# %% [markdown]
+# Check data correlation using heatmap correlation matrix visualization
+
+# %%
+# Check data correlation
+plt.figure(figsize=(30, 30))
+sns.heatmap(data_4_df.select_dtypes(include="number").corr(),
+            annot=True,
+            cmap="coolwarm",
+            vmin=-1,
+            vmax=1)
+plt.title("Correlation Matrix of Nutrient")
+plt.show()
+
+# %% [markdown]
+# #### Explore Data 5
 
 # %%
 data_5_df.info()
@@ -348,6 +488,44 @@ data_5_df.describe(include="all").T
 
 # %% [markdown]
 # * The food column has no duplicated data because all of them are unique
+
+# %% [markdown]
+# Check the data distribution of numerical columns using histogram and boxplot visualization
+
+# %%
+# Check the data distribution of numerical columns
+for col in data_5_df.select_dtypes(include="number").columns:
+    fig, axes = plt.subplots(nrows=1, ncols=2, figsize=(12, 5))
+    fig.suptitle(f"Distribution of {col}")
+
+    # Histogram
+    sns.histplot(data_5_df[col], kde=True, ax=axes[0])
+    axes[0].set_ylabel("Frequency")
+    # Box PLot
+    sns.boxplot(x=data_5_df[col], ax=axes[1])
+
+    plt.tight_layout()
+    plt.show()
+
+# %% [markdown]
+# * Almost all of data have skewed distribution and many outliers.
+
+# %% [markdown]
+# Check data correlation using heatmap correlation matrix visualization
+
+# %%
+# Check data correlation
+plt.figure(figsize=(30, 30))
+sns.heatmap(data_5_df.select_dtypes(include="number").corr(),
+            annot=True,
+            cmap="coolwarm",
+            vmin=-1,
+            vmax=1)
+plt.title("Correlation Matrix of Nutrient")
+plt.show()
+
+# %% [markdown]
+# ## Data Preparation
 
 # %% [markdown]
 # #### Merge Data
@@ -382,7 +560,7 @@ print(f"Duplicated data:", merged_data.duplicated().sum())
 merged_data.describe(include="all").T
 
 # %% [markdown]
-# #### Univariate Analysis
+# #### Check Distribution After Merge
 
 # %% [markdown]
 # Check the data distribution of numerical columns using histogram and boxplot visualization
@@ -406,7 +584,7 @@ for col in merged_data.select_dtypes(include="number").columns:
 # * Almost all of data have skewed distribution and many outliers.
 
 # %% [markdown]
-# #### Multivariate Analysis
+# #### Check Correlation After Merge
 
 # %% [markdown]
 # Check data correlation using heatmap correlation matrix visualization
@@ -433,9 +611,6 @@ plt.show()
 #     - Copper
 #     - Manganese
 #     - Selenium
-
-# %% [markdown]
-# ## Data Preparation
 
 # %% [markdown]
 # #### Convert Data
