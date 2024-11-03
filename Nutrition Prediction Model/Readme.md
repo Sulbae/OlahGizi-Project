@@ -130,7 +130,7 @@ As all the datasets have typical columns, to make the data analysis process easi
 Most data have a skewed distribution and have some outliers. Besides that, some data also have different value ranges.
 For example, this is a visualization of Caloric Value and Nutrition Density data:
 
-![Caloric Value](https://github.com/Sulbae/OlahGizi-Project/blob/main/Nutrition%20Prediction%20Model/Chart/Caloric%20Value.png)
+![Caloric Value](https://github.com/Sulbae/OlahGizi-Project/blob/main/Nutrition%20Prediction%20Model/Image/Caloric%20Value.png)
 
 ![Nutrition Density](https://github.com/Sulbae/OlahGizi-Project/blob/main/Nutrition%20Prediction%20Model/Chart/Nutrition%20Density.png)
 
