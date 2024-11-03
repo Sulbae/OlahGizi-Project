@@ -132,13 +132,13 @@ For example, this is a visualization of Caloric Value and Nutrition Density data
 
 ![Caloric Value](https://github.com/Sulbae/OlahGizi-Project/blob/main/Nutrition%20Prediction%20Model/Image/Caloric%20Value.png)
 
-![Nutrition Density](https://github.com/Sulbae/OlahGizi-Project/blob/main/Nutrition%20Prediction%20Model/Chart/Nutrition%20Density.png)
+![Nutrition Density](https://github.com/Sulbae/OlahGizi-Project/blob/main/Nutrition%20Prediction%20Model/Image/Nutrition%20Density.png)
 
 These outliers are possible and normal because each food has a unique value. Those are valid data points. Outliers can represent real variations in the nutritional content of foods.
 
 #### _Correlation_
 
-![Nutrient Correlation](https://github.com/Sulbae/OlahGizi-Project/blob/main/Nutrition%20Prediction%20Model/Chart/Nutrient%20Correlation.png)
+![Nutrient Correlation](https://github.com/Sulbae/OlahGizi-Project/blob/main/Nutrition%20Prediction%20Model/Image/Nutrient%20Correlation.png)
 
 According to the heatmap above, some nutrients have little contribution to the calculation of nutrition density such as Vitamin A, Vitamin B11, Vitamin B12, Vitamin D, Vitamin K, Copper, Manganese, and Selenium.
 
@@ -156,16 +156,16 @@ As we know almost all of the data have a skewed distribution, different value ra
 #### _Log Transform_
 First, transform the data into logarithmic value using `np.log()`. It will handle the outliers and reduce the skewness. The logarithmic transformation helps stabilize variance and reduce the effect of outliers by compressing the range of the data. For example, the Nutrient Density values ​​change to the following:
 
-![Log Transform Caloric Value](https://github.com/Sulbae/OlahGizi-Project/blob/main/Nutrition%20Prediction%20Model/Chart/Log%20Transform%20Caloric%20Value.png)
+![Log Transform Caloric Value](https://github.com/Sulbae/OlahGizi-Project/blob/main/Nutrition%20Prediction%20Model/Image/Log%20Transform%20Caloric%20Value.png)
 
-![Log Transform Nutrition Density](https://github.com/Sulbae/OlahGizi-Project/blob/main/Nutrition%20Prediction%20Model/Chart/Log%20Transform%20Nutrition%20Density.png)
+![Log Transform Nutrition Density](https://github.com/Sulbae/OlahGizi-Project/blob/main/Nutrition%20Prediction%20Model/Image/Log%20Transform%20Nutrition%20Density.png)
 
 #### _Normalization_
 Second, normalize the data using `RobustScaler()` to scale the data by using the median and Interquartile Range (IQR). This way helps to adjust the feature scales, which is crucial for neural networks as they are sensitive to the scale of input features. 
 
-![Normalized Caloric Value](https://github.com/Sulbae/OlahGizi-Project/blob/main/Nutrition%20Prediction%20Model/Chart/Normalized%20Caloric%20Value.png)
+![Normalized Caloric Value](https://github.com/Sulbae/OlahGizi-Project/blob/main/Nutrition%20Prediction%20Model/Image/Normalized%20Caloric%20Value.png)
 
-![Normalized Nutrition Density](https://github.com/Sulbae/OlahGizi-Project/blob/main/Nutrition%20Prediction%20Model/Chart/Normalized%20Nutrition%20Density.png)
+![Normalized Nutrition Density](https://github.com/Sulbae/OlahGizi-Project/blob/main/Nutrition%20Prediction%20Model/Image/Normalized%20Nutrition%20Density.png)
 
 ### Data Split
 Data was separated into features (X) and target (y). All nutrient columns are the features. Then, The nutrition Density column would be the target.
@@ -241,11 +241,11 @@ Since the prediction model is a regression model, it used 3 evaluation metrics a
 
 This is the result of training on Model 1:
 
-![Evaluation Model 1](https://github.com/Sulbae/OlahGizi-Project/blob/main/Nutrition%20Prediction%20Model/Chart/evaluation%20model%201.png)
+![Evaluation Model 1](https://github.com/Sulbae/OlahGizi-Project/blob/main/Nutrition%20Prediction%20Model/Image/evaluation%20model%201.png)
 
 This is the result of training on Model 2:
 
-![Evaluation Model 2](https://github.com/Sulbae/OlahGizi-Project/blob/main/Nutrition%20Prediction%20Model/Chart/evaluation%20model%202.png)
+![Evaluation Model 2](https://github.com/Sulbae/OlahGizi-Project/blob/main/Nutrition%20Prediction%20Model/Image/evaluation%20model%202.png)
 
 ---
 ### Model Comparison
@@ -259,7 +259,7 @@ That means Model 1 has a better architecture and design than Model 2. It has sho
 
 These are comparisons of the model prediction to the actual data.
 
-![Model Prediction](https://github.com/Sulbae/OlahGizi-Project/blob/main/Nutrition%20Prediction%20Model/Chart/Prediction%20Model.png)
+![Model Prediction](https://github.com/Sulbae/OlahGizi-Project/blob/main/Nutrition%20Prediction%20Model/Image/Prediction%20Model.png)
 
 ---
 ## Inference
@@ -268,7 +268,7 @@ Nutrition density prediction is done using dummy data containing the values ​�
 The predictions were saved into a `.csv` file as follows:
 [Prediction_of_dummy_data](https://raw.githubusercontent.com/Sulbae/OlahGizi-Project/refs/heads/main/Nutrition%20Prediction%20Model/predictions_of_dummy_data.csv)
 
-![Predicted Nutrition Density](https://github.com/Sulbae/OlahGizi-Project/blob/main/Nutrition%20Prediction%20Model/Chart/Predicted%20Nutrition%20Density.png)
+![Predicted Nutrition Density](https://github.com/Sulbae/OlahGizi-Project/blob/main/Nutrition%20Prediction%20Model/Image/Predicted%20Nutrition%20Density.png)
 
 ---
 ## Conclusion
