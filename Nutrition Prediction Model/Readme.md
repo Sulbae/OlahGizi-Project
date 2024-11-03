@@ -1,4 +1,4 @@
-# Project Report - Anggun Sulis Setyawan ✨
+# Machine Learning Project Report - Anggun Sulis Setyawan ✨
 
 <div style="display: flex; justify-content: center;">
   <div style="flex: 1; margin: 10px;">
@@ -10,7 +10,6 @@ _Image source_: [_optimisingnutrition.com_](https://www.google.com/url?sa=i&url=
 
 ---
 ## List of Contents
-- [Title](#Project-Report)
   - [Project Domain](#Project-Domain)
   - [Business Understanding](#Business-Understanding)
     - [Problem Statments](#Problem-Statments)
