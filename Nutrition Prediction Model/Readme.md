@@ -1,10 +1,6 @@
 # Machine Learning Project Report - Anggun Sulis Setyawan ✨
 
-<div style="display: flex; justify-content: center;">
-  <div style="flex: 1; margin: 10px;">
-    <img src="https://raw.githubusercontent.com/Sulbae/OlahGizi-Project/refs/heads/main/Nutrition%20Prediction%20Model/Image/nutrient-dense-foods-popular.png">
-  </div>
-</div>
+![nutrition-dense-food-popular](https://github.com/Sulbae/OlahGizi-Project/github/docs/blob/main/Nutrition%20Prediction%20Model/Image/nutrient-dense-foods-popular.png)
 
 _Image source_: [_optimisingnutrition.com_](https://www.google.com/url?sa=i&url=https%3A%2F%2Foptimisingnutrition.com%2Fnutrient-dense-foods-2%2F&psig=AOvVaw1j98i2HNvxR1PK_PekZK6L&ust=1730629346653000&source=images&cd=vfe&opi=89978449&ved=0CAMQjB1qFwoTCOCNovi2vYkDFQAAAAAdAAAAABAK)
 
@@ -211,7 +207,7 @@ The parameters for each model are set as follows:
 | Batch Normalization | 1 | 1 |
 | Dropout | 0.3 | 0.3 |
 | Dense Layers | 4 | 3 |
-| Epochs | 100 | 300 |
+| Epochs | 150 | 300 |
 | Batch | 128 | 128 |
 
 The model design can be seen in the following diagram:
