@@ -1,6 +1,6 @@
 # Machine Learning Project Report - Anggun Sulis Setyawan ✨
 
-![nutrition-dense-food-popular](https://github.com/Sulbae/OlahGizi-Project/blob/main/assets/Nutrition%20Prediction%20Model/Image/nutrient-dense-foods-popular.png?raw=true)
+![nutrition-dense-food-popular](https://github.com/Sulbae/OlahGizi-Project/blob/main/Nutrition%20Prediction%20Model/Image/nutrient-dense-foods-popular.png)
 
 _Image source_: [_optimisingnutrition.com_](https://www.google.com/url?sa=i&url=https%3A%2F%2Foptimisingnutrition.com%2Fnutrient-dense-foods-2%2F&psig=AOvVaw1j98i2HNvxR1PK_PekZK6L&ust=1730629346653000&source=images&cd=vfe&opi=89978449&ved=0CAMQjB1qFwoTCOCNovi2vYkDFQAAAAAdAAAAABAK)
 
