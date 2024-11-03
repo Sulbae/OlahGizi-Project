@@ -1,4 +1,4 @@
-# Project Report - Anggun Sulis Setyawan :sparkles:
+# Project Report - Anggun Sulis Setyawan
 
 <div style="display: flex; justify-content: center;">
   <div style="flex: 1; margin: 10px;">
