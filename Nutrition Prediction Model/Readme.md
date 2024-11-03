@@ -221,9 +221,9 @@ w \gets w - \eta \frac{\partial \text{Loss}}{\partial w}
 $$
 
 Where:
-- \( w \) is the weight,
-- \( \eta \) is the learning rate,
-- \( \frac{\partial \text{Loss}}{\partial w} \) is the gradient of the loss function to the weight.
+- w is the weight,
+- η (eta) is the learning rate,
+- ∂Loss/∂w is the gradient of the loss function to the weight.
 
 4. __Training Evaluation__
    *  _Validation_: At each `epoch` or every few epochs, the model is evaluated on the validation set. The loss function on the validation set is calculated to see how the model generalizes beyond the training data.
