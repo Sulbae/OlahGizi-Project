@@ -36,11 +36,7 @@ Adequate nutritional status is crucial for human growth and survival. Nutritiona
 
 In Indonesia, malnutrition—including both undernutrition and obesity—remains a serious issue. The 2018 Global Nutrition Report revealed that one in five child deaths globally is associated with poor dietary intake. Based on data from Indonesia's 2018 Basic Health Research, malnutrition cases include 30.8% stunting, 3.5% severe malnutrition, and other related conditions such as obesity (Zianka et al., 2024). Nutritional issues in children, if left unaddressed, may continue into adolescence and adulthood (Simbolon, 2013). Such conditions have far-reaching negative implications, as children with inadequate nutritional intake may experience delayed brain development and lower intelligence. Ultimately, this may hinder national economic growth and even increase poverty. The potential economic losses due to malnutrition are significant and may create a financial burden for the healthcare system in the future (Kemenkes RI, 2018).
 
-<div style="display: flex; justify-content: center;">
-  <div style="flex: 1; margin: 10px;">
-    <img src="https://raw.githubusercontent.com/Sulbae/OlahGizi-Project/refs/heads/main/Nutrition%20Prediction%20Model/Image/malnutrition%20trend%20in%20Indonesia.png">
-  </div>
-</div>
+![Malnutrition Trend in Indonesia](https://github.com/Sulbae/OlahGizi-Project/blob/main/Nutrition%20Prediction%20Model/Image/malnutrition%20trend%20in%20Indonesia.png)
 
 _Data source_: [_UNICEF Indonesia, 2023_](https://www.unicef.org/indonesia/nutrition)
 
@@ -134,23 +130,15 @@ As all the datasets have typical columns, to make the data analysis process easi
 Most data have a skewed distribution and have some outliers. Besides that, some data also have different value ranges.
 For example, this is a visualization of Caloric Value and Nutrition Density data:
 
-<div style="display: flex; justify-content: space-between;">
-  <div style="flex: 1; margin-right: 10px;">
-    <img src="https://raw.githubusercontent.com/Sulbae/OlahGizi-Project/refs/heads/main/Nutrition%20Prediction%20Model/Chart/Caloric%20Value.png">
-  </div>
-  <div style="flex: 1; margin-left: 10px;">
-    <img src="https://raw.githubusercontent.com/Sulbae/OlahGizi-Project/refs/heads/main/Nutrition%20Prediction%20Model/Chart/Nutrition%20Density.png">
-  </div>
-</div>
+![Caloric Value](https://github.com/Sulbae/OlahGizi-Project/blob/main/Nutrition%20Prediction%20Model/Chart/Caloric%20Value.png)
+
+![Nutrition Density](https://github.com/Sulbae/OlahGizi-Project/blob/main/Nutrition%20Prediction%20Model/Chart/Nutrition%20Density.png)
 
 These outliers are possible and normal because each food has a unique value. Those are valid data points. Outliers can represent real variations in the nutritional content of foods.
 
 #### _Correlation_
-<div style="display: flex; justify-content: center;">
-  <div style="flex: 1; margin: 10px;">
-    <img src="https://raw.githubusercontent.com/Sulbae/OlahGizi-Project/refs/heads/main/Nutrition%20Prediction%20Model/Chart/Nutrient%20Correlation.png">
-  </div>
-</div>
+
+![Nutrient Correlation](https://github.com/Sulbae/OlahGizi-Project/blob/main/Nutrition%20Prediction%20Model/Chart/Nutrient%20Correlation.png)
 
 According to the heatmap above, some nutrients have little contribution to the calculation of nutrition density such as Vitamin A, Vitamin B11, Vitamin B12, Vitamin D, Vitamin K, Copper, Manganese, and Selenium.
 
@@ -167,26 +155,17 @@ As mentioned, some nutrients almost do not correlate with nutrition density calc
 As we know almost all of the data have a skewed distribution, different value ranges, and outliers. 
 #### _Log Transform_
 First, transform the data into logarithmic value using `np.log()`. It will handle the outliers and reduce the skewness. The logarithmic transformation helps stabilize variance and reduce the effect of outliers by compressing the range of the data. For example, the Nutrient Density values ​​change to the following:
-<div style="display: flex; justify-content: space-between;">
-  <div style="flex: 1; margin-right: 10px;">
-    <img src="https://raw.githubusercontent.com/Sulbae/OlahGizi-Project/refs/heads/main/Nutrition%20Prediction%20Model/Chart/Log%20Transform%20Caloric%20Value.png">
-  </div>
-  <div style="flex: 1; margin-left: 10px;">
-    <img src="https://raw.githubusercontent.com/Sulbae/OlahGizi-Project/refs/heads/main/Nutrition%20Prediction%20Model/Chart/Log%20Transform%20Nutrition%20Density.png">
-  </div>
-</div>
+
+![Log Transform Caloric Value](https://github.com/Sulbae/OlahGizi-Project/blob/main/Nutrition%20Prediction%20Model/Chart/Log%20Transform%20Caloric%20Value.png)
+
+![Log Transform Nutrition Density](https://github.com/Sulbae/OlahGizi-Project/blob/main/Nutrition%20Prediction%20Model/Chart/Log%20Transform%20Nutrition%20Density.png)
 
 #### _Normalization_
 Second, normalize the data using `RobustScaler()` to scale the data by using the median and Interquartile Range (IQR). This way helps to adjust the feature scales, which is crucial for neural networks as they are sensitive to the scale of input features. 
 
-<div style="display: flex; justify-content: space-between;">
-  <div style="flex: 1; margin-right: 10px;">
-    <img src="https://raw.githubusercontent.com/Sulbae/OlahGizi-Project/refs/heads/main/Nutrition%20Prediction%20Model/Chart/Normalized%20Caloric%20Value.png">
-  </div>
-  <div style="flex: 1; margin-left: 10px;">
-    <img src="https://raw.githubusercontent.com/Sulbae/OlahGizi-Project/refs/heads/main/Nutrition%20Prediction%20Model/Chart/Normalized%20Nutrition%20Density.png">
-  </div>
-</div>
+![Normalized Caloric Value](https://github.com/Sulbae/OlahGizi-Project/blob/main/Nutrition%20Prediction%20Model/Chart/Normalized%20Caloric%20Value.png)
+
+![Normalized Nutrition Density](https://github.com/Sulbae/OlahGizi-Project/blob/main/Nutrition%20Prediction%20Model/Chart/Normalized%20Nutrition%20Density.png)
 
 ### Data Split
 Data was separated into features (X) and target (y). All nutrient columns are the features. Then, The nutrition Density column would be the target.
@@ -211,11 +190,8 @@ The parameters for each model are set as follows:
 | Batch | 128 | 128 |
 
 The model design can be seen in the following diagram:
-<div style="display: flex; justify-content: center;">
-  <div style="flex: 1; margin: 10px;">
-    <img src="https://raw.githubusercontent.com/Sulbae/OlahGizi-Project/refs/heads/main/Nutrition%20Prediction%20Model/Image/MODEL%20STRUCTURE.png">
-  </div>
-</div>
+
+![Model Structure](https://github.com/Sulbae/OlahGizi-Project/blob/main/Nutrition%20Prediction%20Model/Image/MODEL%20STRUCTURE.png)
 
 ### Training
 The model training stage consists of the following steps:
@@ -264,18 +240,12 @@ Since the prediction model is a regression model, it used 3 evaluation metrics a
 | R-squared | R-squared represents the proportion of the data variability that the model can explain. R-squared values range from 0 to 1, with values closer to 1 indicating that the model explains the data well. | $$R^2 = 1 - { Σ (yᵢ - ŷᵢ)² / Σ (yᵢ - ȳ)² }$$ |
 
 This is the result of training on Model 1:
-<div style="display: flex; justify-content: center;">
-  <div style="flex: 1; margin: 10px;">
-    <img src="https://raw.githubusercontent.com/Sulbae/OlahGizi-Project/refs/heads/main/Nutrition%20Prediction%20Model/Chart/evaluation%20model%201.png">
-  </div>
-</div>
+
+![Evaluation Model 1](https://github.com/Sulbae/OlahGizi-Project/blob/main/Nutrition%20Prediction%20Model/Chart/evaluation%20model%201.png)
 
 This is the result of training on Model 2:
-<div style="display: flex; justify-content: center;">
-  <div style="flex: 1; margin: 10px;">
-    <img src="https://raw.githubusercontent.com/Sulbae/OlahGizi-Project/refs/heads/main/Nutrition%20Prediction%20Model/Chart/evaluation%20model%202.png">
-  </div>
-</div>
+
+![Evaluation Model 2](https://github.com/Sulbae/OlahGizi-Project/blob/main/Nutrition%20Prediction%20Model/Chart/evaluation%20model%202.png)
 
 ---
 ### Model Comparison
@@ -289,11 +259,7 @@ That means Model 1 has a better architecture and design than Model 2. It has sho
 
 These are comparisons of the model prediction to the actual data.
 
-<div style="display: flex; justify-content: center;">
-  <div style="flex: 1; margin: 10px;">
-    <img src="https://raw.githubusercontent.com/Sulbae/OlahGizi-Project/refs/heads/main/Nutrition%20Prediction%20Model/Chart/Prediction%20Model.png">
-  </div>
-</div>
+![Model Prediction](https://github.com/Sulbae/OlahGizi-Project/blob/main/Nutrition%20Prediction%20Model/Chart/Prediction%20Model.png)
 
 ---
 ## Inference
@@ -302,11 +268,7 @@ Nutrition density prediction is done using dummy data containing the values ​�
 The predictions were saved into a `.csv` file as follows:
 [Prediction_of_dummy_data](https://raw.githubusercontent.com/Sulbae/OlahGizi-Project/refs/heads/main/Nutrition%20Prediction%20Model/predictions_of_dummy_data.csv)
 
-<div style="display: flex; justify-content: center;">
-  <div style="flex: 1; margin: 10px;">
-    <img src="https://raw.githubusercontent.com/Sulbae/OlahGizi-Project/refs/heads/main/Nutrition%20Prediction%20Model/Chart/Predicted%20Nutrition%20Density.png">
-  </div>
-</div>
+![Predicted Nutrition Density](https://github.com/Sulbae/OlahGizi-Project/blob/main/Nutrition%20Prediction%20Model/Chart/Predicted%20Nutrition%20Density.png)
 
 ---
 ## Conclusion
