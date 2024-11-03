@@ -1,5 +1,4 @@
-# Project Report - Anggun Sulis Setyawan :sparkles:
-# Basic Neural Network Model for Predicting Nutrient Density of Food Consumption
+# Machine Learning Project Report - Anggun Sulis Setyawan ✨
 
 <div style="display: flex; justify-content: center;">
   <div style="flex: 1; margin: 10px;">
@@ -11,7 +10,6 @@ _Image source_: [_optimisingnutrition.com_](https://www.google.com/url?sa=i&url=
 
 ---
 ## List of Contents
-- [Title](#Basic-Neural-Network-Model-for-Predicting-Nutrient-Density-of-Food-Consumption)
   - [Project Domain](#Project-Domain)
   - [Business Understanding](#Business-Understanding)
     - [Problem Statments](#Problem-Statments)
@@ -60,20 +58,19 @@ _Keywords: Malnutrition, Nutrition Density, Neural Network, TensorFlow_
 
 ---
 ## Business Understanding
-Based on the background above, it can be determined that:
+Based on the background above, we need to develop "Basic Neural Network Model for Predicting Nutrition Density of Food Consumption". So, it can be determined that:
 ### Problem Statements
-  1. How would the model work in predicting nutrition density?
+  1. How would the neural netowork model work in predicting nutrition density?
   2. How to carry out good data processing that fits the model architecture?
-  3. What factors need to be considered to develop the best model?
+  3. How to develop the best nutrition density prediction model?
 ### Goals
   1. Understanding the way neural network model works in predicting nutrition density.
-  2. Processing raw data into clean data that is ready to be used to train neural network models.
-  3. Designing the best model with the smallest prediction error.
+  2. Processing raw data into clean data ready to be used to train neural network models.
+  3. Designing the model architecture and configuration with the smallest prediction error (MSE < 0.1, MAE < 0.1, R-squared >= 0.99).
 ### Solution Statements
   1. Determine the dataset to be used and the expected output so we can find out the right type of prediction architecture.
   2. Carrying out an iterative process that includes Exploratory Data Analysis to understand data characteristics and data transformation to adjust the data format to the neural network model architecture.
-  3. Carrying out feature engineering stages to select features that most influence nutrition density values and hyperparameter tuning (For example, training 2 models with different architecture configurations) to optimize model performance.
-
+  3. Carrying out feature selection to choose features that most influence the nutrition density values and hyperparameter setting (For example, training 2 models with different architecture, data split scheme (`test_size_1 = 0.1`, `test_size_2 = 0.2`) and parameter configurations) to optimize model performance.
 ---
 ## Data Understanding
 ### Dataset
@@ -123,16 +120,19 @@ The Comprehensive Nutritional Food Database provides detailed nutritional inform
 
 ### Explore
 According to data exploration, there is some basic information such as: 
-* The dataset has 2395 rows and 35 columns.
-* It consists of object data (columns "food") and numerical data (int64 for column "Caloric Value" and float64 for other columns).
+* There are 5 datasets with different amounts of rows but have typical columns.
+* The dataset 1 has 551 rows and 37 columns.
+* The dataset 2 has 319 rows and 37 columns.
+* The dataset 3 has 571 rows and 37 columns.
+* The dataset 4 has 232 rows and 37 columns.
+* The dataset 5 has 722 rows and 37 columns.
+* It consists of 1 object data (columns "food") and 34 numerical data (int64 for column "Caloric Value" and float64 for other columns).
 * There is no missing value or duplicated data.
 * All values of column "food" are unique.
 * We need to equate the units for some columns (Fat, Saturated Fats, Monounsaturated Fats, Polyunsaturated Fats, Carbohydrates, Sugars, Protein, Dietary Fiber, and Water) to milligrams.
 
-#### _Data Conversion_
-We need to convert data unit that is in grams to milligrams by using the following formula:
-
-`x (g) = x × 1000 (mg)`
+#### _Data Merging_
+As all the datasets have typical columns, to make the data analysis process easier, the data needs to be combined into one dataframe using `pd.concat()` function. 
 
 #### _Data Distribution_
 Most data have a skewed distribution and have some outliers. Besides that, some data also have different value ranges.
@@ -160,7 +160,11 @@ According to the heatmap above, some nutrients have little contribution to the c
 
 ---
 ## Data Preparation
-### Feature Engineering
+### Data Conversion
+We need to convert data unit that is in grams to milligrams by using the following formula:
+
+`x (g) = x × 1000 (mg)`
+### Features Selection
 As mentioned, some nutrients almost do not correlate with nutrition density calculation. Hence we need to eliminate it to reduce the features to be trained. If a feature has a correlation value close to zero to the target, this indicates that the feature does not have a significant linear relationship with the target and is unlikely to make a significant contribution to the prediction model.
 
 ### Data Normalization
@@ -177,7 +181,8 @@ First, transform the data into logarithmic value using `np.log()`. It will handl
 </div>
 
 #### _Normalization_
-Second, normalize the data using `RobustScaler()` to transform the distribution to be as close to normal as possible. Data normalization helps in adjusting the feature scales, which is crucial for neural networks as they are sensitive to the scale of input features. It will change the data to be normally distributed or close to it.
+Second, normalize the data using `RobustScaler()` to scale the data by using the median and Interquartile Range (IQR). This way helps to adjust the feature scales, which is crucial for neural networks as they are sensitive to the scale of input features. 
+
 <div style="display: flex; justify-content: space-between;">
   <div style="flex: 1; margin-right: 10px;">
     <img src="https://raw.githubusercontent.com/Sulbae/OlahGizi-Project/refs/heads/main/Nutrition%20Prediction%20Model/Chart/Normalized%20Caloric%20Value.png">
@@ -188,7 +193,9 @@ Second, normalize the data using `RobustScaler()` to transform the distribution 
 </div>
 
 ### Data Split
-Two data-splitting schemes will be used for two different models as follows:
+Data was separated into features (X) and target (y). All nutrient columns are the features. Then, The nutrition Density column would be the target.
+
+Two data-splitting schemes were used for two different models as follows:
 1. `TEST_SIZE_1 = 0.1`. The data will be split into 90% `data_train`, 5% `data_validation`, and 5% `data_test`. 
 2. `TEST_SIZE_2 = 0.2`. The data will be split into 80% `data_train`, 10% `data_validation`, and 10% `data_test`.
 
@@ -251,6 +258,8 @@ $$
 
 ---
 ## Evaluation
+Since the prediction model is a regression model, it used 3 evaluation metrics as Mean Absolute Error (MAE), Mean Squared Error (MSE), and R-squared. By using those metrics, the best prediction model can be developed.
+
 ### Metrics Description
 | Metrics | Description | Formula |
 |--------|-------------|---------|
@@ -280,7 +289,9 @@ This is the result of training on Model 2:
 | MSE | 0.0042 | 0.0114 | Model 1 has a smaller MSE than Model 2. This suggests that Model 1 is not only more accurate but also has more consistent small errors. Model 1 either handles outliers better or large errors occur less frequently compared to Model 2. |
 | R-squared | 0.9917 | 0.9768 | Model 1 explains the relationship between input features and target values better than Model 2. |
 
-So, Model 1 has shown lower error rates in predicting nutrition density. These are comparisons of the model prediction to the actual data.
+That means Model 1 has a better architecture and design than Model 2. It has shown lower error rates in predicting nutrition density. Proper parameter configuration (as mentioned in solution statement number 3) helps to build a highly accurate prediction model. In addition, the model met the criteria we have set in the goals statements.
+
+These are comparisons of the model prediction to the actual data.
 
 <div style="display: flex; justify-content: center;">
   <div style="flex: 1; margin: 10px;">
@@ -307,7 +318,7 @@ The predictions were saved into a `.csv` file as follows:
 
 2. All data have skewed distribution and outliers, whereas the neural network model is more suitable for normally distributed data. Hence, the data needs to be transformed to logarithmic values and then normalized. By pre-processing the data this way, we can enhance the model's ability to learn meaningful patterns, leading to better performance and generalization on unseen data.
 
-3. Based on the model evaluation, the architecture design of Model 1 is better than Model 2. This is drawn from comparing metrics such as Mean Squared Error (MSE), Mean Absolute Error (MAE), and R-squared values between the two models. The choice of architecture such as the number of layers and nodes, loss functions, and optimization techniques used in Model 1, likely contributed to its performance. In addition, there are recommendations to develop a model with superior performance as follows:
+3. Based on the model evaluation, the architecture design and training scheme (as splitting data into 90% `data_train`, 5% `data_validation`, and 5% `data_test`) of Model 1 is better than Model 2. This is drawn from comparing metrics such as Mean Squared Error (MSE), Mean Absolute Error (MAE), and R-squared values between the two models. The choice of architecture such as the number of layers and nodes, loss functions, and optimization techniques used in Model 1, likely contributed to its performance. In addition, there are recommendations to develop a model with superior performance as follows:
 
     * Further refinement of feature selection may enhance model performance. Identifying key features that significantly impact nutrition density could lead to improved predictive accuracy.
     * Explore different architectures and hyperparameter settings then identify the optimal configuration for the model.
