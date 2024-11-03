@@ -1,6 +1,6 @@
 # Machine Learning Project Report - Anggun Sulis Setyawan ✨
 
-![nutrition-dense-food-popular](https://github.com/Sulbae/OlahGizi-Project/blob/main/Nutrition%20Prediction%20Model/Image/nutrient-dense-foods-popular.png)
+![nutrient-dense-foods-popular](https://github.com/user-attachments/assets/b5146f55-d2d2-4975-b3bb-bbd73351091f)
 
 _Image source_: [_optimisingnutrition.com_](https://www.google.com/url?sa=i&url=https%3A%2F%2Foptimisingnutrition.com%2Fnutrient-dense-foods-2%2F&psig=AOvVaw1j98i2HNvxR1PK_PekZK6L&ust=1730629346653000&source=images&cd=vfe&opi=89978449&ved=0CAMQjB1qFwoTCOCNovi2vYkDFQAAAAAdAAAAABAK)
 
@@ -36,7 +36,7 @@ Adequate nutritional status is crucial for human growth and survival. Nutritiona
 
 In Indonesia, malnutrition—including both undernutrition and obesity—remains a serious issue. The 2018 Global Nutrition Report revealed that one in five child deaths globally is associated with poor dietary intake. Based on data from Indonesia's 2018 Basic Health Research, malnutrition cases include 30.8% stunting, 3.5% severe malnutrition, and other related conditions such as obesity (Zianka et al., 2024). Nutritional issues in children, if left unaddressed, may continue into adolescence and adulthood (Simbolon, 2013). Such conditions have far-reaching negative implications, as children with inadequate nutritional intake may experience delayed brain development and lower intelligence. Ultimately, this may hinder national economic growth and even increase poverty. The potential economic losses due to malnutrition are significant and may create a financial burden for the healthcare system in the future (Kemenkes RI, 2018).
 
-![Malnutrition Trend in Indonesia](https://github.com/Sulbae/OlahGizi-Project/blob/main/Nutrition%20Prediction%20Model/Image/malnutrition%20trend%20in%20Indonesia.png)
+![malnutrition trend in Indonesia](https://github.com/user-attachments/assets/57b41328-fb31-4e59-b41c-5e05b5c4b6c0)
 
 _Data source_: [_UNICEF Indonesia, 2023_](https://www.unicef.org/indonesia/nutrition)
 
@@ -121,33 +121,34 @@ According to data exploration, there is some basic information such as:
 * It consists of 1 object data (columns "food") and 34 numerical data (int64 for column "Caloric Value" and float64 for other columns).
 * There is no missing value or duplicated data.
 * All values of column "food" are unique.
-* We need to equate the units for some columns (Fat, Saturated Fats, Monounsaturated Fats, Polyunsaturated Fats, Carbohydrates, Sugars, Protein, Dietary Fiber, and Water) to milligrams.
-
-#### _Data Merging_
-As all the datasets have typical columns, to make the data analysis process easier, the data needs to be combined into one dataframe using `pd.concat()` function. 
-
-#### _Data Distribution_
-Most data have a skewed distribution and have some outliers. Besides that, some data also have different value ranges.
-For example, this is a visualization of Caloric Value and Nutrition Density data:
-
-![Caloric Value](https://github.com/Sulbae/OlahGizi-Project/blob/main/Nutrition%20Prediction%20Model/Image/Caloric%20Value.png)
-
-![Nutrition Density](https://github.com/Sulbae/OlahGizi-Project/blob/main/Nutrition%20Prediction%20Model/Image/Nutrition%20Density.png)
-
-These outliers are possible and normal because each food has a unique value. Those are valid data points. Outliers can represent real variations in the nutritional content of foods.
-
-#### _Correlation_
-
-![Nutrient Correlation](https://github.com/Sulbae/OlahGizi-Project/blob/main/Nutrition%20Prediction%20Model/Image/Nutrient%20Correlation.png)
-
-According to the heatmap above, some nutrients have little contribution to the calculation of nutrition density such as Vitamin A, Vitamin B11, Vitamin B12, Vitamin D, Vitamin K, Copper, Manganese, and Selenium.
+* We need to equate the units for some columns (Fat, Saturated Fats, Monounsaturated Fats, Polyunsaturated Fats, Carbohydrates, Sugars, Protein, Dietary Fiber, and Water) to milligrams. 
+* Almost all of the data have skewed distribution and many outliers.
 
 ---
 ## Data Preparation
-### Data Conversion
-We need to convert data unit that is in grams to milligrams by using the following formula:
+#### _Data Merging_
+As all the datasets have typical columns, to make the data analysis process easier, the data needs to be combined into one dataframe using `pd.concat()` function.
 
+#### _Check Data Distribution After Merge_
+Most data have a skewed distribution and have some outliers. Besides that, some data also have different value ranges.
+For example, this is a visualization of Caloric Value and Nutrition Density data:
+
+![Caloric Value](https://github.com/user-attachments/assets/2d7b3b45-88cf-4715-941c-cf2c932f186f)
+
+![Nutrition Density](https://github.com/user-attachments/assets/413f821d-1a6d-4c79-b9a1-bab2998ba893)
+
+These outliers are possible and normal because each food has a unique value. Those are valid data points. Outliers can represent real variations in the nutritional content of foods.
+
+#### _Check Correlation After Merge_
+
+![Nutrient Correlation](https://github.com/user-attachments/assets/1908d024-18a3-4006-ad7f-c652ccc884ec)
+
+According to the heatmap above, some nutrients have little contribution to the calculation of nutrition density such as Vitamin A, Vitamin B11, Vitamin B12, Vitamin D, Vitamin K, Copper, Manganese, and Selenium.
+
+### Data Conversion
+Next, we need to convert data unit that is in grams to milligrams by using the following formula:
 `x (g) = x × 1000 (mg)`
+
 ### Features Selection
 As mentioned, some nutrients almost do not correlate with nutrition density calculation. Hence we need to eliminate it to reduce the features to be trained. If a feature has a correlation value close to zero to the target, this indicates that the feature does not have a significant linear relationship with the target and is unlikely to make a significant contribution to the prediction model.
 
@@ -156,16 +157,16 @@ As we know almost all of the data have a skewed distribution, different value ra
 #### _Log Transform_
 First, transform the data into logarithmic value using `np.log()`. It will handle the outliers and reduce the skewness. The logarithmic transformation helps stabilize variance and reduce the effect of outliers by compressing the range of the data. For example, the Nutrient Density values ​​change to the following:
 
-![Log Transform Caloric Value](https://github.com/Sulbae/OlahGizi-Project/blob/main/Nutrition%20Prediction%20Model/Image/Log%20Transform%20Caloric%20Value.png)
+![Log Transform Caloric Value](https://github.com/user-attachments/assets/6dedeeff-10b1-494f-9a5b-8754546971a1)
 
-![Log Transform Nutrition Density](https://github.com/Sulbae/OlahGizi-Project/blob/main/Nutrition%20Prediction%20Model/Image/Log%20Transform%20Nutrition%20Density.png)
+![Log Transform Nutrition Density](https://github.com/user-attachments/assets/515892cd-6030-406c-b046-5acec1697256)
 
 #### _Normalization_
 Second, normalize the data using `RobustScaler()` to scale the data by using the median and Interquartile Range (IQR). This way helps to adjust the feature scales, which is crucial for neural networks as they are sensitive to the scale of input features. 
 
-![Normalized Caloric Value](https://github.com/Sulbae/OlahGizi-Project/blob/main/Nutrition%20Prediction%20Model/Image/Normalized%20Caloric%20Value.png)
+![Normalized Caloric Value](https://github.com/user-attachments/assets/38802f3d-1625-4b9b-8859-c6963871048a)
 
-![Normalized Nutrition Density](https://github.com/Sulbae/OlahGizi-Project/blob/main/Nutrition%20Prediction%20Model/Image/Normalized%20Nutrition%20Density.png)
+![Normalized Nutrition Density](https://github.com/user-attachments/assets/3866fedd-f1ed-4afe-802c-e24478deacad)
 
 ### Data Split
 Data was separated into features (X) and target (y). All nutrient columns are the features. Then, The nutrition Density column would be the target.
@@ -191,7 +192,7 @@ The parameters for each model are set as follows:
 
 The model design can be seen in the following diagram:
 
-![Model Structure](https://github.com/Sulbae/OlahGizi-Project/blob/main/Nutrition%20Prediction%20Model/Image/MODEL%20STRUCTURE.png)
+![MODEL STRUCTURE](https://github.com/user-attachments/assets/c1423c3a-e06c-4539-bdab-acce70558162)
 
 ### Training
 The model training stage consists of the following steps:
@@ -235,17 +236,17 @@ Since the prediction model is a regression model, it used 3 evaluation metrics a
 ### Metrics Description
 | Metrics | Description | Formula |
 |--------|-------------|---------|
-| Mean Absolute Error (MAE) | MAE measures the average absolute error between the model's predictions and the actual values. A smaller MAE value indicates better model performance. |  $$\( \text{MAE} = \frac{1}{n} \sum_{i=1}^{n} (y_i - \hat{y}_i) \)$$ , where the errors are considered in absolute terms. |
-| Mean Squared Error (MSE) | MSE calculates the average of the squared errors between predictions and actual values, making it more sensitive to larger errors (outliers) than MAE | $$\( \text{MSE} = \frac{1}{n} \sum_{i=1}^{n} (y_i - \hat{y}_i)^2 \)$$ |
+| Mean Absolute Error (MAE) | MAE measures the average absolute error between the model's predictions and the actual values. A smaller MAE value indicates better model performance. |  $$\text{MAE} = \frac{1}{n} \sum_{i=1}^{n} (y_i - \hat{y}_i)$$, where the errors are considered in absolute terms. |
+| Mean Squared Error (MSE) | MSE calculates the average of the squared errors between predictions and actual values, making it more sensitive to larger errors (outliers) than MAE | $$\text{MSE} = \frac{1}{n} \sum_{i=1}^{n} (y_i - \hat{y}_i)^2$$ |
 | R-squared | R-squared represents the proportion of the data variability that the model can explain. R-squared values range from 0 to 1, with values closer to 1 indicating that the model explains the data well. | $$R^2 = 1 - { Σ (yᵢ - ŷᵢ)² / Σ (yᵢ - ȳ)² }$$ |
 
 This is the result of training on Model 1:
 
-![Evaluation Model 1](https://github.com/Sulbae/OlahGizi-Project/blob/main/Nutrition%20Prediction%20Model/Image/evaluation%20model%201.png)
+![evaluation model 1](https://github.com/user-attachments/assets/555012f1-ead8-449d-9e4e-e167c39ce1f8)
 
 This is the result of training on Model 2:
 
-![Evaluation Model 2](https://github.com/Sulbae/OlahGizi-Project/blob/main/Nutrition%20Prediction%20Model/Image/evaluation%20model%202.png)
+![evaluation model 2](https://github.com/user-attachments/assets/126d990f-fee5-4252-826f-536a2efcdc49)
 
 ---
 ### Model Comparison
@@ -259,7 +260,7 @@ That means Model 1 has a better architecture and design than Model 2. It has sho
 
 These are comparisons of the model prediction to the actual data.
 
-![Model Prediction](https://github.com/Sulbae/OlahGizi-Project/blob/main/Nutrition%20Prediction%20Model/Image/Prediction%20Model.png)
+![Prediction Model](https://github.com/user-attachments/assets/6dea88cd-38e3-4f06-97ed-7cc049e456ca)
 
 ---
 ## Inference
@@ -268,7 +269,7 @@ Nutrition density prediction is done using dummy data containing the values ​�
 The predictions were saved into a `.csv` file as follows:
 [Prediction_of_dummy_data](https://raw.githubusercontent.com/Sulbae/OlahGizi-Project/refs/heads/main/Nutrition%20Prediction%20Model/predictions_of_dummy_data.csv)
 
-![Predicted Nutrition Density](https://github.com/Sulbae/OlahGizi-Project/blob/main/Nutrition%20Prediction%20Model/Image/Predicted%20Nutrition%20Density.png)
+![Predicted Nutrition Density](https://github.com/user-attachments/assets/f06ba568-c713-4245-906a-cd8a7276b5bd)
 
 ---
 ## Conclusion
@@ -276,7 +277,7 @@ The predictions were saved into a `.csv` file as follows:
 
 2. All data have skewed distribution and outliers, whereas the neural network model is more suitable for normally distributed data. Hence, the data needs to be transformed to logarithmic values and then normalized. By pre-processing the data this way, we can enhance the model's ability to learn meaningful patterns, leading to better performance and generalization on unseen data.
 
-3. Based on the model evaluation, the architecture design and training scheme (as splitting data into 90% `data_train`, 5% `data_validation`, and 5% `data_test`) of Model 1 is better than Model 2. This is drawn from comparing metrics such as Mean Squared Error (MSE), Mean Absolute Error (MAE), and R-squared values between the two models. The choice of architecture such as the number of layers and nodes, loss functions, and optimization techniques used in Model 1, likely contributed to its performance. In addition, there are recommendations to develop a model with superior performance as follows:
+3. Based on the model evaluation, the architecture design and training scheme (splitting data into 90% `data_train`, 5% `data_validation`, and 5% `data_test`) of Model 1 is better than Model 2. This is drawn from comparing metrics such as Mean Squared Error (MSE), Mean Absolute Error (MAE), and R-squared values between the two models. The choice of architecture such as the number of layers and nodes, loss functions, and optimization techniques used in Model 1, likely contributed to its performance. In addition, there are recommendations to develop a model with superior performance as follows:
 
     * Further refinement of feature selection may enhance model performance. Identifying key features that significantly impact nutrition density could lead to improved predictive accuracy.
     * Explore different architectures and hyperparameter settings then identify the optimal configuration for the model.
