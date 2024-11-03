@@ -123,6 +123,7 @@ According to data exploration, there is some basic information such as:
 * All values of column "food" are unique.
 * We need to equate the units for some columns (Fat, Saturated Fats, Monounsaturated Fats, Polyunsaturated Fats, Carbohydrates, Sugars, Protein, Dietary Fiber, and Water) to milligrams. 
 * Almost all of the data (data_1 to data_5) have skewed distribution and many outliers. For example, this is the visualization of dataset 1:
+
 ![ND_data_1](https://github.com/user-attachments/assets/735f3957-3357-476b-9242-a26514404409)
 
 
