@@ -60,18 +60,17 @@ _Keywords: Malnutrition, Nutrition Density, Neural Network, TensorFlow_
 ## Business Understanding
 Based on the background above, we need to develop "Basic Neural Network Model for Predicting Nutrition Density of Food Consumption". So, it can be determined that:
 ### Problem Statements
-  1. How would the model work in predicting nutrition density?
-  2. How do we carry out good data processing that fits the model architecture?
-  3. What factors need to be considered to develop the best model?
+  1. How would the neural netowork model work in predicting nutrition density?
+  2. How to carry out good data processing that fits the model architecture?
+  3. How to develop the best nutrition density prediction model?
 ### Goals
-  1. Understanding how the neural network model predicts nutrition density.
+  1. Understanding the way neural network model works in predicting nutrition density.
   2. Processing raw data into clean data ready to be used to train neural network models.
-  3. Designing the best model with the smallest prediction error.
+  3. Designing the model architecture and configuration with the smallest prediction error (MSE < 0.1, MAE < 0.1, R-squared >= 0.99).
 ### Solution Statements
   1. Determine the dataset to be used and the expected output so we can find out the right type of prediction architecture.
   2. Carrying out an iterative process that includes Exploratory Data Analysis to understand data characteristics and data transformation to adjust the data format to the neural network model architecture.
-  3. Carrying out feature engineering stages to select features that most influence nutrition density values and hyperparameter tuning (For example, training 2 models with different architecture configurations) to optimize model performance.
-
+  3. Carrying out feature selection to choose features that most influence the nutrition density values and hyperparameter setting (For example, training 2 models with different architecture, data split scheme (`test_size_1 = 0.1`, `test_size_2 = 0.2`) and parameter configurations) to optimize model performance.
 ---
 ## Data Understanding
 ### Dataset
