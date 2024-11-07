@@ -1,4 +1,4 @@
-# Machine Learning Project Report - Anggun Sulis Setyawan ✨
+# Predictive Analysis Project Report - Anggun Sulis Setyawan ✨
 
 ![nutrient-dense-foods-popular](https://github.com/user-attachments/assets/b5146f55-d2d2-4975-b3bb-bbd73351091f)
 
