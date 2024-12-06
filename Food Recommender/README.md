@@ -136,31 +136,21 @@ Diketahui hampir seluruh variabel memiliki korelasi positif yang cukup untuk mem
 
 ---
 ## Data Preparation
+
+#### _Data Cleaning_
+Salah satu tahap terpenting dalam _Data Preparation_ yaitu _Data Cleaning_. Proses ini dilakukan untuk memastikan bahwa data yang akan digunakan untuk melatih model merupakan data yang bersih, rapi, dan berkualitas. Misalnya memastikan format data sudah tepat sesuai dengan representasi data, perlakuan terhadap data yang hilang (_missing value_) maupun pencilan data (_outlier_), dll. Dengan begitu, proses persiapan data setelahnya dapat dilakukan dengan lebih mudah.
+
 #### _Data Merging_
-As all the datasets have typical columns, to make the data analysis process easier, the data needs to be combined into one dataframe using `pd.concat()` function.
-
-#### _Check Data Distribution After Merge_
-Most data have a skewed distribution and have some outliers. Besides that, some data also have different value ranges.
-For example, this is a visualization of Caloric Value and Nutrition Density data:
-
-![Caloric Value](https://github.com/user-attachments/assets/2d7b3b45-88cf-4715-941c-cf2c932f186f)
-
-![Nutrition Density](https://github.com/user-attachments/assets/413f821d-1a6d-4c79-b9a1-bab2998ba893)
-
-These outliers are possible and normal because each food has a unique value. Those are valid data points. Outliers can represent real variations in the nutritional content of foods.
-
-#### _Check Correlation After Merge_
-
-![Nutrient Correlation](https://github.com/user-attachments/assets/1908d024-18a3-4006-ad7f-c652ccc884ec)
-
-According to the heatmap above, some nutrients have little contribution to the calculation of nutrition density such as Vitamin A, Vitamin B11, Vitamin B12, Vitamin D, Vitamin K, Copper, Manganese, and Selenium.
-
-### Data Conversion
-Next, we need to convert data unit that is in grams to milligrams by using the following formula:
-`x (g) = x × 1000 (mg)`
+Penggabungan dataframe antara `recipes_sample_df` dan `interaction_sample_df` dilakukan untuk mempermudah proses persiapan data.
 
 ### Features Selection
-As mentioned, some nutrients almost do not correlate with nutrition density calculation. Hence we need to eliminate it to reduce the features to be trained. If a feature has a correlation value close to zero to the target, this indicates that the feature does not have a significant linear relationship with the target and is unlikely to make a significant contribution to the prediction model.
+Pemilihan data-data yang relevan. Tujuannya untuk meringankan beban komputasi dan efisiensi proses berikutnya.
+
+### Features Engineering
+
+
+### Data Transformation
+
 
 ### Data Normalization
 As we know almost all of the data have a skewed distribution, different value ranges, and outliers. 
