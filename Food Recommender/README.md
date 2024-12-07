@@ -34,24 +34,24 @@
 
   Angka Kecukupan Gizi (AKG) menurut Kementerian Kesehatan Republik Indonesia adalah kecukupan rata-rata gizi harian yang dianjurkan untuk sekelompok orang setiap harinya. Kebutuhan gizi ideal anak yang harus terpenuhi dalam sehari terbagi menjadi dua kelompok, yaitu zat gizi makro dan mikro. Zat gizi makro adalah semua jenis zat gizi yang dibutuhkan anak dalam jumlah banyak, seperti energi (kalori), protein, lemak, dan karbohidrat. Sementara zat gizi mikro adalah nutrisi yang dibutuhkan dalam jumlah sedikit, seperti vitamin dan mineral (Damar Upahita, 2021). Penentuan nilai gizi disesuaikan dengan jenis kelamin, kelompok umur, tinggi badan, berat badan, serta aktivitas fisik (Kemenkes RI, 2019).
 
-  Seluruh program makanan bergizi gratis harus melibatkan kolaborasi pemangku kepentingan terkait untuk dikonvergensikan sehingga bisa komprehensif dan terintegrasi. Salah satunya adalah penyediaan makanan yang efektif dan efisien. Salah satu perusahaan penyedia layanan catering dan bento, Olagizi ingin mengambil peran penting dalam penyediaan paket makanan bergizi bagi siswa SMP dan SMA. Olagizi ingin memberikan layanan dengan optimal. Oleh karena itu, Olagizi ingin membuat sebuah sistem yang dapat memberikan rekomendasi tentang makanan bergizi yang dipersonalisasi sesuai kebutuhan gizi dan selera para siswa. Di sisi lain, Olagizi juga ingin rekomendasi tersebut memberikan pilihan makanan yang dapat dimasak dalam waktu yang tidak terlalu lama agar makanan dapat disiapkan tepat pada waktu, khususnya makanan untuk sesi sarapan.
+  Seluruh program makanan bergizi gratis harus melibatkan kolaborasi pemangku kepentingan terkait untuk dikonvergensikan sehingga bisa komprehensif dan terintegrasi. Salah satunya adalah penyediaan makanan yang efektif dan efisien. Salah satu perusahaan penyedia layanan catering dan bento, Olagizi ingin mengambil peran penting dalam penyediaan paket makanan bergizi bagi siswa SMP dan SMA. Olagizi ingin memberikan layanan dengan optimal. Oleh karena itu, Olagizi ingin membuat sebuah sistem yang dapat memberikan rekomendasi tentang makanan bergizi yang dipersonalisasi sesuai kebutuhan gizi dan selera para siswa. Di sisi lain, Olagizi juga ingin rekomendasi tersebut memberikan pilihan makanan yang dapat dimasak dalam waktu yang tidak terlalu lama agar makanan dapat disiapkan tepat pada waktu, khususnya makanan untuk sesi sarapan. Untuk pengembangan tahap awal, Olagizi ingin membuat model sistem rekomendasi makanan berdasarkan kemiripan jumlah kalori yang terkandung serta berdasarkan hasil ulasan rating makanan.
 
 ---
 ## Business Understanding
 ### Problem Statements
-  1. Bagaimana sistem rekomendasi dapat memberikan pilihan makanan yang dipersonalisasi sesuai kebutuhan kalori seseorang?
-  2. Bagaimana sistem rekomendasi dapat memberikan berbagai pilihan makanan yang mungkin sesuai dengan selera seseorang?
+  1. Bagaimana sistem rekomendasi dapat memberikan pilihan makanan dengan kandungan jumlah kalori yang mirip?
+  2. Bagaimana sistem rekomendasi dapat memberikan berbagai pilihan makanan yang mungkin disukai oleh target pelanggan?
 ### Goals
-  1. Menghasilkan 10 rekomendasi makanan yang memiliki nilai kalori sesuai dengan kebutuhan seseorang dan dapat dimasak dalam waktu kurang dari 2 jam.
-  2. Menghasilkan 10 rekomendasi makanan yang mungkin sesuai dengan selera seseorang dan dapat dimasak dalam waktu kurang dari 2 jam.
+  1. Menghasilkan 10 rekomendasi makanan yang memiliki nilai kalori yang mirip dan dapat dimasak dalam waktu kurang dari 2 jam.
+  2. Menghasilkan 10 rekomendasi makanan yang mungkin disukai oleh target pelanggan dan dapat dimasak dalam waktu kurang dari 2 jam.
 ### Solution Statements
-  1. Menerapkan pendekatan _collaborative filtering_ menggunakan algoritma _deep learning_.
-  2. Menerapkan pendekatan _content-based filtering_ menggunakan algoritma _cosine similarity_.
+  1. Menerapkan pendekatan _content-based filtering_ menggunakan algoritma _cosine similarity_.
+  2. Menerapkan pendekatan _collaborative filtering_ menggunakan algoritma _deep learning_.
+
 ---
 ## Data Understanding
 ### Overview
-  Dataset ini berasal dari platform Kaggle salah satu pengembang sistem rekomendasi makanan diet dengan nama akun @SOUMEDHIK yang dapat diakses pada link di bawah. Ukuran dataset begitu besar sehingga dataset yang digunakan hanya sebagian sampel saja. Pada proyek ini, hanya akan menggunakan 3 file dataset dalam format csv, yaitu recipes data, interactions data, dan people profile data.
-
+  Dataset ini berasal dari platform Kaggle salah satu pengembang sistem rekomendasi makanan diet dengan nama akun @SOUMEDHIK yang dapat diakses pada link di bawah. Ukuran dataset begitu besar sehingga dataset yang digunakan hanya sebagian sampel saja. Pada proyek ini, hanya akan menggunakan 3 file dataset dalam format csv, yaitu recipes data dan interactions data.
 _Download raw dataset_:
 [Diet Recommender Dataset](https://www.kaggle.com/code/soumedhik/diet-recommender/input)
 
@@ -82,23 +82,6 @@ _Download raw dataset_:
 | 3 | date | `object` | Tanggal ulasan diberikan. |
 | 4 | rating | `integer` | Penilaian yang diberikan (dalam skala tertentu). |
 | 5 | review | `object` | Isi ulasan yang diberikan pengguna. |
-
-### People Profile Data
-`people_profile_df` memiliki total 10726 baris data dan 11 kolom.
-
-| No | Kolom | Tipe Data | Deskripsi |
-|----|-------|-----------|-----------|
-| 1 | Unnamed:0 | `integer` | - |
-| 2 | age | `integer` | Usia individu (dalam tahun). |
-| 3 | weight (kg) | `float` | Berat badan individu (dalam kilogram). |
-| 4 | height (m) | `float` | Tinggi badan individu (dalam meter). |
-| 5 | gender | `object` | Jenis kelamin (`F` untuk perempuan, `M` untuk laki-laki.) |
-| 6 | BMI | `float` | Body Mass Index. Rasio ideal antara berat dan tinggi badan. |
-| 7 | BMR (kcal/hari) | `float` | Basal Metabolic Rate, kebutuhan kalori dasar individu. |
-| 8 | activity_level | `float` | Tingkat aktivitas individu. |
-| 9 | calories_to_maintain_weigth | `float` | Kalori yang dibutuhkan untuk mempertahankan berat badan. |
-| 10 | BMI_tags | `integer` | Kategori BMI berdasarkan nilai (misalnya underweight, normal, dan overweight.)
-| 11 | Label | `integer` | Kategori atau kelas. |
 
 ### Explore Data
   Eksplorasi data dilakukan untuk mengetahui lebih banyak terkait karakteristik dataset yang akan digunakan, mulai dari kelengkapan data, format data, dan statistik data. Berdasarkan hasil eksplorasi data, terdapat beberapa temuan antara lain:
