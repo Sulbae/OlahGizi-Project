@@ -28,13 +28,13 @@
 
 ---
 ## Background
-Indonesia memiliki cita-cita besar untuk menjadi negara maju. Oleh karena itu, peningkatan kualitas Sumber Daya Manusia (SDM) menjadi pilar penting yang harus diperbaiki, terutama dalam hal peningkatan kesehatan, pemenuhan gizi, dan pencegahan stunting (Kemenko PMK RI, 2024). Pemerintah Indonesia telah merencanakan untuk melaksanakan program makan bergizi gratis sesuai arahan Presiden RI Prabowo Subianto. Pemerintah berharap program tersebut dapat menurunkan jumlah kasus stunting bahkan mencegah kasus stunting baru di masa depan. Fokus awal dari program ini adalah anak-anak sekolah dan kelompok rentan lainnya. Anak sekolah yang dimaksud antara lain pelajar PAUD, SD, SMP, dan SMA (detik.com, 2024). 
+  Indonesia memiliki cita-cita besar untuk menjadi negara maju. Oleh karena itu, peningkatan kualitas Sumber Daya Manusia (SDM) menjadi pilar penting yang harus diperbaiki, terutama dalam hal peningkatan kesehatan, pemenuhan gizi, dan pencegahan stunting (Kemenko PMK RI, 2024). Pemerintah Indonesia telah merencanakan untuk melaksanakan program makan bergizi gratis sesuai arahan Presiden RI Prabowo Subianto. Pemerintah berharap program tersebut dapat menurunkan jumlah kasus stunting bahkan mencegah kasus stunting baru di masa depan. Fokus awal dari program ini adalah anak-anak sekolah dan kelompok rentan lainnya. Anak sekolah yang dimaksud antara lain pelajar PAUD, SD, SMP, dan SMA (detik.com, 2024). 
 
-Anak sekolah menjadi sasaran karena status gizi dan  stunting sangat mempengaruhi kecerdasan anak. Status gizi memberikan kontribusi terhadap kesulitan belajar sebesar 32,83%. Anak yang kekurangan nutrisi cenderung memiliki kelemahan pada sistem saraf hingga dapat menyebabkan kelainan motorik dan kognitif (Dewi, dkk, 2021). Sebagai calon penerus bangsa, maka pertumbuhan dan perkembangan anak sekolah perlu diperhatikan dengan baik agar menghasilkan potensi sumber daya manusia dengan kualitas maksimal. Hal ini dapat dicapai dengan salah satu cara yaitu pemenuhan kebutuhan nutrisi harian melalui program makanan bergizi gratis.
+  Anak sekolah menjadi sasaran karena status gizi dan  stunting sangat mempengaruhi kecerdasan anak. Status gizi memberikan kontribusi terhadap kesulitan belajar sebesar 32,83%. Anak yang kekurangan nutrisi cenderung memiliki kelemahan pada sistem saraf hingga dapat menyebabkan kelainan motorik dan kognitif (Dewi, dkk, 2021). Sebagai calon penerus bangsa, maka pertumbuhan dan perkembangan anak sekolah perlu diperhatikan dengan baik agar menghasilkan potensi sumber daya manusia dengan kualitas maksimal. Hal ini dapat dicapai dengan salah satu cara yaitu pemenuhan kebutuhan nutrisi harian melalui program makanan bergizi gratis.
 
-Angka Kecukupan Gizi (AKG) menurut Kementerian Kesehatan Republik Indonesia adalah kecukupan rata-rata gizi harian yang dianjurkan untuk sekelompok orang setiap harinya. Kebutuhan gizi ideal anak yang harus terpenuhi dalam sehari terbagi menjadi dua kelompok, yaitu zat gizi makro dan mikro. Zat gizi makro adalah semua jenis zat gizi yang dibutuhkan anak dalam jumlah banyak, seperti energi (kalori), protein, lemak, dan karbohidrat. Sementara zat gizi mikro adalah nutrisi yang dibutuhkan dalam jumlah sedikit, seperti vitamin dan mineral (Damar Upahita, 2021). Penentuan nilai gizi disesuaikan dengan jenis kelamin, kelompok umur, tinggi badan, berat badan, serta aktivitas fisik (Kemenkes RI, 2019).
+  Angka Kecukupan Gizi (AKG) menurut Kementerian Kesehatan Republik Indonesia adalah kecukupan rata-rata gizi harian yang dianjurkan untuk sekelompok orang setiap harinya. Kebutuhan gizi ideal anak yang harus terpenuhi dalam sehari terbagi menjadi dua kelompok, yaitu zat gizi makro dan mikro. Zat gizi makro adalah semua jenis zat gizi yang dibutuhkan anak dalam jumlah banyak, seperti energi (kalori), protein, lemak, dan karbohidrat. Sementara zat gizi mikro adalah nutrisi yang dibutuhkan dalam jumlah sedikit, seperti vitamin dan mineral (Damar Upahita, 2021). Penentuan nilai gizi disesuaikan dengan jenis kelamin, kelompok umur, tinggi badan, berat badan, serta aktivitas fisik (Kemenkes RI, 2019).
 
-Seluruh program makanan bergizi gratis harus melibatkan kolaborasi pemangku kepentingan terkait untuk dikonvergensikan sehingga bisa komprehensif dan terintegrasi. Salah satunya adalah penyediaan makanan yang efektif dan efisien. Salah satu perusahaan penyedia layanan catering dan bento, Olagizi ingin mengambil peran penting dalam penyediaan paket makanan bergizi. Olagizi ingin memberikan layanan dengan optimal. Oleh karena itu, Olagizi ingin membuat sebuah sistem yang dapat memberikan rekomendasi tentang makanan bergizi yang dipersonalisasi sesuai kebutuhan gizi dan selera para siswa. Di sisi lain, Olagizi juga ingin rekomendasi tersebut memberikan pilihan makanan yang dapat dimasak dalam waktu yang tidak terlalu lama agar makanan dapat disiapkan tepat pada waktu, khususnya makanan untuk sesi sarapan.
+  Seluruh program makanan bergizi gratis harus melibatkan kolaborasi pemangku kepentingan terkait untuk dikonvergensikan sehingga bisa komprehensif dan terintegrasi. Salah satunya adalah penyediaan makanan yang efektif dan efisien. Salah satu perusahaan penyedia layanan catering dan bento, Olagizi ingin mengambil peran penting dalam penyediaan paket makanan bergizi bagi siswa SMP dan SMA. Olagizi ingin memberikan layanan dengan optimal. Oleh karena itu, Olagizi ingin membuat sebuah sistem yang dapat memberikan rekomendasi tentang makanan bergizi yang dipersonalisasi sesuai kebutuhan gizi dan selera para siswa. Di sisi lain, Olagizi juga ingin rekomendasi tersebut memberikan pilihan makanan yang dapat dimasak dalam waktu yang tidak terlalu lama agar makanan dapat disiapkan tepat pada waktu, khususnya makanan untuk sesi sarapan.
 
 ---
 ## Business Understanding
@@ -50,7 +50,7 @@ Seluruh program makanan bergizi gratis harus melibatkan kolaborasi pemangku kepe
 ---
 ## Data Understanding
 ### Overview
-Dataset ini berasal dari platform Kaggle salah satu pengembang sistem rekomendasi makanan diet dengan nama akun @SOUMEDHIK yang dapat diakses pada link di bawah. Ukuran dataset begitu besar sehingga dataset yang digunakan hanya sebagian sampel saja. Pada proyek ini, hanya akan menggunakan 3 file dataset dalam format csv, yaitu recipes data, interactions data, dan people profile data.
+  Dataset ini berasal dari platform Kaggle salah satu pengembang sistem rekomendasi makanan diet dengan nama akun @SOUMEDHIK yang dapat diakses pada link di bawah. Ukuran dataset begitu besar sehingga dataset yang digunakan hanya sebagian sampel saja. Pada proyek ini, hanya akan menggunakan 3 file dataset dalam format csv, yaitu recipes data, interactions data, dan people profile data.
 
 _Download raw dataset_:
 [Diet Recommender Dataset](https://www.kaggle.com/code/soumedhik/diet-recommender/input)
@@ -101,7 +101,7 @@ _Download raw dataset_:
 | 11 | Label | `integer` | Kategori atau kelas. |
 
 ### Explore Data
-Eksplorasi data dilakukan untuk mengetahui lebih banyak terkait karakteristik dataset yang akan digunakan, mulai dari kelengkapan data, format data, dan statistik data. Berdasarkan hasil eksplorasi data, terdapat beberapa temuan antara lain:
+  Eksplorasi data dilakukan untuk mengetahui lebih banyak terkait karakteristik dataset yang akan digunakan, mulai dari kelengkapan data, format data, dan statistik data. Berdasarkan hasil eksplorasi data, terdapat beberapa temuan antara lain:
 * Pada dataset `recipes_sample_df` ditemukan 52 _missing value_ untuk kolom _description_ dan terdapat format data yang belum sesuai pada kolom _submitted_ dan _nutrition_. Menurut hasil deskripsi statistik rata-rata makanan pada data membutuhkan waktu memasak sekitar 130 menit atau sekitar 9 tahapan.
 * Pada dataset `interactions_sample_df` ditemukan 1 _missing value_ untuk kolom _review_ dan terdapat format data yang belum sesuai pada kolom _date_. Diketahui rata-rata nilai ulasan atau _rating_ yang diberikan orang-orang adalah 4,4.
 * Representasi data dari kolom _Unnamed:0_ pada dataset `people_profile_df` sulit untuk diidentifikasi. Kemudian, diketahui rentang usia pada data meliputi balita (< 5 tahun), anak-anak (6-10) tahun, remaja (12 - 17 tahun), dewasa (18 - 65 tahun), hingga lanjut usia (> 65 tahun).
@@ -138,15 +138,49 @@ Diketahui hampir seluruh variabel memiliki korelasi positif yang cukup untuk mem
 ## Data Preparation
 
 #### _Data Cleaning_
-Salah satu tahap terpenting dalam _Data Preparation_ yaitu _Data Cleaning_. Proses ini dilakukan untuk memastikan bahwa data yang akan digunakan untuk melatih model merupakan data yang bersih, rapi, dan berkualitas. Misalnya memastikan format data sudah tepat sesuai dengan representasi data, perlakuan terhadap data yang hilang (_missing value_) maupun pencilan data (_outlier_), dll. Dengan begitu, proses persiapan data setelahnya dapat dilakukan dengan lebih mudah.
+  Salah satu tahap terpenting dalam _Data Preparation_ yaitu _Data Cleaning_. Proses ini dilakukan untuk memastikan bahwa data yang akan digunakan untuk melatih model merupakan data yang bersih, rapi, dan berkualitas. Misalnya memastikan format data sudah tepat sesuai dengan representasi data, perlakuan terhadap data yang hilang (_missing value_) maupun pencilan data (_outlier_), dll. Dengan begitu, proses persiapan data setelahnya dapat dilakukan dengan lebih mudah.
+
+#### _Filter Data People Profile_
+  Berdasarkan latar belakang project, sasaran yang dituju Olagizi adalah siswa SMP dan SMA. Oleh karena itu, data yang digunakan cukup data *people_profile* dengan rentang usia 12 - 18 tahun. Hasilnya, terdapat 1920 data yang memiliki rentang nilai _age_ 12 - 18 tahun.
+
+#### _Features Engineering_
+1. Ekstrak data pada fitur _nutrition_ dalam `recipes_sample_df`:
+   Diketahui data pada kolom _nutrition_ memiliki format `object` yang berisi sebuah `list`. Data tersebut mengandung informasi jumlah kalori, lemak, gula, sodium, protein, lemak jenuh, dan karbohidrat. Untuk memudahkan analisis, maka data harus diekstrak menjadi kolom-kolom tersendiri. Ini dilakukan agar hubungan antar variabel data dapat dianalisis dengan lebih mudah pada proses selanjutnya.
+
+2. Menambahkan data *people_id* pada `people_profile_df`:
+   Menambahkan *people_id* pada `people_profile_df` dengan mengambil data dari user_id pada `interactions_sample_df`. Data *user_id* pada `interactions_sample_df` diacak terlebih dahulu, kemudian ditambahkan ke dalam kolom *people_id* pada `people_profile_df`. Hal ini dilakukan untuk memanipulasi data agar data dapat gabungkan dengan mudah pada proses selanjutnya.
 
 #### _Data Merging_
-Penggabungan dataframe antara `recipes_sample_df` dan `interaction_sample_df` dilakukan untuk mempermudah proses persiapan data.
+  Penggabungan dataframe antara `recipes_sample_df` dan `interaction_sample_df` dilakukan agar dapat menganalisis korelasi antara variabel rating dengan variabel lainnya. Penggabungan data tersebut memanfaatkan key value yaitu _recipe_id_. Setelah itu gabungkan juga `people_profile_df` agar dapat menemukan insight yang lebih lengkap. Karena setiap dataframe memiliki jumlah baris yang berbeda, maka pastikan data diacak terlebih dahulu sebelum digabung agar mendapatkan distribusi data yang lebih alami.
 
 ### Features Selection
-Pemilihan data-data yang relevan. Tujuannya untuk meringankan beban komputasi dan efisiensi proses berikutnya.
-
-### Features Engineering
+  Selanjutnya, pemilihan data-data yang relevan dilakukan agar meringankan beban komputasi pada proses analisis berikutnya. Fitur-fitur yang terpilih untuk proses analisis selanjutnya adalah sebagai berikut.
+| Kolom Terpilih | Dataframe Asal |
+|-----------|----------------|
+| recipe_id | interactions_sample_df |
+| name | recipes_sample_df | 
+| description | recipes_sample_df | 
+| minutes | recipes_sample_df | 
+| nutrition | recipes_sample_df | 
+| n_steps | recipes_sample_df | 
+| calories | recipes_sample_df | 
+| fat | recipes_sample_df | 
+| sugar | recipes_sample_df | 
+| sodium | recipes_sample_df | 
+| protein | recipes_sample_df | 
+| saturated_fat | recipes_sample_df | 
+| carbohydrates | recipes_sample_df | 
+| user_id | interactions_sample_df | 
+| rating | interactions_sample_df | 
+| review | interactions_sample_df | 
+| age | people_profile_df | 
+| weight(kg) | people_profile_df | 
+| height(m) | people_profile_df | 
+| gender | people_profile_df | 
+| BMI | people_profile_df | 
+| BMR | people_profile_df | 
+| activity_level | people_profile_df | 
+| calories_to_maintain_weight | people_profile_df | 
 
 
 ### Data Transformation
