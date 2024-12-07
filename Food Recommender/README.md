@@ -140,8 +140,11 @@ Diketahui hampir seluruh variabel memiliki korelasi positif yang cukup untuk mem
 #### _Data Cleaning_
   Salah satu tahap terpenting dalam _Data Preparation_ yaitu _Data Cleaning_. Proses ini dilakukan untuk memastikan bahwa data yang akan digunakan untuk melatih model merupakan data yang bersih, rapi, dan berkualitas. Misalnya memastikan format data sudah tepat sesuai dengan representasi data, perlakuan terhadap data yang hilang (_missing value_) maupun pencilan data (_outlier_), dll. Dengan begitu, proses persiapan data setelahnya dapat dilakukan dengan lebih mudah.
 
-#### _Filter Data People Profile_
-  Berdasarkan latar belakang project, sasaran yang dituju Olagizi adalah siswa SMP dan SMA. Oleh karena itu, data yang digunakan cukup data *people_profile* dengan rentang usia 12 - 18 tahun. Hasilnya, terdapat 1920 data yang memiliki rentang nilai _age_ 12 - 18 tahun.
+#### _Filter Data 
+##### recipes_sample_df
+Berdasarkan _goals_ yang telah ditetapkan, Olagizi ingin sistem memberikan rekomendasi makanan yang dapat dimasak kurang dari 2 jam. Oleh karena itu, data sebaiknya disaring terlebih dahulu.
+##### people_profile_df
+Berdasarkan latar belakang project, sasaran yang dituju Olagizi adalah siswa SMP dan SMA. Oleh karena itu, data yang digunakan cukup data *people_profile* dengan rentang usia 12 - 18 tahun. Hasilnya, terdapat 1920 data yang memiliki rentang nilai _age_ 12 - 18 tahun.
 
 #### _Features Engineering_
 1. Ekstrak data pada fitur _nutrition_ dalam `recipes_sample_df`:
@@ -151,7 +154,7 @@ Diketahui hampir seluruh variabel memiliki korelasi positif yang cukup untuk mem
    Menambahkan *people_id* pada `people_profile_df` dengan mengambil data dari user_id pada `interactions_sample_df`. Data *user_id* pada `interactions_sample_df` diacak terlebih dahulu, kemudian ditambahkan ke dalam kolom *people_id* pada `people_profile_df`. Hal ini dilakukan untuk memanipulasi data agar data dapat gabungkan dengan mudah pada proses selanjutnya.
 
 #### _Data Merging_
-  Penggabungan dataframe antara `recipes_sample_df` dan `interaction_sample_df` dilakukan agar dapat menganalisis korelasi antara variabel rating dengan variabel lainnya. Penggabungan data tersebut memanfaatkan key value yaitu _recipe_id_. Setelah itu gabungkan juga `people_profile_df` agar dapat menemukan insight yang lebih lengkap. Karena setiap dataframe memiliki jumlah baris yang berbeda, maka pastikan data diacak terlebih dahulu sebelum digabung agar mendapatkan distribusi data yang lebih alami.
+  Penggabungan dataframe antara `recipes_sample_df` dan `interaction_sample_df` dilakukan agar dapat lebih mudah menganalisis korelasi antara variabel rating dengan variabel lainnya. Penggabungan data tersebut memanfaatkan key value yaitu _recipe_id_. Lalu, gabungkan juga `people_profile_df` agar dapat menemukan insight yang lebih lengkap.
 
 ### Features Selection
   Selanjutnya, pemilihan data-data yang relevan dilakukan agar meringankan beban komputasi pada proses analisis berikutnya. Fitur-fitur yang terpilih untuk proses analisis selanjutnya adalah sebagai berikut.
@@ -168,7 +171,7 @@ Diketahui hampir seluruh variabel memiliki korelasi positif yang cukup untuk mem
 | sugar | recipes_sample_df | 
 | sodium | recipes_sample_df | 
 | protein | recipes_sample_df | 
-| saturated_fat | recipes_sample_df | 
+| saturated fat | recipes_sample_df | 
 | carbohydrates | recipes_sample_df | 
 | user_id | interactions_sample_df | 
 | rating | interactions_sample_df | 
@@ -183,7 +186,7 @@ Diketahui hampir seluruh variabel memiliki korelasi positif yang cukup untuk mem
 | calories_to_maintain_weight | people_profile_df | 
 
 
-### Data Transformation
+### Content-Based Filtering
 
 
 ### Data Normalization
