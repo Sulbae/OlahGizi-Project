@@ -158,8 +158,8 @@ Berdasarkan _goals_ yang telah ditetapkan, Olagizi ingin sistem memberikan rekom
 ---
 ## Modeling
 ### Cosine Similarity
-  Pendekatan algoritma cosine similarity digunakan untuk membuat model sistem rekomendasi dengan metode *content-based filtering*. Cosine similarity bekerja dengan cara mengukur kesamaan arah antara dua vektor dari representasi data. Algoritma ini menghitung besaran sudut cosinus antara vektor satu dengan lainnya. Semakin kecil derajat sudut, maka semakin besar nilai cosine similarity, artinya kedua data semakin mirip. Cosine similarity antara dua vektor **A** dan **B** dapat dihitung dengan formula berikut:
-
+#### Desain Model 
+  Model akan didesain agar dapat memberikan rekomendasi dari makanan yang sebelumnya pernah dipilih berdasarkan kemiripan bahan baku yang digunakan. Pendekatan algoritma cosine similarity digunakan untuk membuat model sistem rekomendasi dengan metode *content-based filtering*. Cosine similarity bekerja dengan cara mengukur kesamaan arah antara dua vektor dari representasi data. Algoritma ini menghitung besaran sudut cosinus antara vektor satu dengan lainnya. Semakin kecil derajat sudut, maka semakin besar nilai cosine similarity, artinya kedua data semakin mirip. Cosine similarity antara dua vektor **A** dan **B** dapat dihitung dengan formula berikut:
 
 $$\text{Cosine Similarity} = \frac{\sum_{i=1}^{n} A_i B_i}{\sqrt{\sum_{i=1}^{n} A_i^2} \cdot \sqrt{\sum_{i=1}^{n} B_i^2}}$$
 
@@ -167,17 +167,77 @@ Di mana:
 - $$\( A_i \)$$ dan $$\( B_i \)$$ adalah komponen dari vektor **A** dan **B** pada dimensi $$\( i \)$$.
 - $$\( n \)$$ adalah jumlah dimensi vektor.
 
-### Penjelasan
+**_Penjelasan_**
 1. **Pembilang**: Hasil kali dot product antara dua vektor.
 2. **Penyebut**: Perkalian dari magnitudo kedua vektor.
 
 Cosine similarity menghasilkan nilai antara -1 hingga 1:
-- $$\( 1 \)$$: Vektor memiliki arah yang sama.
-- $$\( 0 \)$$: Vektor saling tegak lurus (tidak memiliki hubungan).
-- $$\( -1 \)$$: Vektor memiliki arah yang berlawanan.
+- $$\( 1 \)$$: Dua vektor sangat mirip atau identik (vektor memiliki arah yang sama dalam ruang vektor).
+- $$\( 0 \)$$: Dua vektor tidak memiliki kesamaan sama sekali (vektor saling tegak lurus atau tidak memiliki hubungan linear).
+- $$\( -1 \)$$: Dua vektor sangat berbeda (vektor memiliki arah yang berlawanan dalam ruang vektor).
+
+  Penerapan cosine similarity pada sistem rekomendasi, khususnya dengan metode vektoriasi TF-IDF memiliki kelebihan dan kekurangan yang perlu diperhatikan sebagai berikut:
+**_Kelebihan_**
+1. TF-IDF sering menghasilkan vektor yang _sparse_ (banyak elemen nol). Cosine similarity dapat bekerja sangat baik pada representasi seperti ini tanpa memerlukan normalisasi tambahan.
+2. Cosine similarity mengukur sudut antara dua vektor, sehingga tidak terpengaruh oleh skala besar atau kecilnya nilai fitur. Hal ini bermanfaat ketika nilai TF-IDF memiliki variasi yang besar.
+3. Cosine similarity efektif dalam mengukur kemiripan semantik antar item, yang sesuai dengan pendekatan berbasis TF-IDF.
+4. Nilai cosine similarity berkisar antara 0 - 1 (non negatif) sehingga mudah untuk interpretasi derajat kemiripan.
+5. Algoritma cosine similarity sederhana, cepat dihitung, dan mudah diimplementasikan dengan pustaka `scikit-learn`.
+
+**_Kekurangan_**
+1. Cosine similarity hanya mengukur kemiripan numerik dari vektor, tanpa memahami konteks sebenarnya dari kata-kata dalam teks.
+2. Kombinasi cosine similarity dan TF-IDF bekerja pada asumsi representasi linier dari data sehingga tidak dapat menangkap hubungan non-linear yang lebih kompleks.
+3. Jika jumlah fitur dalam TF-IDF sangat besar (terdapat banyak kata unik), perhitungan cosine similarity bisa menjadi lebih lambat, terutama jika diterapkan pada dataset besar.
+4. Cosine similarity hanya membandingkan vektor, makna sebenarnya dari teks mungkin tidak tercermin dengan baik karena TF-IDF mengabaikan sinonim dan polisemi (satu kata dengan banyak makna).
+
+#### Hasil Rekomendasi
+  Setelah model dibuat, selajutnya model akan digunakan untuk mendapatkan 10 rekomendasi makanan lain berdasarkan makanan yang pernah dipilih pelanggan. Hasilnya diperoleh seperti berkut:
+`rekomendasi_makanan("meatloaf with potato topping)`
+| No | name | 
+|----|------|
+| 1 | beef tenderloin with garlic horseradish crust |
+| 2 | beef tortilla cake | 
+| 3 | pasta with ricotta bolognese |
+| 4 | gabby gourmets southwestern chili |
+| 5 | lemon and basil baked chicken |
+| 6 | orzo and vegetable salad |
+| 7 | ground beef teriyaki |
+| 8 | bounty harvest meatloaf |
+| 9 | herbed lentils and rice |
+| 10 | seasoned cod fillet casserole |
 
 ### Neural Collaborative Filtering
+#### Desain Model 
+  Pada sistem rekomendasi dengan _collaborative filtering_ akan digunakan algoritma _deep learning_, khususnya dengan menggunakan _embedding layer_. Model akan dilatih untuk dapat menemukan pola antara beragam data makanan yang disukai pelanggan. Model diharapkan dapat memberikan rekomendasi kepada pelanggan makanan populer yang belum pernah dipilih sebelumnya. _Embedding layer_ digunakan untk merepresentasikan data kategorikal seperti pelanggan dan makanan ke dalam ruang vektor berdimensi rendah yang dapat dilatih. Terdapat 2 _embedding layer_ (satu untuk pelanggan dan satu untuk makanan) yang kemudian digabungkan dengan operasi **dot product** untuk menghasilkan skor kesesuaian. Setelah embedding, hasilnya akan dilewatkan melalui lapisan neural network dengan fungsi `sigmoid` untuk mendapatkan prediksi skor yang menunjukkan tingkat preferensi pengguna terhadap makanan tertentu.
+  Pendekatan ini tentunya memiliki kelebihan dan kekurangan pada penerapannya seperti berikut:
+**_Kelebihan_**
+1. Embedding layer mengurangi dimensi data dengan merepresentasikan setiap data pelanggan dan makanan sebagai vektor berdimensi rendah tetapi tetap informatif.
+2. Embedding dapat digabungkan dengan berbagai algoritma deep learning lainnya untuk menangkap pola tambahan. 
+3. Embedding dapat menggeneralisasi ke data baru selama memiliki data yang cukup.
+4. Embedding mampu mengatasi _data sparsity_ (sedikit data) untuk menemukan pola tersembunyi.
+5. Neural network setelah embedding memungkinkan model menangkap pola kompleks antar data.
 
+**_Kekurangan_**
+1. Training embedding layer membutuhkan dataset besar agar representasi vektor cukup bermakna.
+2. Jika embedding terlalu kompleks atau data terbatas, model dapat overfit pada data training.
+3. Representasi embedding bersifat numerik dan sulit diinterpretasikan dibandingkan pendekatan statistik tradisional.
+4. Training embedding dan neural network memerlukan waktu lebih lama, terutama pada dataset besar.
+
+#### Hasil Rekomendasi
+  Setelah model dibuat, selajutnya model akan digunakan untuk mendapatkan 10 rekomendasi makanan populer lain yang belum pernah dipilih pelanggan. Hasilnya diperoleh seperti berkut:
+`Makanan pilihan user: tomato and avocado goat cheese crostini`
+| No | name | 
+|----|------|
+| 1 | beefed up bloody mary soup |
+| 2 | dreamsicle cookie mix in a jar | 
+| 3 | relly good vegetarian meatloaf |
+| 4 | kourabiethes greek butter cookies |
+| 5 | advocaat |
+| 6 | chicken osso buco |
+| 7 | homemade plant food |
+| 8 | blueberry sausage breakfast cake |
+| 9 | saucy pasta all in one pot |
+| 10 | apple cider gravy |
 
 ---
 ## Evaluation
