@@ -1,31 +1,4 @@
 # Recommendation System Project Report - Anggun Sulis Setyawan ✨
-
----
-## List of Contents
-  - [Background](#Background)
-  - [Business Understanding](#Business-Understanding)
-    - [Problem Statments](#Problem-Statments)
-    - [Goals](#Goals)
-    - [Solution Statements](#Solution-Statements)
-  - [Data Understanding](#Data-Understanding)
-    - [Dataset](#Dataset)
-    - [Overview](#Overview)
-    - [Column Description](#Column-Description)
-    - [Explore](#Explore)
-  - [Data Preparation](#Data-Preparation#)
-    - [Features Engineering](#Feature-Engineering)
-    - [Data Normalization](#Data-Normalization)
-    - [Data Split](#Data-Split)
-  - [Modeling](#Modeling)
-    - [Model Design](#Model-Design)
-    - [Training](#Training)
-  - [Evaluation](#Evaluation)
-    - [Metrics Description](#Metrics-Description)
-    - [Model Comparison](#Model-Comparison)
-  - [Inference](#Inference)
-  - [Development Opportunity](#Development-Opportunity)
-  - [References](#References)
-
 ---
 ## Background
   Indonesia memiliki cita-cita besar untuk menjadi negara maju. Oleh karena itu, peningkatan kualitas Sumber Daya Manusia (SDM) menjadi pilar penting yang harus diperbaiki, terutama dalam hal peningkatan kesehatan, pemenuhan gizi, dan pencegahan stunting (Kemenko PMK RI, 2024). Pemerintah Indonesia telah merencanakan untuk melaksanakan program makan bergizi gratis sesuai arahan Presiden RI Prabowo Subianto. Pemerintah berharap program tersebut dapat menurunkan jumlah kasus stunting bahkan mencegah kasus stunting baru di masa depan. Fokus awal dari program ini adalah anak-anak sekolah dan kelompok rentan lainnya. Anak sekolah yang dimaksud antara lain pelajar PAUD, SD, SMP, dan SMA (detik.com, 2024). 
