@@ -125,7 +125,7 @@ Berdasarkan _goals_ yang telah ditetapkan, Olagizi ingin sistem memberikan rekom
   Data *rating*, yang merupakan hasil ulasan dari pelanggan, akan digunakan sebagai data terget pada pelatihan model yang akan merepresentasikan bahwa pelanggan suka atau tidak suka terhadap makanan yang diulas. Oleh karena itu, untuk memudahkan proses pengenalan pola oleh model, data *rating* dinormalisasi nilainya ke dalam rentang 0 - 1 menggunakan metode `MinMaxScaler()`. 
 
 ##### Data Split
-  Langkah terakhir sebelum memasuki tahap pelatihan model adalah pembagian data menjadi data training dan data validasi. Pembagian data dilakukan dengan rasio 80 : 20 untuk data training dan data validasi. Data training digunakan untuk melatih model, sedangkan data validasi digunakan untuk mengevaluasi model yang telah dilatih bahwa model dapat memberikan performa yang baik terhadap data yang belum perah dilihat sebelumnya.
+  Langkah terakhir sebelum memasuki tahap pelatihan model adalah pembagian data menjadi data training dan data validasi. Pembagian data dilakukan dengan rasio `80 : 20` untuk data training dan data validasi. Data training digunakan untuk melatih model, sedangkan data validasi digunakan untuk mengevaluasi model yang telah dilatih bahwa model dapat memberikan performa yang baik terhadap data yang belum perah dilihat sebelumnya.
 
 ---
 ## Modeling
