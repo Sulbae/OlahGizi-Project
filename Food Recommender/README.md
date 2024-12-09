@@ -51,7 +51,7 @@
 ---
 ## Data Understanding
 ### Overview
-  Dataset ini berasal dari platform Kaggle salah satu pengembang sistem rekomendasi makanan diet dengan nama akun @SOUMEDHIK yang dapat diakses pada link di bawah. Ukuran dataset begitu besar sehingga dataset yang digunakan hanya sebagian sampel saja. Pada proyek ini, hanya akan menggunakan 3 file dataset dalam format csv, yaitu recipes data dan interactions data.
+  Dataset ini berasal dari platform Kaggle salah satu pengembang sistem rekomendasi makanan diet dengan nama akun @SOUMEDHIK yang dapat diakses pada link di bawah. Ukuran dataset begitu besar sehingga dataset yang digunakan hanya sebagian sampel saja. Pada proyek ini, hanya akan menggunakan 2 file dataset dalam format csv, yaitu recipes data dan interactions data.
 _Download raw dataset_:
 [Diet Recommender Dataset](https://www.kaggle.com/code/soumedhik/diet-recommender/input)
 
@@ -87,7 +87,7 @@ _Download raw dataset_:
   Eksplorasi data dilakukan untuk mengetahui lebih banyak terkait karakteristik dataset yang akan digunakan, mulai dari kelengkapan data, format data, dan statistik data. Berdasarkan hasil eksplorasi data, terdapat beberapa temuan antara lain:
 * Pada dataset `recipes_sample_df` ditemukan 52 _missing value_ untuk kolom _description_ dan terdapat format data yang belum sesuai pada kolom _submitted_ dan _nutrition_. Menurut hasil deskripsi statistik rata-rata makanan pada data membutuhkan waktu memasak sekitar 130 menit atau sekitar 9 tahapan.
 * Pada dataset `interactions_sample_df` ditemukan 1 _missing value_ untuk kolom _review_ dan terdapat format data yang belum sesuai pada kolom _date_. Diketahui rata-rata nilai ulasan atau _rating_ yang diberikan orang-orang adalah 4,4.
-* Representasi data dari kolom _Unnamed:0_ pada dataset `people_profile_df` sulit untuk diidentifikasi. Kemudian, diketahui rentang usia pada data meliputi balita (< 5 tahun), anak-anak (6-10) tahun, remaja (12 - 17 tahun), dewasa (18 - 65 tahun), hingga lanjut usia (> 65 tahun).
+
 
 ### Univariate Analysis
 #### recipes_sample_df
@@ -101,21 +101,8 @@ Sementara itu, data kolom _n_steps_ juga terdistribusi _skewed_, tetapi memiliki
 ![rating](https://github.com/user-attachments/assets/03c5e40b-31d7-4834-b77a-c827bc9b0ce5)
 Data ulasan yang ada menunjukkan dominasi rating yang diberikan berkisar 3 - 5. Hal ini menandakan bahwa banyak pelanggan atau pengguna yang merasa puas.
 
-#### people_profile_df
-![age](https://github.com/user-attachments/assets/2bbe20a5-3a95-4892-93f8-e5aef1618190)
-![weight](https://github.com/user-attachments/assets/8a58d8f6-6c66-4b6d-94c6-bcff611d27d6)
-![height](https://github.com/user-attachments/assets/04837a9e-e1b0-4a80-b6bd-e88bf3ef012d)
-Data didominasi oleh orang dengan usia berkisar antara belasan hingga tiga puluhan tahun dengan berat badan berkisar antara 45 - 85 kg dan tinggi badan lebih dari 1,5 meter.
-
-![BMI](https://github.com/user-attachments/assets/cc2d78e2-586c-4e63-8267-8b0345052912)
-![BMR](https://github.com/user-attachments/assets/11e964d2-b900-4cdb-a366-6509534f12da)
-![calories_to_maintain_weight](https://github.com/user-attachments/assets/076ce107-e5fd-4149-a888-11fd126bb02d)
-Mayoritas orang terklasifikasi memiliki Body Mass Index (BMI) 20 - 30 dengan Basal Metabolic Rate (BMR) 1300 - 1600 kcal/hari, sedangkan mereka membutuhkan kalori untuk mempertahankan berat badan nya minimal sekitar 1800 - 2400 kcal/hari.
-
 ### Multivariate Analysis
-Untuk mengetahui berbagai variabel yang berpegaruh terhadap kebutuhan kalori seseorang, maka dilakukan analisis terhadap korelasi antar variabel menggunakan _heatmap correlation matrix_.
-![correlation with calorie](https://github.com/user-attachments/assets/68594496-53bf-465e-8115-800f83bd98ab)
-Diketahui hampir seluruh variabel memiliki korelasi positif yang cukup untuk memengaruhi kebutuhan kalori setiap individu.
+
 
 ---
 ## Data Preparation
@@ -126,128 +113,72 @@ Diketahui hampir seluruh variabel memiliki korelasi positif yang cukup untuk mem
 #### _Filter Data 
 ##### recipes_sample_df
 Berdasarkan _goals_ yang telah ditetapkan, Olagizi ingin sistem memberikan rekomendasi makanan yang dapat dimasak kurang dari 2 jam. Oleh karena itu, data sebaiknya disaring terlebih dahulu.
-##### people_profile_df
-Berdasarkan latar belakang project, sasaran yang dituju Olagizi adalah siswa SMP dan SMA. Oleh karena itu, data yang digunakan cukup data *people_profile* dengan rentang usia 12 - 18 tahun. Hasilnya, terdapat 1920 data yang memiliki rentang nilai _age_ 12 - 18 tahun.
 
 #### _Features Engineering_
 1. Ekstrak data pada fitur _nutrition_ dalam `recipes_sample_df`:
    Diketahui data pada kolom _nutrition_ memiliki format `object` yang berisi sebuah `list`. Data tersebut mengandung informasi jumlah kalori, lemak, gula, sodium, protein, lemak jenuh, dan karbohidrat. Untuk memudahkan analisis, maka data harus diekstrak menjadi kolom-kolom tersendiri. Ini dilakukan agar hubungan antar variabel data dapat dianalisis dengan lebih mudah pada proses selanjutnya.
 
-2. Menambahkan data *people_id* pada `people_profile_df`:
-   Menambahkan *people_id* pada `people_profile_df` dengan mengambil data dari user_id pada `interactions_sample_df`. Data *user_id* pada `interactions_sample_df` diacak terlebih dahulu, kemudian ditambahkan ke dalam kolom *people_id* pada `people_profile_df`. Hal ini dilakukan untuk memanipulasi data agar data dapat gabungkan dengan mudah pada proses selanjutnya.
+2. Sesuaikan data *ingredients* pada `recipes_sample_df`:
+   Diketahui data pada kolom *ingredients* memiliki format `object` yang berisi `string` sehingga perlu dipisahkan untuk setiap frasa bahan agar dapat terdeteksi sebagai satu bahan baku dengan benar saat proses vektoriasi. Caranya adalah dengan split frasa-frasa tersebut dengan menggunakan koma.
 
-#### _Data Merging_
-  Penggabungan dataframe antara `recipes_sample_df` dan `interaction_sample_df` dilakukan agar dapat lebih mudah menganalisis korelasi antara variabel rating dengan variabel lainnya. Penggabungan data tersebut memanfaatkan key value yaitu _recipe_id_. Lalu, gabungkan juga `people_profile_df` agar dapat menemukan insight yang lebih lengkap.
-
-### Features Selection
-  Selanjutnya, pemilihan data-data yang relevan dilakukan agar meringankan beban komputasi pada proses analisis berikutnya. Fitur-fitur yang terpilih untuk proses analisis selanjutnya adalah sebagai berikut.
+#### _Content Based Filtering_
+##### Features Selection
+  Selanjutnya, pemilihan data-data yang relevan bagi sistem rekomendasi berbasis _Content Based Filtering_ dari `recipes_sample_df`. Fitur-fitur yang terpilih untuk proses analisis selanjutnya adalah sebagai berikut.
 | Kolom Terpilih | Dataframe Asal |
 |-----------|----------------|
-| recipe_id | interactions_sample_df |
+| id | recipes_sample_df |
 | name | recipes_sample_df | 
-| description | recipes_sample_df | 
+| ingredients | recipes_sample_df |
+| calories | recipes_sample_df |
 | minutes | recipes_sample_df | 
-| nutrition | recipes_sample_df | 
-| n_steps | recipes_sample_df | 
-| calories | recipes_sample_df | 
-| fat | recipes_sample_df | 
-| sugar | recipes_sample_df | 
-| sodium | recipes_sample_df | 
-| protein | recipes_sample_df | 
-| saturated fat | recipes_sample_df | 
-| carbohydrates | recipes_sample_df | 
+| steps | recipes_sample_df | 
+
+##### Features Extraction
+
+
+#### Collaborative Filtering
+##### Features Selection
+  Sementara itu, pemilihan data-data yang relevan bagi sistem rekomendasi berbasis _collaborative filtering_ dari `interactions_sample_df` juga `recipes_sample_df`. Fitur-fitur yang terpilih untuk proses analisis selanjutnya adalah sebagai berikut.
+| Kolom Terpilih | Dataframe Asal |
+|-----------|----------------|
+| name | recipes_sample_df | 
+| recipe_id | interactions_sample_df |
 | user_id | interactions_sample_df | 
 | rating | interactions_sample_df | 
-| review | interactions_sample_df | 
-| age | people_profile_df | 
-| weight(kg) | people_profile_df | 
-| height(m) | people_profile_df | 
-| gender | people_profile_df | 
-| BMI | people_profile_df | 
-| BMR | people_profile_df | 
-| activity_level | people_profile_df | 
-| calories_to_maintain_weight | people_profile_df | 
 
+##### Features Encoding
+  Diketahui data *recipe_id* dan *user_id* memiliki format data `int64` dengan variasi yang berbeda sehingga perlu dilakukan encoding ke dalam indeks integer agar memiliki persebaran data yang seragam. Dengan demikian, data dapat digunakan untuk proses pelatihan model dengan lebih baik dan model dapat menemukan pola dari data dengan lebih mudah.
 
-### Content-Based Filtering
+##### Data Normalization
+  Data *rating*, yang merupakan hasil ulasan dari pelanggan, akan digunakan sebagai data terget pada pelatihan model yang akan merepresentasikan bahwa pelanggan suka atau tidak suka terhadap makanan yang diulas. Oleh karena itu, untuk memudahkan proses pengenalan pola oleh model, data *rating* dinormalisasi nilainya ke dalam rentang 0 - 1 menggunakan metode `MinMaxScaler()`. 
 
-
-### Data Normalization
-As we know almost all of the data have a skewed distribution, different value ranges, and outliers. 
-#### _Log Transform_
-First, transform the data into logarithmic value using `np.log()`. It will handle the outliers and reduce the skewness. The logarithmic transformation helps stabilize variance and reduce the effect of outliers by compressing the range of the data. For example, the Nutrient Density values ​​change to the following:
-
-![Log Transform Caloric Value](https://github.com/user-attachments/assets/6dedeeff-10b1-494f-9a5b-8754546971a1)
-
-![Log Transform Nutrition Density](https://github.com/user-attachments/assets/515892cd-6030-406c-b046-5acec1697256)
-
-#### _Normalization_
-Second, normalize the data using `RobustScaler()` to scale the data by using the median and Interquartile Range (IQR). This way helps to adjust the feature scales, which is crucial for neural networks as they are sensitive to the scale of input features. 
-
-![Normalized Caloric Value](https://github.com/user-attachments/assets/38802f3d-1625-4b9b-8859-c6963871048a)
-
-![Normalized Nutrition Density](https://github.com/user-attachments/assets/3866fedd-f1ed-4afe-802c-e24478deacad)
-
-### Data Split
-Data was separated into features (X) and target (y). All nutrient columns are the features. Then, The nutrition Density column would be the target.
-
-Two data-splitting schemes were used for two different models as follows:
-1. `TEST_SIZE_1 = 0.1`. The data will be split into 90% `data_train`, 5% `data_validation`, and 5% `data_test`. 
-2. `TEST_SIZE_2 = 0.2`. The data will be split into 80% `data_train`, 10% `data_validation`, and 10% `data_test`.
+##### Data Split
+  Langkah terakhir sebelum memasuki tahap pelatihan model adalah pembagian data menjadi data training dan data validasi. Pembagian data dilakukan dengan rasio 80 : 20 untuk data training dan data validasi. Data training digunakan untuk melatih model, sedangkan data validasi digunakan untuk mengevaluasi model yang telah dilatih bahwa model dapat memberikan performa yang baik terhadap data yang belum perah dilihat sebelumnya.
 
 ---
 ## Modeling
-### Model Design
-The parameters for each model are set as follows:
-| Parameter | Model 1 | Model 2 |
-|-----------|---------|---------|
-| Optimizer | RMSprop | Adam |
-| Loss | MSE | Huber |
-| Output Activation | Linear | Linear |
-| Batch Normalization | 1 | 1 |
-| Dropout | 0.3 | 0.3 |
-| Dense Layers | 4 | 3 |
-| Epochs | 150 | 300 |
-| Batch | 128 | 128 |
+### Cosine Similarity
+  Pendekatan algoritma cosine similarity digunakan untuk membuat model sistem rekomendasi dengan metode *content-based filtering*. Cosine similarity bekerja dengan cara mengukur kesamaan arah antara dua vektor dari representasi data. Algoritma ini menghitung besaran sudut cosinus antara vektor satu dengan lainnya. Semakin kecil derajat sudut, maka semakin besar nilai cosine similarity, artinya kedua data semakin mirip. Cosine similarity antara dua vektor **A** dan **B** dapat dihitung dengan formula berikut:
 
-The model design can be seen in the following diagram:
+\[
+\text{Cosine Similarity} = \frac{\sum_{i=1}^{n} A_i B_i}{\sqrt{\sum_{i=1}^{n} A_i^2} \cdot \sqrt{\sum_{i=1}^{n} B_i^2}}
+\]
 
-![MODEL STRUCTURE](https://github.com/user-attachments/assets/c1423c3a-e06c-4539-bdab-acce70558162)
+Di mana:
+- \( A_i \) dan \( B_i \) adalah komponen dari vektor **A** dan **B** pada dimensi \( i \).
+- \( n \) adalah jumlah dimensi vektor.
 
-### Training
-The model training stage consists of the following steps:
-1. __Forward Pass__
-   * _Input Data_: Nutritional Data (features) will be fed into the `input layer`.
-   * _Prediction_: The model calculates the `weight` and then produces Nutrition Density as a prediction by calculating the `activation function` in every neuron.
-2. __Loss__
-  *  _Loss Caculation_: The model will calculate the `loss function` value to assess how well the model's predictions compare to the actual values.
-  *  The loss function for regression can be expressed by the following formula:
+### Penjelasan
+1. **Pembilang**: Hasil kali dot product antara dua vektor.
+2. **Penyebut**: Perkalian dari magnitudo kedua vektor.
 
-$$
-\text{Loss} = \frac{1}{n} \sum_{i=1}^{n} (y_i - \hat{y}_i)^2
-$$
+Cosine similarity menghasilkan nilai antara -1 hingga 1:
+- \( 1 \): Vektor memiliki arah yang sama.
+- \( 0 \): Vektor saling tegak lurus (tidak memiliki hubungan).
+- \( -1 \): Vektor memiliki arah yang berlawanan.
 
-Where:
-- yi is the actual value,
-- ŷi is the model prediction,
-- n is the number of data points.
+### Neural Collaborative Filtering
 
-3. __Backward Pass__
-  *  _Gradient Descent_: The `gradient` will be calculated from the loss function against the model weights. This process is carried out using the chain rule to calculate how much each weight contributes to the output error.
-  *  _Weights Updating_: The `weights` are refined using `optimization` algorithms, such as `RMSProp()` and `Adam()`, to minimize the loss.
-  *  The weight update at each iteration can be expressed by the following formula:
-
-$$
-w \gets w - \eta \frac{\partial \text{Loss}}{\partial w}
-$$
-
-Where:
-- w is the weight,
-- η (eta) is the learning rate,
-- ∂Loss/∂w is the gradient of the loss function to the weight.
-
-4. __Training Evaluation__
-   *  _Validation_: At each `epoch` or every few epochs, the model is evaluated on the validation set. The loss function on the validation set is calculated to see how the model generalizes beyond the training data.
 
 ---
 ## Evaluation
