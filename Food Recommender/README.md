@@ -15,8 +15,8 @@
   1. Bagaimana sistem rekomendasi dapat memberikan pilihan makanan dengan bahan baku utama yang sama?
   2. Bagaimana sistem rekomendasi dapat memberikan berbagai pilihan makanan yang mungkin disukai oleh target pelanggan?
 ### Goals
-  1. Menghasilkan 10 rekomendasi makanan yang memiliki bahan baku utama yang sama serta dapat dimasak dalam waktu kurang dari 2 jam.
-  2. Menghasilkan 10 rekomendasi makanan yang mungkin disukai oleh target pelanggan dan dapat dimasak dalam waktu kurang dari 2 jam.
+  1. Menghasilkan 10 rekomendasi makanan yang memiliki bahan baku utama yang sama.
+  2. Menghasilkan 10 rekomendasi makanan yang mungkin disukai oleh target pelanggan.
 ### Solution Statements
   1. Menerapkan pendekatan _content-based filtering_ menggunakan algoritma _cosine similarity_ untuk menghitung kemiripan bahan baku yang digunakan diurutkan berdasarkan nilai _similarity_ terbesar.
   2. Menerapkan pendekatan _collaborative filtering_ menggunakan algoritma _deep learning_ untuk menemukan pola pemberian rating oleh user.
@@ -167,7 +167,7 @@ Cosine similarity menghasilkan nilai antara -1 hingga 1:
 ---
 ## Evaluation
 ### Content Based Filtering
-  Metrik evaluasi yang digunakan pada pendekatan ini adalah `Mean Cosine Similarity`. Metrik ini dapat mengukur rata-rata kemiripan antara makanan yang direkomendasikan berdasarkan perhitungan _cosine similarity_ dari bahan baku yang digunakan setiap makanan. Formula Mean Cosine Similarity adalah sebagai berikut.
+  Untuk memudahkan evaluasi, perbandingan dilakukan terhadap relevansi makanan yang direkomendasikan terhadap makanan sebelumnya berdasarkan tipe bahan baku yang digunakan, yaitu Vegan atau Non-Vegan. Metrik evaluasi yang digunakan pada pendekatan ini adalah `Mean Cosine Similarity`. Metrik ini dapat mengukur rata-rata kemiripan antara makanan yang direkomendasikan berdasarkan perhitungan _cosine similarity_ dari bahan baku yang digunakan setiap makanan. Formula Mean Cosine Similarity adalah sebagai berikut.
   
 $$\
 \text{Mean Cosine Similarity} = \frac{1}{N} \sum_{i=1}^{N} \text{cosine similarity}(A, B_i)
@@ -185,10 +185,21 @@ Terdapat kriteria umum untuk menilai rata-rata _cosine similarity_ antara lain:
 3. **Nilai Tinggi (mendekati 1)**: ini menunjukkan kemiripan yang sangat kuat. Biasanya nilai antara 0,4 - 6 dianggap kurang relevan.
 4. **Nilai Tinggi (mendekati 1)**: ini menunjukkan kemiripan yang sangat kuat. Biasanya nilai < 0,4 dianggap tidak relevan.
 
-  Hasil evaluasi model menunjukkan nilai Mean Cosine Similarity sebesar 0,378 dengan rincian sebagai berikut:
-| name | Skor Relevansi |
-|------|----------------|
-| . | . |
+  Hasil evaluasi model menunjukkan nilai Mean Cosine Similarity sebesar 0,859 (sangat relevan) dengan rincian sebagai berikut:
+`Makanan sebelumnya --> chicken minced salad merupakan tipe non-veg`.
+| No | name | Tipe | Skor Relevansi |
+|----|------|------|----------------|
+| 1 | chilli chicken | non-veg | 1.0 |
+| 2 | veg hakka noodles | non-veg | 0.48 |
+| 3 | veg fried rice | non-veg | 0.48 |
+| 4 | prawn fried rice | non-veg | 0.48 |
+| 5 | chilli fish | non-veg | 1.0 |
+| 6 | garlic soya chicken | non-veg | 1.0 |
+| 7 | Thai Spareribs | non-veg | 1.0 |
+| 8 | Spicy Korean Steak | non-veg | 1.0 |
+| 9 | egg and garlic fried rice | non-veg | 1.0 |
+| 10 | almond and chicken momos (without shell) | non-veg | 1.0 |
+
 
 ### Neural Collaborative Filtering
 Root Mean Squared Error (RMSE) mengukur rata-rata _error_ antara nilai prediksi yang dihasilkan oleh model dan nilai sebenarnya (_ground thruth_). Error dihitung dengan mengambil selisih antara nilai prediksi dan nilai sebenarnya, kemudian dikuadratkan untuk memastikan semua error bernilai positif. Rata-rata dari error kuadrat akan dihitung dan dikonversi ke skala asli data dengan kalkulasi nilai akar kuadrat. Berikut formula lengkapnya:
