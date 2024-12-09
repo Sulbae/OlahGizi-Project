@@ -160,9 +160,8 @@ Berdasarkan _goals_ yang telah ditetapkan, Olagizi ingin sistem memberikan rekom
 ### Cosine Similarity
   Pendekatan algoritma cosine similarity digunakan untuk membuat model sistem rekomendasi dengan metode *content-based filtering*. Cosine similarity bekerja dengan cara mengukur kesamaan arah antara dua vektor dari representasi data. Algoritma ini menghitung besaran sudut cosinus antara vektor satu dengan lainnya. Semakin kecil derajat sudut, maka semakin besar nilai cosine similarity, artinya kedua data semakin mirip. Cosine similarity antara dua vektor **A** dan **B** dapat dihitung dengan formula berikut:
 
-$$\[
-\text{Cosine Similarity} = \frac{\sum_{i=1}^{n} A_i B_i}{\sqrt{\sum_{i=1}^{n} A_i^2} \cdot \sqrt{\sum_{i=1}^{n} B_i^2}}
-\]$$
+
+$$\text{Cosine Similarity} = \frac{\sum_{i=1}^{n} A_i B_i}{\sqrt{\sum_{i=1}^{n} A_i^2} \cdot \sqrt{\sum_{i=1}^{n} B_i^2}}$$
 
 Di mana:
 - $$\( A_i \)$$ dan $$\( B_i \)$$ adalah komponen dari vektor **A** dan **B** pada dimensi $$\( i \)$$.
