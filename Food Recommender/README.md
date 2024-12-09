@@ -47,9 +47,11 @@ _Download raw dataset_:
 
 ### Explore Data
 Eksplorasi data dilakukan untuk mengenali dan memahami data dengan lebih detail dan menyeluruh. Eksplorasi data ini dilakukan terhadap kedua dataset yang akan digunakan. Hasil eksplorasi menunjukkan `food_df` memiliki total 400 baris data dan 5 kolom. `food_df` tidak memiliki duplikasi data maupun nilai null. Ini artinya data terdiri dari 400 makanan yang berbeda. Makanan pada dataset didominasi oleh makanan dengan kategori makanan India, Healthy Food, dan Dessert (makanan penutup) seperti yang ditampilkan pada chart berikut.
+
 ![kategori makanan](https://github.com/user-attachments/assets/2922e0a9-1e66-45d6-814e-a2721aafaeb4)
 
 Sebagai tambahan, enam puluh persen makanan pada dataset merupakan makanan yang tidak mengandung bahan baku hewani, sementara sisanya menggunakan bahan baku hewani.
+
 ![Veg_Non](https://github.com/user-attachments/assets/df0c3cf5-527a-4254-ba35-f89555089dee)
 
 #### rating_df
