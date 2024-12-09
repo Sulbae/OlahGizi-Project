@@ -15,8 +15,8 @@
   1. Bagaimana sistem rekomendasi dapat memberikan pilihan makanan dengan bahan baku utama yang sama?
   2. Bagaimana sistem rekomendasi dapat memberikan berbagai pilihan makanan yang mungkin disukai oleh target pelanggan?
 ### Goals
-  1. Menghasilkan 10 rekomendasi makanan yang memiliki bahan baku utama yang sama serta dapat dimasak dalam waktu kurang dari 2 jam.
-  2. Menghasilkan 10 rekomendasi makanan yang mungkin disukai oleh target pelanggan dan dapat dimasak dalam waktu kurang dari 2 jam.
+  1. Menghasilkan 10 rekomendasi makanan yang memiliki bahan baku utama yang sama.
+  2. Menghasilkan 10 rekomendasi makanan yang mungkin disukai oleh target pelanggan.
 ### Solution Statements
   1. Menerapkan pendekatan _content-based filtering_ menggunakan algoritma _cosine similarity_ untuk menghitung kemiripan bahan baku yang digunakan diurutkan berdasarkan nilai _similarity_ terbesar.
   2. Menerapkan pendekatan _collaborative filtering_ menggunakan algoritma _deep learning_ untuk menemukan pola pemberian rating oleh user.
@@ -46,7 +46,7 @@ _Download raw dataset_:
 | 3 | Rating | `integer` | Penilaian yang diberikan (dalam skala 1 - 10). |
 
 ### Explore Data
-Eksplorasi data dilakukan untuk mengenali dan memahami data dengan lebih detail dan menyeluruh. Eksplorasi data ini dilakukan terhadap kedua dataset yang akan digunakan. Hasil eksplorasi menunjukkan `food_df` memiliki total 400 baris data dan 5 kolom. `food_df` tidak memiliki duplikasi data maupun nilai null. Ini artinya data terdiri dari 400 makanan yang berbeda. Makanan pada dataset didominasi oleh makanan dengan kategori makanan India, Healthy Food, dan Dessert (makanan penutup) seperti yang ditampilkan pada chart berikut.
+Eksplorasi data dilakukan untuk mengenali dan memahami data dengan lebih detail dan menyeluruh. Eksplorasi data ini dilakukan terhadap kedua dataset yang akan digunakan. Hasil eksplorasi menunjukkan dataset `food_df` memiliki total 400 baris data dan 5 kolom. `food_df` tidak memiliki duplikasi data maupun nilai null. Ini artinya data terdiri dari 400 makanan yang berbeda. Makanan pada dataset didominasi oleh makanan dengan kategori makanan India, Healthy Food, dan Dessert (makanan penutup) seperti yang ditampilkan pada chart berikut.
 
 ![kategori makanan](https://github.com/user-attachments/assets/2922e0a9-1e66-45d6-814e-a2721aafaeb4)
 
@@ -54,8 +54,11 @@ Sebagai tambahan, enam puluh persen makanan pada dataset merupakan makanan yang 
 
 ![Veg_Non](https://github.com/user-attachments/assets/df0c3cf5-527a-4254-ba35-f89555089dee)
 
-#### rating_df
-`rating_df` memiliki total 11324 baris data dan 3 kolom.
+
+Di sisi lain, dataset `rating_df` memiliki total 512 baris data dan 3 kolom. Hasil pengecekan menunjukkan dataset `rating_df` memiliki 3 data yang mengandung _missing value_. Karena rasionya sangat kecil dibandingkan jumlah total data, maka sebaiknya data tersebut dihapus. Diketahui bahwa distribusi data _rating_ cukup seimbang karena memiliki nilai `mean = 5.4` dan `median = 5.0`. Sementara rentang nilai rating berkisar dari 1 hingga 10. Hal ini didukung oleh hasil visualisasi dari distribusi data berikut.
+
+![Distribusi Rating](https://github.com/user-attachments/assets/e10eeb2c-914c-4e79-8bd0-96a8bc7f0039)
+
 
 ---
 ## Data Preparation
@@ -63,43 +66,13 @@ Sebagai tambahan, enam puluh persen makanan pada dataset merupakan makanan yang 
 #### _Data Cleaning_
   Salah satu tahap terpenting dalam _Data Preparation_ yaitu _Data Cleaning_. Proses ini dilakukan untuk memastikan bahwa data yang akan digunakan untuk melatih model merupakan data yang bersih, rapi, dan berkualitas. Misalnya memastikan format data sudah tepat sesuai dengan representasi data, perlakuan terhadap data yang hilang (_missing value_) maupun pencilan data (_outlier_), dll. Dengan begitu, proses persiapan data setelahnya dapat dilakukan dengan lebih mudah.
 
-#### _Filter Data_
-Berdasarkan _goals_ yang telah ditetapkan, Olagizi ingin sistem memberikan rekomendasi makanan yang dapat dimasak kurang dari 2 jam. Oleh karena itu, sebaiknya data `recipes_sample_df` disaring terlebih dahulu.
-
-#### _Features Engineering_
-1. Ekstrak data pada fitur _nutrition_ dalam `recipes_sample_df`:
-   Diketahui data pada kolom _nutrition_ memiliki format `object` yang berisi sebuah `list`. Data tersebut mengandung informasi jumlah kalori, lemak, gula, sodium, protein, lemak jenuh, dan karbohidrat. Untuk memudahkan analisis, maka data harus diekstrak menjadi kolom-kolom tersendiri. Ini dilakukan agar hubungan antar variabel data dapat dianalisis dengan lebih mudah pada proses selanjutnya.
-
-2. Ambil bahan baku utama pada kolom _ingredients_ dalam `recipes_sample_df`:
-   Diketahui data pada kolom *ingredients* memiliki format `object` yang berisi `string` sehingga perlu diubah menjadi list dan diambil elemen pertama hingga ketiga (asumsi sebagai bahan baku utama) saja, kemudian konversi menjadi string kembali.
-
 #### _Content Based Filtering_
-##### Features Selection
-  Selanjutnya, pemilihan data-data yang relevan bagi sistem rekomendasi berbasis _Content Based Filtering_ dari `recipes_sample_df`. Fitur-fitur yang terpilih untuk proses analisis selanjutnya adalah sebagai berikut.
-| Kolom Terpilih | Dataframe Asal |
-|-----------|----------------|
-| id | recipes_sample_df |
-| name | recipes_sample_df | 
-| ingredients | recipes_sample_df |
-| calories | recipes_sample_df |
-| minutes | recipes_sample_df | 
-| steps | recipes_sample_df | 
-
 ##### Features Extraction
   Data bahan baku yang berupa teks harus diubah ke dalam data numerik dengan cara mengekstraksi fitur teks menjadi vektor menggunakan `TfidfVectorizer`. Hasil vektorisasi tersebut akan digunakan untuk menghitung kemiripan (_similarity_) bahan baku antar makanan pada dataset yang tersedia. Dengan demikian, ini dapat mempermudah model untuk memberikan rekomendasi berdasarkan bahan baku makanan.
 
 #### Collaborative Filtering
-##### Features Selection
-  Sementara itu, pemilihan data-data yang relevan bagi sistem rekomendasi berbasis _collaborative filtering_ dari `interactions_sample_df` juga `recipes_sample_df`. Fitur-fitur yang terpilih untuk proses analisis selanjutnya adalah sebagai berikut.
-| Kolom Terpilih | Dataframe Asal |
-|-----------|----------------|
-| name | recipes_sample_df | 
-| recipe_id | interactions_sample_df |
-| user_id | interactions_sample_df | 
-| rating | interactions_sample_df | 
-
 ##### Features Encoding
-  Diketahui data *recipe_id* dan *user_id* memiliki format data `int64` dengan variasi yang berbeda sehingga perlu dilakukan encoding ke dalam indeks integer agar memiliki persebaran data yang seragam. Dengan demikian, data dapat digunakan untuk proses pelatihan model dengan lebih baik dan model dapat menemukan pola dari data dengan lebih mudah.
+  Diketahui data *Food_ID* dan *User_ID* memiliki format data `float64` dengan variasi yang berbeda sehingga perlu dilakukan encoding ke dalam indeks integer agar memiliki persebaran data yang seragam. Dengan demikian, data dapat digunakan untuk proses pelatihan model dengan lebih baik dan model dapat menemukan pola dari data dengan lebih mudah.
 
 ##### Data Normalization
   Data *rating*, yang merupakan hasil ulasan dari pelanggan, akan digunakan sebagai data terget pada pelatihan model yang akan merepresentasikan bahwa pelanggan suka atau tidak suka terhadap makanan yang diulas. Oleh karena itu, untuk memudahkan proses pengenalan pola oleh model, data *rating* dinormalisasi nilainya ke dalam rentang 0 - 1 menggunakan metode `MinMaxScaler()`. 
@@ -115,7 +88,7 @@ Berdasarkan _goals_ yang telah ditetapkan, Olagizi ingin sistem memberikan rekom
 
 $$\text{Cosine Similarity} = \frac{\sum_{i=1}^{n} A_i B_i}{\sqrt{\sum_{i=1}^{n} A_i^2} \cdot \sqrt{\sum_{i=1}^{n} B_i^2}}$$
 
-Di mana:
+Keterangan:
 - $$\( A_i \)$$ dan $$\( B_i \)$$ adalah komponen dari vektor **A** dan **B** pada dimensi $$\( i \)$$.
 - $$\( n \)$$ adalah jumlah dimensi vektor.
 
@@ -144,19 +117,19 @@ Cosine similarity menghasilkan nilai antara -1 hingga 1:
 
 #### Hasil Rekomendasi
   Setelah model dibuat, selajutnya model akan digunakan untuk mendapatkan 10 rekomendasi makanan lain berdasarkan makanan yang pernah dipilih pelanggan. Hasilnya diperoleh seperti berkut:
-`rekomendasi_makanan("meatloaf with potato topping)`
-| No | name | 
+`rekomendasi_makanan("chicken minced salad)`
+| No | Name | 
 |----|------|
-| 1 | beef tenderloin with garlic horseradish crust |
-| 2 | beef tortilla cake | 
-| 3 | pasta with ricotta bolognese |
-| 4 | gabby gourmets southwestern chili |
-| 5 | lemon and basil baked chicken |
-| 6 | orzo and vegetable salad |
-| 7 | ground beef teriyaki |
-| 8 | bounty harvest meatloaf |
-| 9 | herbed lentils and rice |
-| 10 | seasoned cod fillet casserole |
+| 1 | chilli chicken |
+| 2 | veg hakka noodles | 
+| 3 | veg fried rice |
+| 4 | prawn fried rice |
+| 5 | chilli fish |
+| 6 | garlic soya chicken |
+| 7 | Thai Spareribs |
+| 8 | Spicy Korean Steak |
+| 9 | egg and garlic fried rice |
+| 10 | almond and chicken momos (without shell) |
 
 ### Neural Collaborative Filtering
 #### Desain Model 
@@ -177,30 +150,30 @@ Cosine similarity menghasilkan nilai antara -1 hingga 1:
 
 #### Hasil Rekomendasi
   Setelah model dibuat, selajutnya model akan digunakan untuk mendapatkan 10 rekomendasi makanan populer lain yang belum pernah dipilih pelanggan. Hasilnya diperoleh seperti berkut:
-`Makanan pilihan user: tomato and avocado goat cheese crostini`
-| No | name | 
+`Makanan kesukaan user sebelumnya: christmas cake, corn and raw mango salad`
+| No | Name | 
 |----|------|
-| 1 | beefed up bloody mary soup |
-| 2 | dreamsicle cookie mix in a jar | 
-| 3 | relly good vegetarian meatloaf |
-| 4 | kourabiethes greek butter cookies |
-| 5 | advocaat |
-| 6 | chicken osso buco |
-| 7 | homemade plant food |
-| 8 | blueberry sausage breakfast cake |
-| 9 | saucy pasta all in one pot |
-| 10 | apple cider gravy |
+| 1 | summer squash salad |
+| 2 | roasted spring chicken with root veggies | 
+| 3 | chicken dong style |
+| 4 | andhra crab meat masala |
+| 5 | malabari fish curry |
+| 6 | malabar fish curry |
+| 7 | surmai curry with lobster butter rice |
+| 8 | instant rava dosa |
+| 9 | wok tossed asparagus in mild garlic sauce |
+| 10 | banana chips |
 
 ---
 ## Evaluation
 ### Content Based Filtering
-  Metrik evaluasi yang digunakan pada pendekatan ini adalah `Mean Cosine Similarity`. Metrik ini dapat mengukur rata-rata kemiripan antara makanan yang direkomendasikan berdasarkan perhitungan _cosine similarity_ dari bahan baku yang digunakan setiap makanan. Formula Mean Cosine Similarity adalah sebagai berikut.
+  Untuk memudahkan evaluasi, perbandingan dilakukan terhadap relevansi makanan yang direkomendasikan terhadap makanan sebelumnya berdasarkan tipe bahan baku yang digunakan, yaitu Vegan atau Non-Vegan. Metrik evaluasi yang digunakan pada pendekatan ini adalah `Mean Cosine Similarity`. Metrik ini dapat mengukur rata-rata kemiripan antara makanan yang direkomendasikan berdasarkan perhitungan _cosine similarity_ dari bahan baku yang digunakan setiap makanan. Formula Mean Cosine Similarity adalah sebagai berikut.
   
 $$\
 \text{Mean Cosine Similarity} = \frac{1}{N} \sum_{i=1}^{N} \text{cosine similarity}(A, B_i)
 \$$
 
-di mana:
+Keterangan:
 - $$\(N\)$$ adalah jumlah item yang relevan atau direkomendasikan.
 - $$\(A\)$$ adalah item yang dipilih atau disukai oleh pengguna.
 - $$\(B_i\)$$ adalah item-item yang direkomendasikan untuk item $$\(A\)$$.
@@ -212,14 +185,41 @@ Terdapat kriteria umum untuk menilai rata-rata _cosine similarity_ antara lain:
 3. **Nilai Tinggi (mendekati 1)**: ini menunjukkan kemiripan yang sangat kuat. Biasanya nilai antara 0,4 - 6 dianggap kurang relevan.
 4. **Nilai Tinggi (mendekati 1)**: ini menunjukkan kemiripan yang sangat kuat. Biasanya nilai < 0,4 dianggap tidak relevan.
 
-  Hasil evaluasi model menunjukkan nilai Mean Cosine Similarity sebesar 0,378 dengan rincian sebagai berikut:
-| name | Skor Relevansi |
-|------|----------------|
-| . | . |
+  Hasil evaluasi model menunjukkan nilai Mean Cosine Similarity sebesar 0,859 (sangat relevan) dengan rincian sebagai berikut:
+`Makanan sebelumnya --> chicken minced salad merupakan tipe non-veg`.
+| No | name | Tipe | Skor Relevansi |
+|----|------|------|----------------|
+| 1 | chilli chicken | non-veg | 1.0 |
+| 2 | veg hakka noodles | non-veg | 0.48 |
+| 3 | veg fried rice | non-veg | 0.48 |
+| 4 | prawn fried rice | non-veg | 0.48 |
+| 5 | chilli fish | non-veg | 1.0 |
+| 6 | garlic soya chicken | non-veg | 1.0 |
+| 7 | Thai Spareribs | non-veg | 1.0 |
+| 8 | Spicy Korean Steak | non-veg | 1.0 |
+| 9 | egg and garlic fried rice | non-veg | 1.0 |
+| 10 | almond and chicken momos (without shell) | non-veg | 1.0 |
+
 
 ### Neural Collaborative Filtering
-Root Mean Squared Error (RMSE) 
+Root Mean Squared Error (RMSE) mengukur rata-rata _error_ antara nilai prediksi yang dihasilkan oleh model dan nilai sebenarnya (_ground thruth_). Error dihitung dengan mengambil selisih antara nilai prediksi dan nilai sebenarnya, kemudian dikuadratkan untuk memastikan semua error bernilai positif. Rata-rata dari error kuadrat akan dihitung dan dikonversi ke skala asli data dengan kalkulasi nilai akar kuadrat. Berikut formula lengkapnya:
 
+$$\
+\text{RMSE} = sqrt((1/n) * Σ (y_i - ŷ_i)²
+\$$
+
+Keterangan:
+* $$\(n\)$$: Jumlah observasi (data point yang dievaluasi).
+* $$\(y_i)\$$: Nilai sebenarnya (ground truth) untuk data ke-𝑖.
+* $$\(ŷ_i)\$$: Nilai prediksi.
+* $$\(y_i - ŷ_i)\$$: Error antara nilai sebenarnya dan prediksi.
+
+![coll_train](https://github.com/user-attachments/assets/ed71ff51-364b-4151-9381-fd2be5a3eb7c)
+
+Berdasarkan hasil pelatihan model dapat disimpulkan bahwa:
+* Grafik _history_ pelatihan model menunjukkan nilai RMSE pada data training terus menurun secara konsisten, artinya bahwa model semakin baik dalam mempelajari pola pada data training.
+* Nilai RMSE pada data validasi juga menurun, meski lebih lambat dibandingkan dengan data training. Ini menunjukkan bahwa model cukup baik dalam melakukan generalisasi pada data yang tidak terlihat sebelumnya.
+* Terlihat tidak ada kenaikan signifikan pada nilai RMSE validasi yang menandakan bahwa overfitting belum terjadi.
 
 ---
 ## Conclusion
