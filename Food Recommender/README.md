@@ -83,7 +83,7 @@ Data ulasan yang ada menunjukkan dominasi rating yang diberikan berkisar 3 - 5. 
 #### _Data Cleaning_
   Salah satu tahap terpenting dalam _Data Preparation_ yaitu _Data Cleaning_. Proses ini dilakukan untuk memastikan bahwa data yang akan digunakan untuk melatih model merupakan data yang bersih, rapi, dan berkualitas. Misalnya memastikan format data sudah tepat sesuai dengan representasi data, perlakuan terhadap data yang hilang (_missing value_) maupun pencilan data (_outlier_), dll. Dengan begitu, proses persiapan data setelahnya dapat dilakukan dengan lebih mudah.
 
-#### _Filter Data 
+#### Filter Data 
 ##### recipes_sample_df
 Berdasarkan _goals_ yang telah ditetapkan, Olagizi ingin sistem memberikan rekomendasi makanan yang dapat dimasak kurang dari 2 jam. Oleh karena itu, data sebaiknya disaring terlebih dahulu.
 
