@@ -194,13 +194,13 @@ Terdapat kriteria umum untuk menilai rata-rata _cosine similarity_ antara lain:
 Root Mean Squared Error (RMSE) mengukur rata-rata _error_ antara nilai prediksi yang dihasilkan oleh model dan nilai sebenarnya (_ground thruth_). Error dihitung dengan mengambil selisih antara nilai prediksi dan nilai sebenarnya, kemudian dikuadratkan untuk memastikan semua error bernilai positif. Rata-rata dari error kuadrat akan dihitung dan dikonversi ke skala asli data dengan kalkulasi nilai akar kuadrat. Berikut formula lengkapnya:
 
 $$\
-\text{RMSE} = sqrt((1/n) * Σ (y_i - ŷ_i)²)
+\text{RMSE} = sqrt((1/n) * Σ (y_i - ŷ_i)²
 \$$
 
 Keterangan:
 * $$\(n\)$$: Jumlah observasi (data point yang dievaluasi).
 * $$\(y_i)\$$: Nilai sebenarnya (ground truth) untuk data ke-𝑖.
-* $$\(ŷ_i)\$$:: Nilai prediksi.
+* $$\(ŷ_i)\$$: Nilai prediksi.
 * $$\(y_i - ŷ_i)\$$: Error antara nilai sebenarnya dan prediksi.
 
 ![coll_train](https://github.com/user-attachments/assets/ed71ff51-364b-4151-9381-fd2be5a3eb7c)
