@@ -1,31 +1,4 @@
 # Recommendation System Project Report - Anggun Sulis Setyawan ✨
-
----
-## List of Contents
-  - [Background](#Background)
-  - [Business Understanding](#Business-Understanding)
-    - [Problem Statments](#Problem-Statments)
-    - [Goals](#Goals)
-    - [Solution Statements](#Solution-Statements)
-  - [Data Understanding](#Data-Understanding)
-    - [Dataset](#Dataset)
-    - [Overview](#Overview)
-    - [Column Description](#Column-Description)
-    - [Explore](#Explore)
-  - [Data Preparation](#Data-Preparation#)
-    - [Features Engineering](#Feature-Engineering)
-    - [Data Normalization](#Data-Normalization)
-    - [Data Split](#Data-Split)
-  - [Modeling](#Modeling)
-    - [Model Design](#Model-Design)
-    - [Training](#Training)
-  - [Evaluation](#Evaluation)
-    - [Metrics Description](#Metrics-Description)
-    - [Model Comparison](#Model-Comparison)
-  - [Inference](#Inference)
-  - [Development Opportunity](#Development-Opportunity)
-  - [References](#References)
-
 ---
 ## Background
   Indonesia memiliki cita-cita besar untuk menjadi negara maju. Oleh karena itu, peningkatan kualitas Sumber Daya Manusia (SDM) menjadi pilar penting yang harus diperbaiki, terutama dalam hal peningkatan kesehatan, pemenuhan gizi, dan pencegahan stunting (Kemenko PMK RI, 2024). Pemerintah Indonesia telah merencanakan untuk melaksanakan program makan bergizi gratis sesuai arahan Presiden RI Prabowo Subianto. Pemerintah berharap program tersebut dapat menurunkan jumlah kasus stunting bahkan mencegah kasus stunting baru di masa depan. Fokus awal dari program ini adalah anak-anak sekolah dan kelompok rentan lainnya. Anak sekolah yang dimaksud antara lain pelajar PAUD, SD, SMP, dan SMA (detik.com, 2024). 
@@ -39,14 +12,14 @@
 ---
 ## Business Understanding
 ### Problem Statements
-  1. Bagaimana sistem rekomendasi dapat memberikan pilihan makanan dengan kandungan jumlah kalori yang mirip?
+  1. Bagaimana sistem rekomendasi dapat memberikan pilihan makanan dengan bahan baku utama yang sama?
   2. Bagaimana sistem rekomendasi dapat memberikan berbagai pilihan makanan yang mungkin disukai oleh target pelanggan?
 ### Goals
-  1. Menghasilkan 10 rekomendasi makanan yang memiliki nilai kalori yang mirip dan dapat dimasak dalam waktu kurang dari 2 jam.
+  1. Menghasilkan 10 rekomendasi makanan yang memiliki bahan baku utama yang sama serta dapat dimasak dalam waktu kurang dari 2 jam.
   2. Menghasilkan 10 rekomendasi makanan yang mungkin disukai oleh target pelanggan dan dapat dimasak dalam waktu kurang dari 2 jam.
 ### Solution Statements
-  1. Menerapkan pendekatan _content-based filtering_ menggunakan algoritma _cosine similarity_.
-  2. Menerapkan pendekatan _collaborative filtering_ menggunakan algoritma _deep learning_.
+  1. Menerapkan pendekatan _content-based filtering_ menggunakan algoritma _cosine similarity_ untuk menghitung kemiripan bahan baku yang digunakan diurutkan berdasarkan nilai _similarity_ terbesar.
+  2. Menerapkan pendekatan _collaborative filtering_ menggunakan algoritma _deep learning_ untuk menemukan pola pemberian rating oleh user.
 
 ---
 ## Data Understanding
@@ -88,8 +61,6 @@ _Download raw dataset_:
 * Pada dataset `recipes_sample_df` ditemukan 52 _missing value_ untuk kolom _description_ dan terdapat format data yang belum sesuai pada kolom _submitted_ dan _nutrition_. Menurut hasil deskripsi statistik rata-rata makanan pada data membutuhkan waktu memasak sekitar 130 menit atau sekitar 9 tahapan.
 * Pada dataset `interactions_sample_df` ditemukan 1 _missing value_ untuk kolom _review_ dan terdapat format data yang belum sesuai pada kolom _date_. Diketahui rata-rata nilai ulasan atau _rating_ yang diberikan orang-orang adalah 4,4.
 
-
-### Univariate Analysis
 #### recipes_sample_df
 ![minutes](https://github.com/user-attachments/assets/743048bc-8aab-455f-81b9-cab385b348b6)
 Diketahui distribusi data kolom _minutes_ pada `recipes_sample_df` sangat _skewed_ karena data memiliki _outlier_ yang cukup banyak dan rentang nilai yang ekstrem. 
@@ -101,25 +72,21 @@ Sementara itu, data kolom _n_steps_ juga terdistribusi _skewed_, tetapi memiliki
 ![rating](https://github.com/user-attachments/assets/03c5e40b-31d7-4834-b77a-c827bc9b0ce5)
 Data ulasan yang ada menunjukkan dominasi rating yang diberikan berkisar 3 - 5. Hal ini menandakan bahwa banyak pelanggan atau pengguna yang merasa puas.
 
-### Multivariate Analysis
-
-
 ---
 ## Data Preparation
 
 #### _Data Cleaning_
   Salah satu tahap terpenting dalam _Data Preparation_ yaitu _Data Cleaning_. Proses ini dilakukan untuk memastikan bahwa data yang akan digunakan untuk melatih model merupakan data yang bersih, rapi, dan berkualitas. Misalnya memastikan format data sudah tepat sesuai dengan representasi data, perlakuan terhadap data yang hilang (_missing value_) maupun pencilan data (_outlier_), dll. Dengan begitu, proses persiapan data setelahnya dapat dilakukan dengan lebih mudah.
 
-#### _Filter Data 
-##### recipes_sample_df
-Berdasarkan _goals_ yang telah ditetapkan, Olagizi ingin sistem memberikan rekomendasi makanan yang dapat dimasak kurang dari 2 jam. Oleh karena itu, data sebaiknya disaring terlebih dahulu.
+#### _Filter Data_
+Berdasarkan _goals_ yang telah ditetapkan, Olagizi ingin sistem memberikan rekomendasi makanan yang dapat dimasak kurang dari 2 jam. Oleh karena itu, sebaiknya data `recipes_sample_df` disaring terlebih dahulu.
 
 #### _Features Engineering_
 1. Ekstrak data pada fitur _nutrition_ dalam `recipes_sample_df`:
    Diketahui data pada kolom _nutrition_ memiliki format `object` yang berisi sebuah `list`. Data tersebut mengandung informasi jumlah kalori, lemak, gula, sodium, protein, lemak jenuh, dan karbohidrat. Untuk memudahkan analisis, maka data harus diekstrak menjadi kolom-kolom tersendiri. Ini dilakukan agar hubungan antar variabel data dapat dianalisis dengan lebih mudah pada proses selanjutnya.
 
-2. Sesuaikan data *ingredients* pada `recipes_sample_df`:
-   Diketahui data pada kolom *ingredients* memiliki format `object` yang berisi `string` sehingga perlu dipisahkan untuk setiap frasa bahan agar dapat terdeteksi sebagai satu bahan baku dengan benar saat proses vektoriasi. Caranya adalah dengan split frasa-frasa tersebut dengan menggunakan koma.
+2. Ambil bahan baku utama pada kolom _ingredients_ dalam `recipes_sample_df`:
+   Diketahui data pada kolom *ingredients* memiliki format `object` yang berisi `string` sehingga perlu diubah menjadi list dan diambil elemen pertama hingga ketiga (asumsi sebagai bahan baku utama) saja, kemudian konversi menjadi string kembali.
 
 #### _Content Based Filtering_
 ##### Features Selection
@@ -134,7 +101,7 @@ Berdasarkan _goals_ yang telah ditetapkan, Olagizi ingin sistem memberikan rekom
 | steps | recipes_sample_df | 
 
 ##### Features Extraction
-
+  Data bahan baku yang berupa teks harus diubah ke dalam data numerik dengan cara mengekstraksi fitur teks menjadi vektor menggunakan `TfidfVectorizer`. Hasil vektorisasi tersebut akan digunakan untuk menghitung kemiripan (_similarity_) bahan baku antar makanan pada dataset yang tersedia. Dengan demikian, ini dapat mempermudah model untuk memberikan rekomendasi berdasarkan bahan baku makanan.
 
 #### Collaborative Filtering
 ##### Features Selection
@@ -153,13 +120,13 @@ Berdasarkan _goals_ yang telah ditetapkan, Olagizi ingin sistem memberikan rekom
   Data *rating*, yang merupakan hasil ulasan dari pelanggan, akan digunakan sebagai data terget pada pelatihan model yang akan merepresentasikan bahwa pelanggan suka atau tidak suka terhadap makanan yang diulas. Oleh karena itu, untuk memudahkan proses pengenalan pola oleh model, data *rating* dinormalisasi nilainya ke dalam rentang 0 - 1 menggunakan metode `MinMaxScaler()`. 
 
 ##### Data Split
-  Langkah terakhir sebelum memasuki tahap pelatihan model adalah pembagian data menjadi data training dan data validasi. Pembagian data dilakukan dengan rasio 80 : 20 untuk data training dan data validasi. Data training digunakan untuk melatih model, sedangkan data validasi digunakan untuk mengevaluasi model yang telah dilatih bahwa model dapat memberikan performa yang baik terhadap data yang belum perah dilihat sebelumnya.
+  Langkah terakhir sebelum memasuki tahap pelatihan model adalah pembagian data menjadi data training dan data validasi. Pembagian data dilakukan dengan rasio `80 : 20` untuk data training dan data validasi. Data training digunakan untuk melatih model, sedangkan data validasi digunakan untuk mengevaluasi model yang telah dilatih bahwa model dapat memberikan performa yang baik terhadap data yang belum perah dilihat sebelumnya.
 
 ---
 ## Modeling
 ### Cosine Similarity
-  Pendekatan algoritma cosine similarity digunakan untuk membuat model sistem rekomendasi dengan metode *content-based filtering*. Cosine similarity bekerja dengan cara mengukur kesamaan arah antara dua vektor dari representasi data. Algoritma ini menghitung besaran sudut cosinus antara vektor satu dengan lainnya. Semakin kecil derajat sudut, maka semakin besar nilai cosine similarity, artinya kedua data semakin mirip. Cosine similarity antara dua vektor **A** dan **B** dapat dihitung dengan formula berikut:
-
+#### Desain Model 
+  Model akan didesain agar dapat memberikan rekomendasi dari makanan yang sebelumnya pernah dipilih berdasarkan kemiripan bahan baku yang digunakan. Pendekatan algoritma cosine similarity digunakan untuk membuat model sistem rekomendasi dengan metode *content-based filtering*. Cosine similarity bekerja dengan cara mengukur kesamaan arah antara dua vektor dari representasi data. Algoritma ini menghitung besaran sudut cosinus antara vektor satu dengan lainnya. Semakin kecil derajat sudut, maka semakin besar nilai cosine similarity, artinya kedua data semakin mirip. Cosine similarity antara dua vektor **A** dan **B** dapat dihitung dengan formula berikut:
 
 $$\text{Cosine Similarity} = \frac{\sum_{i=1}^{n} A_i B_i}{\sqrt{\sum_{i=1}^{n} A_i^2} \cdot \sqrt{\sum_{i=1}^{n} B_i^2}}$$
 
@@ -167,93 +134,124 @@ Di mana:
 - $$\( A_i \)$$ dan $$\( B_i \)$$ adalah komponen dari vektor **A** dan **B** pada dimensi $$\( i \)$$.
 - $$\( n \)$$ adalah jumlah dimensi vektor.
 
-### Penjelasan
+**_Penjelasan_**
 1. **Pembilang**: Hasil kali dot product antara dua vektor.
 2. **Penyebut**: Perkalian dari magnitudo kedua vektor.
 
 Cosine similarity menghasilkan nilai antara -1 hingga 1:
-- $$\( 1 \)$$: Vektor memiliki arah yang sama.
-- $$\( 0 \)$$: Vektor saling tegak lurus (tidak memiliki hubungan).
-- $$\( -1 \)$$: Vektor memiliki arah yang berlawanan.
+- $$\( 1 \)$$: Dua vektor sangat mirip atau identik (vektor memiliki arah yang sama dalam ruang vektor).
+- $$\( 0 \)$$: Dua vektor tidak memiliki kesamaan sama sekali (vektor saling tegak lurus atau tidak memiliki hubungan linear).
+- $$\( -1 \)$$: Dua vektor sangat berbeda (vektor memiliki arah yang berlawanan dalam ruang vektor).
+
+  Penerapan cosine similarity pada sistem rekomendasi, khususnya dengan metode vektoriasi TF-IDF memiliki kelebihan dan kekurangan yang perlu diperhatikan sebagai berikut:
+**_Kelebihan_**
+1. TF-IDF sering menghasilkan vektor yang _sparse_ (banyak elemen nol). Cosine similarity dapat bekerja sangat baik pada representasi seperti ini tanpa memerlukan normalisasi tambahan.
+2. Cosine similarity mengukur sudut antara dua vektor, sehingga tidak terpengaruh oleh skala besar atau kecilnya nilai fitur. Hal ini bermanfaat ketika nilai TF-IDF memiliki variasi yang besar.
+3. Cosine similarity efektif dalam mengukur kemiripan semantik antar item, yang sesuai dengan pendekatan berbasis TF-IDF.
+4. Nilai cosine similarity berkisar antara 0 - 1 (non negatif) sehingga mudah untuk interpretasi derajat kemiripan.
+5. Algoritma cosine similarity sederhana, cepat dihitung, dan mudah diimplementasikan dengan pustaka `scikit-learn`.
+
+**_Kekurangan_**
+1. Cosine similarity hanya mengukur kemiripan numerik dari vektor, tanpa memahami konteks sebenarnya dari kata-kata dalam teks.
+2. Kombinasi cosine similarity dan TF-IDF bekerja pada asumsi representasi linier dari data sehingga tidak dapat menangkap hubungan non-linear yang lebih kompleks.
+3. Jika jumlah fitur dalam TF-IDF sangat besar (terdapat banyak kata unik), perhitungan cosine similarity bisa menjadi lebih lambat, terutama jika diterapkan pada dataset besar.
+4. Cosine similarity hanya membandingkan vektor, makna sebenarnya dari teks mungkin tidak tercermin dengan baik karena TF-IDF mengabaikan sinonim dan polisemi (satu kata dengan banyak makna).
+
+#### Hasil Rekomendasi
+  Setelah model dibuat, selajutnya model akan digunakan untuk mendapatkan 10 rekomendasi makanan lain berdasarkan makanan yang pernah dipilih pelanggan. Hasilnya diperoleh seperti berkut:
+`rekomendasi_makanan("meatloaf with potato topping)`
+| No | name | 
+|----|------|
+| 1 | beef tenderloin with garlic horseradish crust |
+| 2 | beef tortilla cake | 
+| 3 | pasta with ricotta bolognese |
+| 4 | gabby gourmets southwestern chili |
+| 5 | lemon and basil baked chicken |
+| 6 | orzo and vegetable salad |
+| 7 | ground beef teriyaki |
+| 8 | bounty harvest meatloaf |
+| 9 | herbed lentils and rice |
+| 10 | seasoned cod fillet casserole |
 
 ### Neural Collaborative Filtering
+#### Desain Model 
+  Pada sistem rekomendasi dengan _collaborative filtering_ akan digunakan algoritma _deep learning_, khususnya dengan menggunakan _embedding layer_. Model akan dilatih untuk dapat menemukan pola antara beragam data makanan yang disukai pelanggan. Model diharapkan dapat memberikan rekomendasi kepada pelanggan makanan populer yang belum pernah dipilih sebelumnya. _Embedding layer_ digunakan untk merepresentasikan data kategorikal seperti pelanggan dan makanan ke dalam ruang vektor berdimensi rendah yang dapat dilatih. Terdapat 2 _embedding layer_ (satu untuk pelanggan dan satu untuk makanan) yang kemudian digabungkan dengan operasi **dot product** untuk menghasilkan skor kesesuaian. Setelah embedding, hasilnya akan dilewatkan melalui lapisan neural network dengan fungsi `sigmoid` untuk mendapatkan prediksi skor yang menunjukkan tingkat preferensi pengguna terhadap makanan tertentu.
+  Pendekatan ini tentunya memiliki kelebihan dan kekurangan pada penerapannya seperti berikut:
+**_Kelebihan_**
+1. Embedding layer mengurangi dimensi data dengan merepresentasikan setiap data pelanggan dan makanan sebagai vektor berdimensi rendah tetapi tetap informatif.
+2. Embedding dapat digabungkan dengan berbagai algoritma deep learning lainnya untuk menangkap pola tambahan. 
+3. Embedding dapat menggeneralisasi ke data baru selama memiliki data yang cukup.
+4. Embedding mampu mengatasi _data sparsity_ (sedikit data) untuk menemukan pola tersembunyi.
+5. Neural network setelah embedding memungkinkan model menangkap pola kompleks antar data.
 
+**_Kekurangan_**
+1. Training embedding layer membutuhkan dataset besar agar representasi vektor cukup bermakna.
+2. Jika embedding terlalu kompleks atau data terbatas, model dapat overfit pada data training.
+3. Representasi embedding bersifat numerik dan sulit diinterpretasikan dibandingkan pendekatan statistik tradisional.
+4. Training embedding dan neural network memerlukan waktu lebih lama, terutama pada dataset besar.
+
+#### Hasil Rekomendasi
+  Setelah model dibuat, selajutnya model akan digunakan untuk mendapatkan 10 rekomendasi makanan populer lain yang belum pernah dipilih pelanggan. Hasilnya diperoleh seperti berkut:
+`Makanan pilihan user: tomato and avocado goat cheese crostini`
+| No | name | 
+|----|------|
+| 1 | beefed up bloody mary soup |
+| 2 | dreamsicle cookie mix in a jar | 
+| 3 | relly good vegetarian meatloaf |
+| 4 | kourabiethes greek butter cookies |
+| 5 | advocaat |
+| 6 | chicken osso buco |
+| 7 | homemade plant food |
+| 8 | blueberry sausage breakfast cake |
+| 9 | saucy pasta all in one pot |
+| 10 | apple cider gravy |
 
 ---
 ## Evaluation
-Since the prediction model is a regression model, it used 3 evaluation metrics as Mean Absolute Error (MAE), Mean Squared Error (MSE), and R-squared. By using those metrics, the best prediction model can be developed.
+### Content Based Filtering
+  Metrik evaluasi yang digunakan pada pendekatan ini adalah `Mean Cosine Similarity`. Metrik ini dapat mengukur rata-rata kemiripan antara makanan yang direkomendasikan berdasarkan perhitungan _cosine similarity_ dari bahan baku yang digunakan setiap makanan. Formula Mean Cosine Similarity adalah sebagai berikut.
+  
+$$\
+\text{Mean Cosine Similarity} = \frac{1}{N} \sum_{i=1}^{N} \text{cosine similarity}(A, B_i)
+\$$
 
-### Metrics Description
-| Metrics | Description | Formula |
-|--------|-------------|---------|
-| Mean Absolute Error (MAE) | MAE measures the average absolute error between the model's predictions and the actual values. A smaller MAE value indicates better model performance. |  $$\text{MAE} = \frac{1}{n} \sum_{i=1}^{n} (y_i - \hat{y}_i)$$, where the errors are considered in absolute terms. |
-| Mean Squared Error (MSE) | MSE calculates the average of the squared errors between predictions and actual values, making it more sensitive to larger errors (outliers) than MAE | $$\text{MSE} = \frac{1}{n} \sum_{i=1}^{n} (y_i - \hat{y}_i)^2$$ |
-| R-squared | R-squared represents the proportion of the data variability that the model can explain. R-squared values range from 0 to 1, with values closer to 1 indicating that the model explains the data well. | $$R^2 = 1 - { Σ (yᵢ - ŷᵢ)² / Σ (yᵢ - ȳ)² }$$ |
+di mana:
+- $$\(N\)$$ adalah jumlah item yang relevan atau direkomendasikan.
+- $$\(A\)$$ adalah item yang dipilih atau disukai oleh pengguna.
+- $$\(B_i\)$$ adalah item-item yang direkomendasikan untuk item $$\(A\)$$.
+- $$\(\text{cosine similarity}(A, B_i)\)$$ adalah nilai kemiripan cosine antara item $$\(A\)$$ dan $$\(B_i\)$$.
 
-This is the result of training on Model 1:
+Terdapat kriteria umum untuk menilai rata-rata _cosine similarity_ antara lain:
+1. **Nilai Tinggi (mendekati 1)**: ini menunjukkan kemiripan yang sangat kuat. Biasanya nilai > 0,8 dianggap sangat relevan.
+2. **Nilai Tinggi (mendekati 1)**: ini menunjukkan kemiripan yang sangat kuat. Biasanya nilai antara 0,6 - 8 dianggap memiliki relevansi sedang.
+3. **Nilai Tinggi (mendekati 1)**: ini menunjukkan kemiripan yang sangat kuat. Biasanya nilai antara 0,4 - 6 dianggap kurang relevan.
+4. **Nilai Tinggi (mendekati 1)**: ini menunjukkan kemiripan yang sangat kuat. Biasanya nilai < 0,4 dianggap tidak relevan.
 
-![evaluation model 1](https://github.com/user-attachments/assets/555012f1-ead8-449d-9e4e-e167c39ce1f8)
+  Hasil evaluasi model menunjukkan nilai Mean Cosine Similarity sebesar 0,378 dengan rincian sebagai berikut:
+| name | Skor Relevansi |
+|------|----------------|
+| . | . |
 
-This is the result of training on Model 2:
+### Neural Collaborative Filtering
+Root Mean Squared Error (RMSE) 
 
-![evaluation model 2](https://github.com/user-attachments/assets/126d990f-fee5-4252-826f-536a2efcdc49)
-
----
-### Model Comparison
-| Metrics | Model 1 | Model 2 | Notes |
-|---------|---------|---------|------|
-| MAE | 0.0505 | 0.0741 | Model 1 has a lower MAE compared to Model 2, meaning that Model 1's predictions, on average, are closer to the actual values than those of Model 2. |
-| MSE | 0.0042 | 0.0114 | Model 1 has a smaller MSE than Model 2. This suggests that Model 1 is not only more accurate but also has more consistent small errors. Model 1 either handles outliers better or large errors occur less frequently compared to Model 2. |
-| R-squared | 0.9917 | 0.9768 | Model 1 explains the relationship between input features and target values better than Model 2. |
-
-That means Model 1 has a better architecture and design than Model 2. It has shown lower error rates in predicting nutrition density. Proper parameter configuration (as mentioned in solution statement number 3) helps to build a highly accurate prediction model. In addition, the model met the criteria we have set in the goals statements.
-
-These are comparisons of the model prediction to the actual data.
-
-![Prediction Model](https://github.com/user-attachments/assets/6dea88cd-38e3-4f06-97ed-7cc049e456ca)
-
----
-## Inference
-Nutrition density prediction is done using dummy data containing the values ​​of various nutrients contained in food like the original data.
-
-The predictions were saved into a `.csv` file as follows:
-[Prediction_of_dummy_data](https://raw.githubusercontent.com/Sulbae/OlahGizi-Project/refs/heads/main/Nutrition%20Prediction%20Model/predictions_of_dummy_data.csv)
-
-![Predicted Nutrition Density](https://github.com/user-attachments/assets/f06ba568-c713-4245-906a-cd8a7276b5bd)
 
 ---
 ## Conclusion
-1. The model is a regression model because it aims to predict a continuous outcome (Nutrition Density Values) based on various input features (nutrient values). The prediction is estimating nutrient density values, which inherently involves predicting numerical quantities.
+1. Sistem rekomendasi dapat memberikan pilihan makanan yang memiliki kemiripan dari segi bahan baku yang digunakan dengan menggunakan model rekomendasi yang dikembangkan melalui pendekatan _content-based filtering_. Model dapat memberikan rekomendasi berbagai pilihan makanan berdasarkan makanan yang pernah dipilih oleh pelanggan. Model memanfaatkan dataset yang berisi data nama dan daftar bahan baku makanan yang tersedia. Model akan menghitung _cosine similarity_ antara bahan baku dari nama makanan yang dipilih, kemudian menghasilkan rekomendasi nama makanan yang memiliki kemiripan bahan baku dengan mengurutkannya berdasarkan nilai _similarity_ terbesar. 
 
-2. All data have skewed distribution and outliers, whereas the neural network model is more suitable for normally distributed data. Hence, the data needs to be transformed to logarithmic values and then normalized. By pre-processing the data this way, we can enhance the model's ability to learn meaningful patterns, leading to better performance and generalization on unseen data.
-
-3. Based on the model evaluation, the architecture design and training scheme (splitting data into 90% `data_train`, 5% `data_validation`, and 5% `data_test`) of Model 1 is better than Model 2. This is drawn from comparing metrics such as Mean Squared Error (MSE), Mean Absolute Error (MAE), and R-squared values between the two models. The choice of architecture such as the number of layers and nodes, loss functions, and optimization techniques used in Model 1, likely contributed to its performance. In addition, there are recommendations to develop a model with superior performance as follows:
-
-    * Further refinement of feature selection may enhance model performance. Identifying key features that significantly impact nutrition density could lead to improved predictive accuracy.
-    * Explore different architectures and hyperparameter settings then identify the optimal configuration for the model.
-    * Implementing regularization techniques such as dropout, L1/L2 regularization, or batch normalization can help prevent overfitting in complex models.
-
----
-## Development Opportunity
-__1. Meal Recommendation System__.
-By integrating this dataset with broader dietary data, machine learning models can recommend dietary adjustments to individuals. For instance, a recommendation system could suggest lower-calorie or lower-sugar food alternatives to users looking to reduce their calorie intake but who still want to get high nutrition. Machine learning models can integrate food consumption data into broader dietary tracking tools used in fitness and health apps, providing users with insights into their dietary meal plans.
-
-__2. Predictive Modeling for Health Impacts__.
-With sufficient data linking meal consumption to health outcomes, predictive models could forecast health impacts based on meal consumption patterns. This could be particularly useful for public health.
+2. Sistem rekomendasi dapat memberikan pilihan makanan yang mungkin disukai oleh pelanggan dengan menggunakan model rekomendasi yang dikembangkan melalui pendekatan _collaborative filtering_. Model dapat memberikan rekomendasi berbagai pilihan makanan yang belum pernah dicoba dan mungkin akan disukai berdasarkan makanan yang sebelumnya pernah disukai oleh pelanggan. Model dikembangkan dengan memanfaatkan dataset interaksi pelanggan terhadap makanan melalui ulasan _rating_ kepuasan pelanggan. Model dilatih dengan algoritma embedding yang dikombinasikan dengan neural network sehingga dapat memprediksi makanan yang mungkin akan disukai oleh pelanggan.
 
 ---
 ## References
-1. Alfarisi, B. I., et al. (2023). *Mengungkap Kesehatan Melalui Angka: Prediksi Malnutrisi Melalui Penilaian Status Gizi dan Asupan Makronutrien.* Prosiding SNPPM-5, 299-311.
-2. Bouma, S. (2017). *Diagnosing Pediatric Malnutrition: Paradigm Shifts of Etiology-Related Definitions and Appraisal of the Indicators.* Nutrition in Clinical Practice, 32(1), 52–67.
-3. Cakrawala. (2024). *Apa itu Neural Network? Ini Pengertian, Konsep, dan Contohnya.* Retrieved October 31, 2024, from [https://www.cakrawala.ac.id/berita/neural-network-adalah](https://www.cakrawala.ac.id/berita/neural-network-adalah).
-4. Cederholm, T., et al. (2019). *GLIM criteria for the diagnosis of malnutrition – A consensus report from the global clinical nutrition community.* Journal of Cachexia, Sarcopenia and Muscle, 10(1), 207–217.
-5. European Food Information Council (EUFIC). (2021). *What is nutrient density?* Retrieved October 31, 2024, from [https://www.eufic.org/en/understanding-science/article/what-is-nutrient-density](https://www.eufic.org/en/understanding-science/article/what-is-nutrient-density).
-6. Khan, D. S. A., et al. (2022). *Nutritional Status and Dietary Intake of School-Age Children and Early Adolescents: Systematic Review in a Developing Country and Lessons for the Global Perspective.* Frontiers in Nutrition, 8(February).
-7. Ministry of Health of the Republic of Indonesia. (2018). Situasi Balita Pendek (Stunting) di Indonesia.
-8. RevoU. (2024). *Apa itu Neural Network.* Retrieved October 31, 2024, from [https://revou.co/kosakata/neural-network](https://revou.co/kosakata/neural-network).
-9. Rinninella, E., et al. (2017). *Clinical tools to assess nutritional risk and malnutrition in hospitalized children and adolescents.* European Review for Medical and Pharmacological Sciences, 21(11), 2690–2701.
-10. Simbolon, D. (2013). *Model Prediksi Indeks Massa Tubuh Remaja Berdasarkan Riwayat Lahir dan Status Gizi Anak.* Kesmas, 8(1), 19–27.
-11. Yamantri, A. B., & Rifa’i, A. A. (2024). *Penerapan Algoritma C4.5 Untuk Prediksi Faktor Risiko Obesitas Pada Penduduk Dewasa.* Jurnal Komputer Antartika, 2(3), 118–125.
-12. Zianka, I. D., et al. (2024). *The Design Android Application Nutrition Calculation to Prevent Stunting with CNN Method in Jakarta.* MALCOM: Indonesian Journal of Machine Learning and Computer Science, 4, 99–107.
+1. Damar Upahita. 2021. *Panduan Mencukupi Kebutuhan Gizi Harian Untuk Anak Usia Sekolah (6 - 9 Tahun).* https://hellosehat.com/parenting/anak-6-sampai-9-tahun/gizi-anak/kebutuhan-asupan-gizi-anak/?amp=1. 
+
+2. Dewi, dkk. 2021. *Pentingnya Pemenuhan Gizi Terhadap Kecerdasan Anak*. SENAPADMA:Seminar Nasional Pendidikan Dasar dan Menengah, Vol.1, pp. 16-21. Sukabumi: Universitas Nusa Putra.
+
+1. KA, Mutirasari. 2024. *Program Makan Bergizi Gratis: Jadwal Berlaku, Sasaran hingga Aturan Pembagian.* Diakses pada 6 Desember 2024, dari https://news.detik.com/berita/d-7617806/program-makan-bergizi-gratis-jadwal-berlaku-sasaran-hingga-aturan-pembagian.
+
+2. Kementerian Koordinator Bidang Pembangunan Manusia dan Kebudayaan Republik Indonesia. 2024. *Program Makan Bergizi Gratis untuk Tingkatkan Kualitas SDM Indonesia.* Diakses pada 6 Desember 2024, dari https://www.kemenkopmk.go.id/program-makan-bergizi-gratis-untuk-tingkatkan-kualitas-sdm-indonesia.
+
+3. Kementerian Kesehatan Republik Indonesia. 2019. *Peraturan Menteri Kesehatan Republik Indonesia Nomor 28 Tahun 2019 Tentang Angka Kecukupan Gizi Yang Dianjurkan Untuk Masyarakat Indonesia.*
 
 > **Ini adalah bagian akhir laporan**
