@@ -17,7 +17,7 @@
 ### Goals
   1. Menghasilkan 10 rekomendasi makanan yang memiliki bahan baku utama yang sama.
   2. Menghasilkan 10 rekomendasi makanan yang mungkin disukai oleh target pelanggan.
-### Solution Statements
+### Solution Approach
   1. Menerapkan pendekatan _content-based filtering_ menggunakan algoritma _cosine similarity_ untuk menghitung kemiripan bahan baku yang digunakan diurutkan berdasarkan nilai _similarity_ terbesar.
   2. Menerapkan pendekatan _collaborative filtering_ menggunakan algoritma _deep learning_ untuk menemukan pola pemberian rating oleh user.
 
@@ -133,7 +133,7 @@ Cosine similarity menghasilkan nilai antara -1 hingga 1:
 
 ### Neural Collaborative Filtering
 #### Desain Model 
-  Pada sistem rekomendasi dengan _collaborative filtering_ akan digunakan algoritma _deep learning_, khususnya dengan menggunakan _embedding layer_. Model akan dilatih untuk dapat menemukan pola antara beragam data makanan yang disukai pelanggan. Model diharapkan dapat memberikan rekomendasi kepada pelanggan makanan populer yang belum pernah dipilih sebelumnya. _Embedding layer_ digunakan untk merepresentasikan data kategorikal seperti pelanggan dan makanan ke dalam ruang vektor berdimensi rendah yang dapat dilatih. Terdapat 2 _embedding layer_ (satu untuk pelanggan dan satu untuk makanan) yang kemudian digabungkan dengan operasi **dot product** untuk menghasilkan skor kesesuaian. Setelah embedding, hasilnya akan dilewatkan melalui lapisan neural network dengan fungsi `sigmoid` untuk mendapatkan prediksi skor yang menunjukkan tingkat preferensi pengguna terhadap makanan tertentu.
+  Pada sistem rekomendasi dengan _collaborative filtering_ akan digunakan algoritma _deep learning_, khususnya dengan menggunakan _embedding layer_. Model akan dilatih untuk dapat menemukan pola antara beragam data makanan yang disukai pelanggan. Model diharapkan dapat memberikan rekomendasi kepada pelanggan makanan populer yang belum pernah dipilih sebelumnya. _Embedding layer_ digunakan untk merepresentasikan data kategorikal seperti pelanggan dan makanan ke dalam ruang vektor berdimensi rendah yang dapat dilatih. Terdapat 2 _embedding layer_ (satu untuk pelanggan dan satu untuk makanan) yang kemudian digabungkan dengan operasi **dot product** untuk menghasilkan skor kesesuaian. Setelah embedding, hasilnya akan dilewatkan melalui lapisan neural network (dense) dan output dengan fungsi `sigmoid` untuk mendapatkan prediksi skor yang menunjukkan tingkat preferensi pengguna terhadap makanan tertentu.
   Pendekatan ini tentunya memiliki kelebihan dan kekurangan pada penerapannya seperti berikut:
 **_Kelebihan_**
 1. Embedding layer mengurangi dimensi data dengan merepresentasikan setiap data pelanggan dan makanan sebagai vektor berdimensi rendah tetapi tetap informatif.
