@@ -24,53 +24,36 @@
 ---
 ## Data Understanding
 ### Overview
-  Dataset ini berasal dari platform Kaggle salah satu pengembang sistem rekomendasi makanan diet dengan nama akun @SOUMEDHIK yang dapat diakses pada link di bawah. Ukuran dataset begitu besar sehingga dataset yang digunakan hanya sebagian sampel saja. Pada proyek ini, hanya akan menggunakan 2 file dataset dalam format csv, yaitu recipes data dan interactions data.
+Dataset ini berasal dari platform Kaggle salah satu pengembang sistem rekomendasi makanan dengan nama akun "GRACE HEPHZIBAH M" yang dapat diakses pada link di bawah. Pada proyek ini, akan menggunakan 2 file dataset dalam format csv, yaitu food data dan rating data.
+
 _Download raw dataset_:
-[Diet Recommender Dataset](https://www.kaggle.com/code/soumedhik/diet-recommender/input)
+[Food Recommendation System](https://www.kaggle.com/code/gracehephzibahm/food-recommendation-system-easy-comprehensive/input)
 
-### Recipes Data
-`recipes_sample_df` memiliki total 2316 baris data dan 12 kolom.
-
+### Food Data
 | No | Kolom | Tipe Data | Deskripsi |
 |----|-------|-----------|-----------|
-| 1 | Name | `object` | Nama resep. |
-| 2 | id | `integer` | ID resep. |
-| 3 | minutes | `integer` | Waktu yang diperlukan untuk memasak (dalam menit). |
-| 4 | contribution_id | `integer` | ID pengguna yang berkontribusi mengunggah resep. |
-| 5 | submitted | `object` | Tanggal resep diunggah. |
-| 6 | tags | `object` | Kategori atau tag resep. |
-| 7 | nutrition | `object`| Informasi nutrisi (kalori, lemak/Total Fat (g), gula (g), sodium (mg), protein (g), lemak jenuh/saturated fat (g), dan karbohidrat (g)). |
-| 8 | n_steps | `integer` | Jumlah langkah yang diperlukan untuk memasak. |
-| 9 | description | `object` | Deskripsi singkat mengenai resep. |
-| 10 | ingredients | `object` | Daftar bahan-bahan yang digunakan dalam resep. |
-| 11 | n_ingredients | `integer` | Jumlah bahan yang digunakan dalam resep. |
+| 1 | Name | `object` | Nama makanan. |
+| 2 | Food_ID | `integer` | ID makanan. |
+| 3 | C_Type | `object` | Kategori makanan. |
+| 4 | Veg_Non | `object` | Keterangan apakah makanan mengandung bahan baku hewani atau tidak |
+| 5 | Describe | `object` | Keterangan bahan-bahan yang digunakan pada makanan tersebut. |
 
-### Interactions Data
-`interactions_sample_df` memiliki total 11324 baris data dan 5 kolom.
-
+### Rating Data
 | No | Kolom | Tipe Data | Deskripsi |
 |----|-------|-----------|-----------|
-| 1 | user_id | `integer` | ID pengguna yang memberikan ulasan. |
-| 2 | recipe_id | `integer` | ID resep yang diberi ulasan. |
-| 3 | date | `object` | Tanggal ulasan diberikan. |
-| 4 | rating | `integer` | Penilaian yang diberikan (dalam skala tertentu). |
-| 5 | review | `object` | Isi ulasan yang diberikan pengguna. |
+| 1 | User_ID | `integer` | ID pengguna yang memberikan ulasan. |
+| 2 | Food_ID | `integer` | ID resep yang diberi ulasan. |
+| 3 | Rating | `integer` | Penilaian yang diberikan (dalam skala 1 - 10). |
 
 ### Explore Data
-  Eksplorasi data dilakukan untuk mengetahui lebih banyak terkait karakteristik dataset yang akan digunakan, mulai dari kelengkapan data, format data, dan statistik data. Berdasarkan hasil eksplorasi data, terdapat beberapa temuan antara lain:
-* Pada dataset `recipes_sample_df` ditemukan 52 _missing value_ untuk kolom _description_ dan terdapat format data yang belum sesuai pada kolom _submitted_ dan _nutrition_. Menurut hasil deskripsi statistik rata-rata makanan pada data membutuhkan waktu memasak sekitar 130 menit atau sekitar 9 tahapan.
-* Pada dataset `interactions_sample_df` ditemukan 1 _missing value_ untuk kolom _review_ dan terdapat format data yang belum sesuai pada kolom _date_. Diketahui rata-rata nilai ulasan atau _rating_ yang diberikan orang-orang adalah 4,4.
+Eksplorasi data dilakukan untuk mengenali dan memahami data dengan lebih detail dan menyeluruh. Eksplorasi data ini dilakukan terhadap kedua dataset yang akan digunakan. Hasil eksplorasi menunjukkan `food_df` memiliki total 400 baris data dan 5 kolom. `food_df` tidak memiliki duplikasi data maupun nilai null. Ini artinya data terdiri dari 400 makanan yang berbeda. Makanan pada dataset didominasi oleh makanan dengan kategori makanan India, Healthy Food, dan Dessert (makanan penutup) seperti yang ditampilkan pada chart berikut.
+![kategori makanan](https://github.com/user-attachments/assets/2922e0a9-1e66-45d6-814e-a2721aafaeb4)
 
-#### recipes_sample_df
-![minutes](https://github.com/user-attachments/assets/743048bc-8aab-455f-81b9-cab385b348b6)
-Diketahui distribusi data kolom _minutes_ pada `recipes_sample_df` sangat _skewed_ karena data memiliki _outlier_ yang cukup banyak dan rentang nilai yang ekstrem. 
+Sebagai tambahan, enam puluh persen makanan pada dataset merupakan makanan yang tidak mengandung bahan baku hewani, sementara sisanya menggunakan bahan baku hewani.
+![Veg_Non](https://github.com/user-attachments/assets/df0c3cf5-527a-4254-ba35-f89555089dee)
 
-![n_steps](https://github.com/user-attachments/assets/ab2a868b-9885-40cc-97c0-380132ce11f0)
-Sementara itu, data kolom _n_steps_ juga terdistribusi _skewed_, tetapi memiliki lebih sedikit outlier dengan rentang yang tidak terlalu ekstrem.
-
-#### interactions_sample_df
-![rating](https://github.com/user-attachments/assets/03c5e40b-31d7-4834-b77a-c827bc9b0ce5)
-Data ulasan yang ada menunjukkan dominasi rating yang diberikan berkisar 3 - 5. Hal ini menandakan bahwa banyak pelanggan atau pengguna yang merasa puas.
+#### rating_df
+`rating_df` memiliki total 11324 baris data dan 3 kolom.
 
 ---
 ## Data Preparation
