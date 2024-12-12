@@ -89,17 +89,17 @@ Di sisi lain, dataset `rating_df` memiliki total 512 baris data dan 3 kolom. Has
 $$\text{Cosine Similarity} = \frac{\sum_{i=1}^{n} A_i B_i}{\sqrt{\sum_{i=1}^{n} A_i^2} \cdot \sqrt{\sum_{i=1}^{n} B_i^2}}$$
 
 Keterangan:
-- $$A_i$$ dan $$\( B_i \)$$ adalah komponen dari vektor **A** dan **B** pada dimensi $$i$$.
-- $$\n\$$ adalah jumlah dimensi vektor.
+- $$A_i$$ dan $$B_i$$ adalah komponen dari vektor **A** dan **B** pada dimensi $$i$$.
+- $$n$$ adalah jumlah dimensi vektor.
 
 **_Penjelasan_**
 1. **Pembilang**: Hasil kali dot product antara dua vektor.
 2. **Penyebut**: Perkalian dari magnitudo kedua vektor.
 
 Cosine similarity menghasilkan nilai antara -1 hingga 1:
-- $$\( 1 \)$$: Dua vektor sangat mirip atau identik (vektor memiliki arah yang sama dalam ruang vektor).
-- $$\( 0 \)$$: Dua vektor tidak memiliki kesamaan sama sekali (vektor saling tegak lurus atau tidak memiliki hubungan linear).
-- $$\( -1 \)$$: Dua vektor sangat berbeda (vektor memiliki arah yang berlawanan dalam ruang vektor).
+- $$1$$: Dua vektor sangat mirip atau identik (vektor memiliki arah yang sama dalam ruang vektor).
+- $$0$$: Dua vektor tidak memiliki kesamaan sama sekali (vektor saling tegak lurus atau tidak memiliki hubungan linear).
+- $$-1$$: Dua vektor sangat berbeda (vektor memiliki arah yang berlawanan dalam ruang vektor).
 
   Penerapan cosine similarity pada sistem rekomendasi, khususnya dengan metode vektoriasi TF-IDF memiliki kelebihan dan kekurangan yang perlu diperhatikan sebagai berikut:
 **_Kelebihan_**
@@ -169,15 +169,15 @@ Cosine similarity menghasilkan nilai antara -1 hingga 1:
 ### Content Based Filtering
   Untuk memudahkan evaluasi, perbandingan dilakukan terhadap relevansi makanan yang direkomendasikan terhadap makanan sebelumnya berdasarkan tipe bahan baku yang digunakan, yaitu Vegan atau Non-Vegan. Metrik evaluasi yang digunakan pada pendekatan ini adalah `Mean Cosine Similarity`. Metrik ini dapat mengukur rata-rata kemiripan antara makanan yang direkomendasikan berdasarkan perhitungan _cosine similarity_ dari bahan baku yang digunakan setiap makanan. Formula Mean Cosine Similarity adalah sebagai berikut.
   
-$$\
+$$
 \text{Mean Cosine Similarity} = \frac{1}{N} \sum_{i=1}^{N} \text{cosine similarity}(A, B_i)
-\$$
+$$
 
 Keterangan:
-- $$\(N\)$$ adalah jumlah item yang relevan atau direkomendasikan.
-- $$\(A\)$$ adalah item yang dipilih atau disukai oleh pengguna.
-- $$\(B_i\)$$ adalah item-item yang direkomendasikan untuk item $$\(A\)$$.
-- $$\(\text{cosine similarity}(A, B_i)\)$$ adalah nilai kemiripan cosine antara item $$\(A\)$$ dan $$\(B_i\)$$.
+- $$N$$ adalah jumlah item yang relevan atau direkomendasikan.
+- $$A$$ adalah item yang dipilih atau disukai oleh pengguna.
+- $$B_i$$ adalah item-item yang direkomendasikan untuk item $$\(A\)$$.
+- $$\text{cosine similarity}(A, B_i)$$ adalah nilai kemiripan cosine antara item $$A$$ dan $$B_i$$.
 
 Terdapat kriteria umum untuk menilai rata-rata _cosine similarity_ antara lain:
 1. **Nilai Tinggi (mendekati 1)**: ini menunjukkan kemiripan yang sangat kuat. Biasanya nilai > 0,8 dianggap sangat relevan.
@@ -209,10 +209,10 @@ $$\
 \$$
 
 Keterangan:
-* $$\(n\)$$: Jumlah observasi (data point yang dievaluasi).
-* $$\(y_i)\$$: Nilai sebenarnya (ground truth) untuk data ke-𝑖.
-* $$\(ŷ_i)\$$: Nilai prediksi.
-* $$\(y_i - ŷ_i)\$$: Error antara nilai sebenarnya dan prediksi.
+* $$n$$: Jumlah observasi (data point yang dievaluasi).
+* $$y_i$$: Nilai sebenarnya (ground truth) untuk data ke-𝑖.
+* $$ŷ_i$$: Nilai prediksi.
+* $$(y_i - ŷ_i)$$: Error antara nilai sebenarnya dan prediksi.
 
 ![coll_train](https://github.com/user-attachments/assets/ed71ff51-364b-4151-9381-fd2be5a3eb7c)
 
