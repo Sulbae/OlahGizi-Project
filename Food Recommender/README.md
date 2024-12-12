@@ -176,7 +176,7 @@ $$
 Keterangan:
 - $$N$$ adalah jumlah item yang relevan atau direkomendasikan.
 - $$A$$ adalah item yang dipilih atau disukai oleh pengguna.
-- $$B_i$$ adalah item-item yang direkomendasikan untuk item $$\(A\)$$.
+- $$B_i$$ adalah item-item yang direkomendasikan untuk item $$A$$.
 - $$\text{cosine similarity}(A, B_i)$$ adalah nilai kemiripan cosine antara item $$A$$ dan $$B_i$$.
 
 Terdapat kriteria umum untuk menilai rata-rata _cosine similarity_ antara lain:
